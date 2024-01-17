@@ -29,7 +29,7 @@ This website specializes in the retail of high-quality furniture, offering a div
 - duplicate .env.example and rename it to .env
 
 3. Install and Run
-   ```shell
-     npm install
-     npm run dev
-   ```
+```shell
+npm install
+npm run dev
+```
