@@ -6,7 +6,20 @@ module.exports = {
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontSize: {
+        'span': '1.15em'
+      },
+      fontWeight: {
+        'span': '600'
+      },
+      lineHeight: {
+        'span': '1.05'
+      },
+      letterSpacing: {
+        'span': '.05em'
+      }
+    },
   },
   plugins: [],
 }
