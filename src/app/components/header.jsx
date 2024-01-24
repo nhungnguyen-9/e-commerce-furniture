@@ -1,37 +1,31 @@
-"use client";
-
-import React, {useState, useEffect} from "react";
-import Image from "next/image";
-import Link from "next/link";
-
-import CallIcon from "@mui/icons-material/Call";
-import PlaceOutlinedIcon from "@mui/icons-material/PlaceOutlined";
-import PersonIcon from "@mui/icons-material/Person";
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import ShoppingBagIcon from "@mui/icons-material/ShoppingBag";
-import MenuIcon from "@mui/icons-material/Menu";
-
-import Collapse from "@mui/material/Collapse";
-import Button from "@mui/material/Button";
-
-import Dialog from "@mui/material/Dialog";
-import ExpandMore from "@mui/icons-material/ExpandMore";
-import Slide from "@mui/material/Slide";
-
-import TextField from "@mui/material/TextField";
-import InputAdornment from "@mui/material/InputAdornment";
-import SearchIcon from "@mui/icons-material/Search";
-
-import {List, ListItem} from "@mui/material";
-
-import Dropdown from "./Dropdown";
-import CategoryList from "./CategoryList";
+'use client'
+import React, {useState, useEffect} from 'react'
+import Image from 'next/image'
+import Link from 'next/link'
+import CallIcon from '@mui/icons-material/Call'
+import PlaceOutlinedIcon from '@mui/icons-material/PlaceOutlined'
+import PersonIcon from '@mui/icons-material/Person'
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder'
+import ShoppingBagIcon from '@mui/icons-material/ShoppingBag'
+import MenuIcon from '@mui/icons-material/Menu'
+import Collapse from '@mui/material/Collapse'
+import Button from '@mui/material/Button'
+import Dialog from '@mui/material/Dialog'
+import ExpandMore from '@mui/icons-material/ExpandMore'
+import Slide from '@mui/material/Slide'
+import TextField from '@mui/material/TextField'
+import InputAdornment from '@mui/material/InputAdornment'
+import SearchIcon from '@mui/icons-material/Search'
+import {List, ListItem} from '@mui/material'
+import Dropdown from './Dropdown'
+import CategoryList from './CategoryList'
 
 const Transition = React.forwardRef(function Transition(props, ref) {
-  return <Slide direction="right" ref={ref} {...props} />;
-});
+  return <Slide direction="right" ref={ref} {...props} />
+})
 
 export default function Header() {
+
   const [open, setOpen] = useState(false);
   const [scrollY, setScrollY] = useState(0);
 
@@ -418,5 +412,5 @@ export default function Header() {
         </Collapse>
       </div>
     </div>
-  );
+  )
 }
