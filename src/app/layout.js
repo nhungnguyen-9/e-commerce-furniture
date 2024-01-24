@@ -4,7 +4,7 @@ import './globals.css'
 const roboto = Roboto({ subsets: ['latin'], weight: ['400', '500', '700'] })
 
 export const metadata = {
-  title: 'Nội Thất Nhà Xinh'
+  title: 'Nội Thất Nhà Xinh | Nội thất cao cấp | Đồ gỗ cao cấp'
 }
 
 export default function RootLayout({ children }) {
