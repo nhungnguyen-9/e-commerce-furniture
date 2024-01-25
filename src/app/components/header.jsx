@@ -18,7 +18,9 @@ import InputAdornment from '@mui/material/InputAdornment'
 import SearchIcon from '@mui/icons-material/Search'
 import Dropdown from './Dropdown'
 import CategoryList from './CategoryList'
+import CloseIcon from '@mui/icons-material/Close'
 import { Tooltip } from '@mui/material'
+
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="right" ref={ref} {...props} />
@@ -56,8 +58,8 @@ export default function Header() {
       <div className='h-14 py-2.5 border-b border-solid border-[#F6F7F8]'>
         <div className='flex flex-row items-center justify-around h-full'>
           {/* Language */}
-          <div className='w-1/2 flex flex-row items-center h-7 space-x-1 average:hidden'>
-            <a href='#' className='ml-28'>
+          <div className='w-1/2 flex flex-row items-center h-7 space-x-1 average:absolute average:left-0'>
+            <a href='#' className='ml-28 average:ml-5'>
               <Image
                 className='rounded-full'
                 src='/header/VietNam_flag.png'
@@ -73,24 +75,24 @@ export default function Header() {
               EN
             </a>
             {/* Information */}
-            <div className='relative left-14 flex flex-row justify-evenly space-x-4 average:hidden'>
+            <div className='relative left-14 flex flex-row justify-evenly space-x-4'>
               <a href='#' className='text-sm font-bold'>
                 <CallIcon sx={{ fontSize: '15px' }} />
                 1800 7200
               </a>
               <a
                 href='#'
-                className='text-sm text-slate-500 hover:text-slate-900'
+                className='text-sm text-slate-500 hover:text-slate-900 average:hidden'
               >
                 Giới thiệu
               </a>
               <a
                 href='#'
-                className='text-sm text-slate-500 hover:text-slate-900'
+                className='text-sm text-slate-500 hover:text-slate-900 average:hidden'
               >
                 Khuyến mãi
               </a>
-              <a href='#' className='text-sm text-red-600'>
+              <a href='#' className='text-sm text-red-600 average:hidden'>
                 Giảm giá đặc biệt
               </a>
             </div>
@@ -311,7 +313,7 @@ export default function Header() {
           </div>
 
           {/* Search */}
-          <div className='relative mr-32 average:absolute average:right-0'>
+          <div className='relative mr-32 average:hidden w-[480px]'>
             <TextField
               id='outlined-basic'
               label='Tìm sản phẩm'
@@ -326,6 +328,30 @@ export default function Header() {
                 sx: { borderRadius: 20, width: '273px' }
               }}
             />
+          </div>
+
+          {/* Search at small reponsive */}
+          <div className='group'>
+            <button className='absolute top-[30px] right-[20px] hidden hover:bg-gray-600 average:block group-hover:block rounded w-[40px] h-[40px] border-2'>
+              <SearchIcon className='hover:fill-white' fontSize='small' />
+            </button>
+            <div className='hidden absolute right-0 top-[70px] group-hover:block bg-white w-fit h-fit shadow-sm border-2'>
+              <div className='m-[20px]'>
+                  <TextField
+                    id='outlined-basic'
+                    label='Tìm sản phẩm'
+                    variant='outlined'
+                    size='small'
+                    InputProps={{
+                      endAdornment: (
+                        <InputAdornment position='start'>
+                          <SearchIcon />
+                        </InputAdornment>
+                      ),
+                    }}
+                  />
+              </div>
+            </div>
           </div>
         </div>
         {/* Menu */}
@@ -347,6 +373,7 @@ export default function Header() {
               },
             }}
           >
+            <button onClick={handleClose} className='ml-[90%] w-8 h-8 sm:hidden block'><CloseIcon fontSize='large'/></button>
             <Dropdown
               primaryHeader='Sofa và Armchair'
               items={[
