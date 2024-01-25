@@ -1,5 +1,5 @@
 'use client'
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import CallIcon from '@mui/icons-material/Call'
@@ -18,28 +18,30 @@ import InputAdornment from '@mui/material/InputAdornment'
 import SearchIcon from '@mui/icons-material/Search'
 import Dropdown from './Dropdown'
 import CategoryList from './CategoryList'
-import CloseIcon from '@mui/icons-material/Close';
+import CloseIcon from '@mui/icons-material/Close'
+import { Tooltip } from '@mui/material'
+
 
 const Transition = React.forwardRef(function Transition(props, ref) {
-  return <Slide direction='right' ref={ref} {...props} />
+  return <Slide direction="right" ref={ref} {...props} />
 })
 
 export default function Header() {
 
-  const [open, setOpen] = useState(false);
-  const [scrollY, setScrollY] = useState(0);
+  const [open, setOpen] = useState(false)
+  const [scrollY, setScrollY] = useState(0)
 
   const handleClose = () => {
-    setOpen(false);
-  };
+    setOpen(false)
+  }
 
   const handleTransitionButtonClick = () => {
-    setOpen(!open);
-  };
+    setOpen(!open)
+  }
 
   const handleScroll = () => {
-    setScrollY(window.scrollY);
-  };
+    setScrollY(window.scrollY)
+  }
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
@@ -53,7 +55,7 @@ export default function Header() {
 
   return (
     <div className='h-auto'>
-      <div className='h-14'>
+      <div className='h-14 py-2.5 border-b border-solid border-[#F6F7F8]'>
         <div className='flex flex-row items-center justify-around h-full'>
           {/* Language */}
           <div className='w-1/2 flex flex-row items-center h-7 space-x-1 average:absolute average:left-0'>
@@ -74,8 +76,8 @@ export default function Header() {
             </a>
             {/* Information */}
             <div className='relative left-14 flex flex-row justify-evenly space-x-4'>
-              <a href='#' className='text-sm font-bold average:block'>
-                <CallIcon sx={{fontSize: '15px'}} />
+              <a href='#' className='text-sm font-bold'>
+                <CallIcon sx={{ fontSize: '15px' }} />
                 1800 7200
               </a>
               <a
@@ -102,7 +104,7 @@ export default function Header() {
               <PlaceOutlinedIcon
                 sx={{
                   color: 'rgba(47,47,47,0.5)',
-                  '&:hover': {color: 'rgba(47,47,47,0.9)'},
+                  '&:hover': { color: 'rgba(47,47,47,0.9)' },
                 }}
               />
             </a>
@@ -110,24 +112,27 @@ export default function Header() {
               <FavoriteBorderIcon
                 sx={{
                   color: 'rgba(47,47,47,0.5)',
-                  '&:hover': {color: 'rgba(47,47,47,0.9)'},
+                  '&:hover': { color: 'rgba(47,47,47,0.9)' },
                 }}
               />
             </a>
             <a href='#'>
-              <ShoppingBagIcon
-                sx={{
-                  color: 'rgba(47,47,47,0.5)',
-                  '&:hover': {color: 'rgba(47,47,47,0.9)'},
-                }}
-              />
+              <Tooltip title='Cart'>
+                <ShoppingBagIcon
+                  sx={{
+                    color: 'rgba(47,47,47,0.5)',
+                    '&:hover': { color: 'rgba(47,47,47,0.9)' },
+                  }}
+                />
+              </Tooltip>
             </a>
-            <a href='#' className='text-slate-500 hover:text-slate-900'>
+            <a href='#' className='flex items-center text-slate-500 hover:text-slate-900'>
               <p className='float-left average:hidden'>Đăng nhập</p>
               <PersonIcon
                 sx={{
                   color: 'rgba(47,47,47,0.5)',
-                  '&:hover': {color: 'rgba(47,47,47,0.9)'},
+                  fontSize: '18px',
+                  '&:hover': { color: 'rgba(47,47,47,0.9)' },
                 }}
               />
             </a>
@@ -136,14 +141,13 @@ export default function Header() {
       </div>
 
       <div
-        className={`h-24 ${
-          isScrolled ? 'sticky top-0' : 'sticky'
-        } bg-white`}
+        className={`h-24 ${isScrolled ? 'sticky top-0' : 'sticky'
+          } bg-white`}
       >
-        <div className='flex flex-row items-center justify-start h-full ml-28 average:ml-0'>
+        <div className='flex items-center h-full ml-24 average:ml-0'>
           <Button
             onClick={handleTransitionButtonClick}
-            style={{color: '#000000'}}
+            style={{ color: '#000000' }}
             size='large'
           >
             <MenuIcon fontSize='large' />
@@ -162,125 +166,125 @@ export default function Header() {
           {/* Category */}
           <div className='flex flex-row items-center space-x-4 flex-wrap w-2/3 justify-start average:hidden'>
             <div className='group w-fit'>
-            <Link
-              href='#'
-              className='hover:text-amber-500 text-sm group-hover:block'
-            >
-              SẢN PHẨM
-              <ExpandMore />
-            </Link>
-            <div className='hidden absolute space-y-1 p-2 group-hover:block top-14 inset-10 h-max'>
-              <div className='flex flex-row justify-evenly h-full bg-white w-fit mt-8'>
-                <CategoryList
-                  items={[
-                    'Sofa',
-                    'Sofa góc',
-                    'Ghế thư giãn',
-                    'Armchair',
-                    'Ghế dài & đôn',
-                    'Bàn bên',
-                    'Bàn nước',
-                    'Bàn Console',
-                    'Tủ tivi',
-                    'Kệ trưng bày',
-                    'Tủ giày',
-                  ]}
-                />
-                <CategoryList
-                  items={[
-                    'Bàn ăn',
-                    'Ghế ăn',
-                    'Ghế bar',
-                    'Tủ ly',
-                    'Xe đẩy',
-                    'Tủ bếp',
-                    'Thiết bị bếp',
-                  ]}
-                />
-                <CategoryList
-                  items={[
-                    'Giường ngủ',
-                    'Bàn đầu giường',
-                    'Bàn trang điểm',
-                    'Tủ áo',
-                    'Tủ âm tường',
-                    'Tủ hộc kéo',
-                    'Nệm',
-                  ]}
-                />
-                <CategoryList
-                  items={[
-                    'Bàn làm việc',
-                    'Ghế làm việc',
-                    'Kệ sách',
-                    'Bàn ngoài trời',
-                    'Ghế ngoài trời',
-                  ]}
-                />
-                <CategoryList
-                  items={[
-                    'Đèn trang trí',
-                    'Bàn đầu giường',
-                    'Bàn trang điểm',
-                    'Tủ áo',
-                    'Tủ âm tường',
-                    'Tủ hộc kéo',
-                    'Nệm',
-                  ]}
-                />
-                <CategoryList
-                  items={[
-                    'Giường ngủ',
-                    'Bàn đầu giường',
-                    'Bàn trang điểm',
-                    'Tủ áo',
-                    'Tủ âm tường',
-                    'Tủ hộc kéo',
-                    'Nệm',
-                  ]}
-                />
-                <CategoryList
-                  items={[
-                    'Giường ngủ',
-                    'Bàn đầu giường',
-                    'Bàn trang điểm',
-                    'Tủ áo',
-                    'Tủ âm tường',
-                    'Tủ hộc kéo',
-                    'Nệm',
-                  ]}
-                />
+              <Link
+                href='#'
+                className='hover:text-amber-500 text-sm group-hover:block'
+              >
+                SẢN PHẨM
+                <ExpandMore />
+              </Link>
+              <div className='hidden absolute space-y-1 p-2 group-hover:block top-14 inset-10 h-max'>
+                <div className='flex flex-row justify-evenly h-full bg-white w-fit mt-8'>
+                  <CategoryList
+                    items={[
+                      'Sofa',
+                      'Sofa góc',
+                      'Ghế thư giãn',
+                      'Armchair',
+                      'Ghế dài & đôn',
+                      'Bàn bên',
+                      'Bàn nước',
+                      'Bàn Console',
+                      'Tủ tivi',
+                      'Kệ trưng bày',
+                      'Tủ giày',
+                    ]}
+                  />
+                  <CategoryList
+                    items={[
+                      'Bàn ăn',
+                      'Ghế ăn',
+                      'Ghế bar',
+                      'Tủ ly',
+                      'Xe đẩy',
+                      'Tủ bếp',
+                      'Thiết bị bếp',
+                    ]}
+                  />
+                  <CategoryList
+                    items={[
+                      'Giường ngủ',
+                      'Bàn đầu giường',
+                      'Bàn trang điểm',
+                      'Tủ áo',
+                      'Tủ âm tường',
+                      'Tủ hộc kéo',
+                      'Nệm',
+                    ]}
+                  />
+                  <CategoryList
+                    items={[
+                      'Bàn làm việc',
+                      'Ghế làm việc',
+                      'Kệ sách',
+                      'Bàn ngoài trời',
+                      'Ghế ngoài trời',
+                    ]}
+                  />
+                  <CategoryList
+                    items={[
+                      'Đèn trang trí',
+                      'Bàn đầu giường',
+                      'Bàn trang điểm',
+                      'Tủ áo',
+                      'Tủ âm tường',
+                      'Tủ hộc kéo',
+                      'Nệm',
+                    ]}
+                  />
+                  <CategoryList
+                    items={[
+                      'Giường ngủ',
+                      'Bàn đầu giường',
+                      'Bàn trang điểm',
+                      'Tủ áo',
+                      'Tủ âm tường',
+                      'Tủ hộc kéo',
+                      'Nệm',
+                    ]}
+                  />
+                  <CategoryList
+                    items={[
+                      'Giường ngủ',
+                      'Bàn đầu giường',
+                      'Bàn trang điểm',
+                      'Tủ áo',
+                      'Tủ âm tường',
+                      'Tủ hộc kéo',
+                      'Nệm',
+                    ]}
+                  />
+                </div>
               </div>
-            </div>
             </div>
 
             <div className='group w-fit'>
-            <Link
-              href='#'
-              className='hover:text-amber-500 text-sm group-hover:block'
-            >
-              PHÒNG
-              <ExpandMore />
-            </Link>
-            <div className='hidden absolute space-y-1 p-2 group-hover:block top-14 h-max'>
-              <div className='flex flex-row justify-evenly h-full bg-white mt-8'>
-                <CategoryList
-                  items={[
-                    'Sofa',
-                    'Sofa góc',
-                    'Ghế thư giãn',
-                    'Armchair',
-                    'Ghế dài & đôn',
-                    'Bàn bên',
-                    'Bàn nước',
-                    'Bàn Console',
-                    'Tủ tivi',
-                    'Kệ trưng bày',
-                    'Tủ giày',
-                  ]}
-                />
+              <Link
+                href='#'
+                className='hover:text-amber-500 text-sm group-hover:block'
+              >
+                PHÒNG
+                <ExpandMore />
+              </Link>
+              <div className='hidden absolute space-y-1 p-2 group-hover:block top-14 h-max'>
+                <div className='flex flex-row justify-evenly h-full bg-white mt-8'>
+                  <CategoryList
+                    items={[
+                      'Sofa',
+                      'Sofa góc',
+                      'Ghế thư giãn',
+                      'Armchair',
+                      'Ghế dài & đôn',
+                      'Bàn bên',
+                      'Bàn nước',
+                      'Bàn Console',
+                      'Tủ tivi',
+                      'Kệ trưng bày',
+                      'Tủ giày',
+                    ]}
+                  />
+                </div>
               </div>
-            </div>
             </div>
 
             <div className='w-fit'>
@@ -309,20 +313,21 @@ export default function Header() {
           </div>
 
           {/* Search */}
-          <div className='relative average:hidden w-[480px]'>
-              <TextField
-                id='outlined-basic'
-                label='Tìm sản phẩm'
-                variant='outlined'
-                size='small'
-                InputProps={{
-                  endAdornment: (
-                    <InputAdornment position='start'>
-                      <SearchIcon />
-                    </InputAdornment>
-                  ),
-                }}
-              />
+          <div className='relative mr-32 average:hidden w-[480px]'>
+            <TextField
+              id='outlined-basic'
+              label='Tìm sản phẩm'
+              variant='outlined'
+              size='small'
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position='start'>
+                    <SearchIcon />
+                  </InputAdornment>
+                ),
+                sx: { borderRadius: 20, width: '273px' }
+              }}
+            />
           </div>
 
           {/* Search at small reponsive */}
@@ -356,14 +361,12 @@ export default function Header() {
             open={open}
             TransitionComponent={Transition}
             maxWidth='xl'
-            fullScreen='true'
             keepMounted
-            
             PaperProps={{
               sx: {
                 position: 'fixed',
                 height: '100%',
-                width: {lg: '26%', sm: '50%', xs: '100%'},
+                width: { lg: '26%', sm: '50%', xs: '100%' },
                 left: '0',
                 top: '0',
                 margin: '0',
@@ -461,7 +464,7 @@ export default function Header() {
                 <Link href='#'>GIẢM GIÁ ĐẶC BIỆT</Link>
               </div>
               <div className='ml-4 mt-6 hover:text-amber-500'>
-                <Link href='#'><CallIcon sx={{fontSize: '15px'}} />1800 7200</Link>
+                <Link href='#'><CallIcon sx={{ fontSize: '15px' }} />1800 7200</Link>
               </div>
             </div>
           </Dialog>
