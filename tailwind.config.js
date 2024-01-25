@@ -7,6 +7,14 @@ module.exports = {
   ],
   theme: {
     extend: {
+      screens: {
+        'average': {'max': '850px'},
+        // => @media (max-width: 850px) { ... }
+
+        'small': {'max': '425px'},
+        // => @media (max-width: 425px) { ... }
+      },
+
       colors: {
         "cur-lang": "#ccc",
         gioi_thieu: "#8D8D8D",
