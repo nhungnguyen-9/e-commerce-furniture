@@ -16,12 +16,20 @@ import Slide from '@mui/material/Slide'
 import TextField from '@mui/material/TextField'
 import InputAdornment from '@mui/material/InputAdornment'
 import SearchIcon from '@mui/icons-material/Search'
+
 import Dropdown from './Dropdown'
 import CategoryList from './CategoryList'
 import { List } from '@mui/material'
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction='right' ref={ref} {...props} />
+
+import {List, ListItem} from '@mui/material'
+import Dropdown from './Dropdown'
+import CategoryList from './CategoryList'
+
+const Transition = React.forwardRef(function Transition(props, ref) {
+  return <Slide direction="right" ref={ref} {...props} />
 })
 
 export default function Header() {
@@ -52,8 +60,8 @@ export default function Header() {
   const isScrolled = scrollY > 0;
 
   return (
-    <div className='w-screen h-auto'>
-      <div className='w-screen h-14'>
+    <div className='h-auto'>
+      <div className='h-14'>
         <div className='flex flex-row items-center justify-around h-full'>
           {/* Language */}
           <div className='w-1/2 flex flex-row items-center h-7 space-x-1 average:hidden'>
@@ -136,7 +144,7 @@ export default function Header() {
       </div>
 
       <div
-        className={`w-screen h-24 ${
+        className={`h-24 ${
           isScrolled ? 'sticky top-0' : 'sticky'
         } bg-white`}
       >
