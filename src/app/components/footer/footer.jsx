@@ -6,6 +6,7 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import { Autoplay } from 'swiper/modules'
 import 'swiper/css'
 import 'swiper/css/autoplay'
+import FooterSwiper from './SwiperSlide'
 
 export default function Footer() {
     return (
@@ -67,7 +68,7 @@ export default function Footer() {
                         <div>
                             <ul>
                                 <li className='mt-1'>
-                                    <Link href={'/'}>Sản phẩm</Link>
+                                    <Link href={'/shop'}>Sản phẩm</Link>
                                 </li>
                                 <li className='mt-1'>
                                     <Link href={'/'}>Ý tưởng và cảm hứng</Link>
@@ -80,15 +81,15 @@ export default function Footer() {
                         <div className='bg-[rgba(255,255,255,.3)] font-[0.875em] h-[3px] max-w-[30px] my-[1em] mx-0'></div>
                         <div className='sm:w-[90vw] md:w-[23vw] text-wrap'>
                             <p className='mb-[1.3em]'>Hãy để lại email của bạn để nhận được những ý tưởng trang trí mới và những thông tin, ưu đãi từ Nhà Xinh</p>
-                            <p className='md:mr-5 text-wrap'>Email: nhaxinhcare@akacompany.com.vn</p>
+                            <p className='md:mr-5'>Email: nhaxinhcare@akacompany.com.vn</p>
                             <p className='mt-[1em]'>Hotline: <strong>18007200</strong></p>
                         </div>
                         <div className='mt-4'>
                             <form className='flex w-[100%]'>
-                                <span className='bg-[rgba(255,255,255,.2)] inline-block h-[2.507em] w-[100%] min-[320px]:w-[50%] min-[480px]:w-[35%] md:w-[100%]'>
+                                <span className='inline-block h-[2.507em] w-full min-[320px]:w-[50%] min-[480px]:w-[30%] md:w-[100%] sm:w-full'>
                                     <input type='email' size='40' placeholder='Nhập email của bạn' className='w-[100%] h-[2.507em] py-0 px-[0.75em] bg-[rgba(255,255,255,.2)] text-white border-1 border-[#ddd] placeholder:font-[10px] placeholder-white focus:outline-none' />
                                 </span>
-                                <button className='uppercase bg-[#0A0A0B] border-[rgba(0,0,0,.05)] h-[2.507em] min-[320px]:w-[30%] min-[480px]:w-[20%] sm:w-[40%] md:w-[33%] lg:w-[45%]'>Đăng ký</button>
+                                <button className='uppercase bg-[#0A0A0B] border-[rgba(0,0,0,.05)] h-[2.507em] min-[320px]:w-[30%] min-[480px]:w-[80%] sm:w-[50%] md:w-[33%] lg:w-[45%]'>Đăng ký</button>
                             </form>
                         </div>
                     </div>
@@ -96,102 +97,7 @@ export default function Footer() {
                 <div className='border-y-[1px] border-y-[#525459] mb-7 mt-12 py-2'>
                     <div className='my-6 mx-[15px]'>
                         <div className='ml-[33%] min-[549px]:ml-[13%] sm:ml-[10%] md:ml-[5%]'>
-                            <Swiper
-                                modules={[Autoplay]}
-                                autoplay={{ delay: 2000 }}
-                                breakpoints={{
-                                    850: {
-                                        slidesPerView: 6,
-                                    },
-                                    549: {
-                                        slidesPerView: 3,
-                                    },
-                                    480: {
-                                        slidesPerView: 1,
-                                    }
-                                }}
-                            >
-                                <SwiperSlide>
-                                    <Image
-                                        src='https://nhaxinh.com/wp-content/uploads/2021/11/aa-corporation-logo-2311.png'
-                                        alt='corporation-company'
-                                        width='100'
-                                        height='30'
-                                    />
-                                </SwiperSlide>
-                                <SwiperSlide>
-                                    <Image
-                                        src='https://nhaxinh.com/wp-content/uploads/2021/11/aka-logo-2311.png'
-                                        alt='corporation-company'
-                                        width='100'
-                                        height='30'
-                                    />
-                                </SwiperSlide>
-                                <SwiperSlide>
-                                    <Image
-                                        src='https://nhaxinh.com/wp-content/uploads/2021/11/nha-xinh-logo-2311.png'
-                                        alt='corporation-company'
-                                        width='100'
-                                        height='30'
-                                    />
-                                </SwiperSlide>
-                                <SwiperSlide>
-                                    <Image
-                                        src='https://nhaxinh.com/wp-content/uploads/2021/11/Boconcept-logo-2311.png'
-                                        alt='corporation-company'
-                                        width='100'
-                                        height='30'
-                                    />
-                                </SwiperSlide>
-                                <SwiperSlide>
-                                    <Image
-                                        src='https://nhaxinh.com/wp-content/uploads/2021/11/bellavita-luxury-logo-2311.png'
-                                        alt='corporation-company'
-                                        width='100'
-                                        height='30'
-                                    />
-                                </SwiperSlide>
-                                <SwiperSlide>
-                                    <Image
-                                        src='https://nhaxinh.com/wp-content/uploads/2021/11/calligaris-logo-2311.png'
-                                        alt='corporation-company'
-                                        width='100'
-                                        height='30'
-                                    />
-                                </SwiperSlide>
-                                <SwiperSlide>
-                                    <Image
-                                        src='https://nhaxinh.com/wp-content/uploads/2021/11/baxter-logo-2311.png'
-                                        alt='corporation-company'
-                                        width='100'
-                                        height='30'
-                                    />
-                                </SwiperSlide>
-                                <SwiperSlide>
-                                    <Image
-                                        src='https://nhaxinh.com/wp-content/uploads/2021/11/ligneroset-logo-2311.png'
-                                        alt='corporation-company'
-                                        width='100'
-                                        height='30'
-                                    />
-                                </SwiperSlide>
-                                <SwiperSlide>
-                                    <Image
-                                        src='https://nhaxinh.com/wp-content/uploads/2021/11/lago-logo-2311.png'
-                                        alt='corporation-company'
-                                        width='100'
-                                        height='30'
-                                    />
-                                </SwiperSlide>
-                                <SwiperSlide>
-                                    <Image
-                                        src='https://nhaxinh.com/wp-content/uploads/2021/11/adamos-logo-2311.png'
-                                        alt='corporation-company'
-                                        width='100'
-                                        height='30'
-                                    />
-                                </SwiperSlide>
-                            </Swiper>
+                            <FooterSwiper />
                         </div>
                     </div>
                 </div>

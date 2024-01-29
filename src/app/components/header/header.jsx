@@ -21,7 +21,6 @@ import CategoryList from './CategoryList'
 import CloseIcon from '@mui/icons-material/Close'
 import { Tooltip } from '@mui/material'
 
-
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="right" ref={ref} {...props} />
 })
@@ -44,22 +43,22 @@ export default function Header() {
   }
 
   useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll)
 
     return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [])
 
-  const isScrolled = scrollY > 0;
+  const isScrolled = scrollY > 0
 
   return (
     <div className='h-auto'>
-      <div className='h-14 py-2.5 border-b border-solid border-[#F6F7F8]'>
-        <div className='flex flex-row items-center justify-around h-full'>
+      <div className='h-14 py-2.5 border-b border-solid border-[#F6F7F8] relative'>
+        <div className='flex items-center justify-around h-full'>
           {/* Language */}
-          <div className='w-1/2 flex flex-row items-center h-7 space-x-1 average:absolute average:left-0'>
-            <a href='#' className='ml-28 average:ml-5'>
+          <div className='flex items-center mr-auto h-7 space-x-1 md:ml-[-95px] lg:ml-[2px] average:absolute average:mr-[200px]'>
+            <a href='#' className='ml-28 average:ml-5 average:hidden'>
               <Image
                 className='rounded-full'
                 src='/header/VietNam_flag.png'
@@ -68,38 +67,38 @@ export default function Header() {
                 alt='Icon Language'
               />
             </a>
-            <a href='#' className='!text-slate-300 text-sm'>
+            <a href='#' className='!text-slate-300 text-sm average:hidden'>
               VN
             </a>
-            <a href='#' className='!text-slate-900 text-sm'>
+            <a href='#' className='!text-slate-900 text-sm average:hidden'>
               EN
             </a>
             {/* Information */}
             <div className='relative left-14 flex flex-row justify-evenly space-x-4'>
-              <a href='#' className='text-sm font-bold'>
+              <a href='#' className='text-sm font-bold average:text-center'>
                 <CallIcon sx={{ fontSize: '15px' }} />
                 1800 7200
               </a>
-              <a
-                href='#'
+              <Link
+                href='/about'
                 className='text-sm text-slate-500 hover:text-slate-900 average:hidden'
               >
                 Giới thiệu
-              </a>
-              <a
-                href='#'
+              </Link>
+              <Link
+                href='/sales'
                 className='text-sm text-slate-500 hover:text-slate-900 average:hidden'
               >
                 Khuyến mãi
-              </a>
-              <a href='#' className='text-sm text-red-600 average:hidden'>
+              </Link>
+              <Link href='/' className='text-sm text-red-600 average:hidden'>
                 Giảm giá đặc biệt
-              </a>
+              </Link>
             </div>
           </div>
 
           {/* Cart */}
-          <div className='w-1/2 flex flex-row justify-end items-center h-7 relative right-36 space-x-4 average:absolute average:right-0'>
+          <div className='flex items-center ml-auto h-7 space-x-4 md:mr-[20px] lg:mr-[120px] average:hidden'>
             <a href='#'>
               <PlaceOutlinedIcon
                 sx={{
@@ -108,15 +107,15 @@ export default function Header() {
                 }}
               />
             </a>
-            <a href='#'>
+            <Link href='/account/wishlist'>
               <FavoriteBorderIcon
                 sx={{
                   color: 'rgba(47,47,47,0.5)',
                   '&:hover': { color: 'rgba(47,47,47,0.9)' },
                 }}
               />
-            </a>
-            <a href='#'>
+            </Link>
+            <Link href='/cart'>
               <Tooltip title='Cart'>
                 <ShoppingBagIcon
                   sx={{
@@ -125,8 +124,8 @@ export default function Header() {
                   }}
                 />
               </Tooltip>
-            </a>
-            <a href='#' className='flex items-center text-slate-500 hover:text-slate-900'>
+            </Link>
+            <Link href='/loginSignUp' className='flex items-center text-slate-500 hover:text-slate-900'>
               <p className='float-left average:hidden'>Đăng nhập</p>
               <PersonIcon
                 sx={{
@@ -135,16 +134,15 @@ export default function Header() {
                   '&:hover': { color: 'rgba(47,47,47,0.9)' },
                 }}
               />
-            </a>
+            </Link>
           </div>
         </div>
       </div>
 
       <div
-        className={`h-24 ${isScrolled ? 'sticky top-0' : 'sticky'
-          } bg-white`}
+        className={`h-[90px] ${isScrolled ? 'fixed top-0 w-full bg-white shadow-[12px 12px 50px rgba(0, 0, 0, 0.4)] transition-transform -translate-y-2' : 'sticky'} bg-white`}
       >
-        <div className='flex items-center h-full ml-24 average:ml-0'>
+        <div className='flex items-center h-full ml-24 md:ml-0 lg:ml-24 average:ml-0'>
           <Button
             onClick={handleTransitionButtonClick}
             style={{ color: '#000000' }}
@@ -152,7 +150,7 @@ export default function Header() {
           >
             <MenuIcon fontSize='large' />
           </Button>
-          <Link href='#' className='w-36 h-14 mr-10 average:mr-0 average:absolute average:left-[40%]'>
+          <Link href='/' className='w-36 h-14 mr-10 average:mr-0 average:absolute average:right-[35%]'>
             <div className='w-36 h-14'>
               <Image
                 src='/header/logo-nha-xinh.png'
@@ -167,14 +165,14 @@ export default function Header() {
           <div className='flex flex-row items-center space-x-4 flex-wrap w-2/3 justify-start average:hidden'>
             <div className='group w-fit'>
               <Link
-                href='#'
+                href='/shop'
                 className='hover:text-amber-500 text-sm group-hover:block'
               >
                 SẢN PHẨM
                 <ExpandMore />
               </Link>
-              <div className='hidden absolute space-y-1 p-2 group-hover:block top-14 inset-10 h-max'>
-                <div className='flex flex-row justify-evenly h-full bg-white w-fit mt-8'>
+              <div className='hidden absolute space-y-1 p-2 group-hover:block top-[38px] inset-x-10'>
+                <div className='flex flex-row justify-evenly h-full bg-white w-fit mt-6'>
                   <CategoryList
                     items={[
                       'Sofa',
@@ -266,8 +264,8 @@ export default function Header() {
                 PHÒNG
                 <ExpandMore />
               </Link>
-              <div className='hidden absolute space-y-1 p-2 group-hover:block top-14 h-max'>
-                <div className='flex flex-row justify-evenly h-full bg-white mt-8'>
+              <div className='hidden absolute space-y-1 p-2 group-hover:block top-[38px]'>
+                <div className='flex flex-row justify-evenly h-full bg-white mt-4'>
                   <CategoryList
                     items={[
                       'Sofa',
@@ -313,7 +311,7 @@ export default function Header() {
           </div>
 
           {/* Search */}
-          <div className='relative mr-32 average:hidden w-[480px]'>
+          <div className='relative md:ml-14 average:hidden w-[480px]'>
             <TextField
               id='outlined-basic'
               label='Tìm sản phẩm'
@@ -332,26 +330,39 @@ export default function Header() {
 
           {/* Search at small reponsive */}
           <div className='group'>
-            <button className='absolute top-[30px] right-[20px] hidden hover:bg-gray-600 average:block group-hover:block rounded w-[40px] h-[40px] border-2'>
-              <SearchIcon className='hover:fill-white' fontSize='small' />
+            <button className='absolute top-[30px] right-[45px] hidden hover:bg-gray-600 average:block group-hover:block rounded w-[35px] h-[35px]'>
+              <SearchIcon className='hover:fill-white' fontSize='medium' />
             </button>
-            <div className='hidden absolute right-0 top-[70px] group-hover:block bg-white w-fit h-fit shadow-sm border-2'>
-              <div className='m-[20px]'>
-                  <TextField
-                    id='outlined-basic'
-                    label='Tìm sản phẩm'
-                    variant='outlined'
-                    size='small'
-                    InputProps={{
-                      endAdornment: (
-                        <InputAdornment position='start'>
-                          <SearchIcon />
-                        </InputAdornment>
-                      ),
-                    }}
-                  />
+            <div className='hidden absolute right-11 py-4 top-[70px] group-hover:block bg-white shadow-sm border-2'>
+              <div className='px-5'>
+                <TextField
+                  id='outlined-basic'
+                  label='Tìm sản phẩm'
+                  variant='outlined'
+                  size='small'
+                  InputProps={{
+                    endAdornment: (
+                      <InputAdornment position='start'>
+                        <SearchIcon />
+                      </InputAdornment>
+                    ),
+                    sx: { borderRadius: 20 }
+                  }}
+                />
               </div>
             </div>
+          </div>
+          {/* shoping cart at small device */}
+          <div className='hidden absolute top-[32px] right-[12px] average:block'>
+            <Tooltip title='Cart'>
+              <ShoppingBagIcon
+                sx={{
+                  color: 'rgba(47,47,47,0.5)',
+                  '&:hover': { color: 'rgba(47,47,47,0.9)' },
+                }}
+                fontSize='medium'
+              />
+            </Tooltip>
           </div>
         </div>
         {/* Menu */}
@@ -372,8 +383,9 @@ export default function Header() {
                 margin: '0',
               },
             }}
+            sx={{ '& .MuiPaper-root': { maxHeight: '100vh' } }}
           >
-            <button onClick={handleClose} className='ml-[90%] w-8 h-8 sm:hidden block'><CloseIcon fontSize='large'/></button>
+            <button onClick={handleClose} className='ml-[88%] mt-2 w-8 h-8 sm:hidden block' style={{ opacity: 0.6, transform: 'translateY(0) translateZ(1px)' }} ><CloseIcon fontSize='large' /></button>
             <Dropdown
               primaryHeader='Sofa và Armchair'
               items={[
