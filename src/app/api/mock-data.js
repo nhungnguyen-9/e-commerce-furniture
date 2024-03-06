@@ -37,21 +37,22 @@ export const mockData = {
                 categoryName: 'Phòng ăn',
                 description: 'Danh mục Phòng ăn',
                 image: 'https://nhaxinh.com/wp-content/uploads/2022/01/ban-an-pio-1.jpg',
+                categoriesProductOrderIds: ['product-category-4', 'product-category-5', 'product-category-6'],
                 categoriesProduct: [
                     {
-                        _id: 1,
+                        _id: 'product-category-4',
                         roomId: 'room-category-2',
                         categoryProductName: 'Bàn ăn',
                         image: 'https://nhaxinh.com/wp-content/uploads/2021/11/nha-xinh-ban-an-phong-dep-221121.jpg'
                     },
                     {
-                        _id: 2,
+                        _id: 'product-category-5',
                         roomId: 'room-category-2',
                         categoryProductName: 'Ghế ăn',
                         image: 'https://nhaxinh.com/wp-content/uploads/2021/11/bo-suu-tap-elegance-ban-an.jpg'
                     },
                     {
-                        _id: 3,
+                        _id: 'product-category-6',
                         roomId: 'room-category-2',
                         categoryProductName: 'Tủ ly',
                         image: 'https://nhaxinh.com/wp-content/uploads/2021/11/nha-xinh-tu-ly-banner.jpg'
@@ -63,24 +64,25 @@ export const mockData = {
                 categoryName: 'Phòng ngủ',
                 description: 'Danh mục Phòng ngủ',
                 image: 'https://nhaxinh.com/wp-content/uploads/2021/11/noi-that-phong-ngu-nha-xinh.jpg',
+                categoriesProductOrderIds: ['product-category-7', 'product-category-8', 'product-category-9'],
                 categoriesProduct: [
                     {
                         _id: 1,
-                        roomId: 'room-category-3',
+                        roomId: 'room-category-7',
                         categoryProductName: 'Giường ngủ',
                         image: 'https://nhaxinh.com/wp-content/uploads/2022/05/phong-ngu-hien-dai-thanh-lich-skagen-13522.jpg'
                     },
                     {
                         _id: 2,
-                        roomId: 'room-category-3',
+                        roomId: 'room-category-8',
                         categoryProductName: 'Tủ áo',
                         image: 'https://nhaxinh.com/wp-content/uploads/2021/11/nha-xinh-tu-ao-dep-221121.jpg'
                     },
                     {
                         _id: 3,
-                        roomId: 'room-category-3',
-                        categoryProductName: 'Bàn nước',
-                        image: 'https://nhaxinh.com/wp-content/uploads/2021/11/nem-nha-xinh.jpg'
+                        roomId: 'room-category-9',
+                        categoryProductName: 'Bàn đầu giường',
+                        image: 'https://nhaxinh.com/wp-content/uploads/2021/11/nha-xinh-ban-dau-giuong-ngu-banner.jpg'
                     },
                 ]
             },
@@ -282,6 +284,203 @@ export const mockData = {
                 'https://nhaxinh.com/wp-content/uploads/2023/08/Ban-nuoc-Layered-4.jpg'
             ],
             RoomId: 'room-category-1',
+            CategoryProductId: 'product-category-3'
+        },
+
+        // sản phẩm liên quan tới bàn ăn
+        {
+            _id: 1,
+            ProductName: 'Bàn ăn 6 chỗ Coastal',
+            Description: 'Bàn ăn 6 chỗ Coastal',
+            Price: 11900001,
+            InStock: true,
+            Materials: 'Gỗ Ash - MDF veneer Ash',
+            Size: 'D1600 - R800 - C755 mm',
+            Review: [],
+            Image: [
+                'https://nhaxinh.com/wp-content/uploads/2023/07/Ban-an-6-cho-Coastal.jpg',
+                'https://nhaxinh.com/wp-content/uploads/2023/07/Ban-an-6-cho-Coastal-1.jpg',
+                'https://nhaxinh.com/wp-content/uploads/2023/07/phong-an-coastal-768x512.jpg'
+            ],
+            RoomId: 'room-category-2',
+            CategoryProductId: 'product-category-4'
+        },
+        {
+            _id: 2,
+            ProductName: 'Bàn ăn Breeze mặt kính bronze/GM2',
+            Description: 'Bàn ăn Breeze mặt kính bronze/GM2',
+            Price: 207900000,
+            InStock: true,
+            Materials: 'Chân kim loại màu Bronze, kính cường lực màu Bronze',
+            Size: 'D2490 - R1190 - C760',
+            Review: [],
+            Image: [
+                'https://nhaxinh.com/wp-content/uploads/2024/01/Ban-an-Breeze-mat-kinh-bronze-GM2-768x511.jpg',
+                'https://nhaxinh.com/wp-content/uploads/2024/01/Ban-an-Breeze-mat-kinh-bronze-GM2-1-768x511.jpg',
+                'https://nhaxinh.com/wp-content/uploads/2024/01/Ban-an-Breeze-mat-kinh-bronze-GM2-2-768x511.jpg'
+            ],
+            RoomId: 'room-category-2',
+            CategoryProductId: 'product-category-5'
+        },
+
+        // sản phẩm liên quan tới ghế ăn
+        {
+            _id: 1,
+            ProductName: 'Ghế ăn Bolero ACC001 Da AB1142',
+            Description: 'Ghế ăn Bolero ACC001 Da AB1142',
+            Price: 6280000,
+            InStock: true,
+            Materials: 'Chân inox màu gold - Bọc da bò cao cấp',
+            Size: 'D470 - R570 - C860 mm',
+            Review: [],
+            Image: [
+                'https://nhaxinh.com/wp-content/uploads/2024/01/Ghe-an-Bolero-ACC001-Da-AB1142-768x511.jpg'
+            ],
+            RoomId: 'room-category-2',
+            CategoryProductId: 'product-category-5'
+        },
+        {
+            _id: 2,
+            ProductName: 'Ghế ăn Coastal KD1085-18',
+            Description: 'Ghế ăn Coastal KD1085-18',
+            Price: 5100000,
+            InStock: true,
+            Materials: 'Gỗ Ash - nệm bọc vải',
+            Size: 'D435 - R525 - C840 mm',
+            Review: [],
+            Image: [
+                'https://nhaxinh.com/wp-content/uploads/2023/07/Ghe-an-Coastal-xanh-768x511.jpg',
+                'https://nhaxinh.com/wp-content/uploads/2023/07/Ghe-an-Coastal-xanh-1-768x511.jpg',
+                'https://nhaxinh.com/wp-content/uploads/2023/07/phong-an-coastal-768x512.jpg'
+            ],
+            RoomId: 'room-category-2',
+            CategoryProductId: 'product-category-5'
+        },
+
+        // sản phẩm liên quan tới tủ ly
+        {
+            _id: 1,
+            ProductName: 'Tủ thấp Barbier Walnut',
+            Description: 'Tủ thấp Barbier Walnut',
+            Price: 30670000,
+            InStock: true,
+            Materials: ['gỗ cao su', 'MDF'],
+            Size: '1200x400x580 mm',
+            Review: [],
+            Image: [
+                'https://nhaxinh.com/wp-content/uploads/2023/04/TU-THAP-BARBIER-WALNUT-4300019Z-2-768x511.jpg',
+                'https://nhaxinh.com/wp-content/uploads/2023/04/TU-THAP-BARBIER-WALNUT-4300019Z-3-768x511.jpg',
+                'https://nhaxinh.com/wp-content/uploads/2023/04/TU-THAP-BARBIER-WALNUT-4300019Z-7-768x511.jpg'
+            ],
+            RoomId: 'room-category-2',
+            CategoryProductId: 'product-category-6'
+        },
+        {
+            _id: 2,
+            ProductName: 'Tủ thấp Fence',
+            Description: 'Tủ thấp Fence',
+            Price: 35900000,
+            InStock: true,
+            Materials: 'Chân kim loại - mặt nhựa giả mây/ kính',
+            Size: 'D800 - R398 - C800 mm',
+            Review: [],
+            Image: [
+                'https://nhaxinh.com/wp-content/uploads/2023/08/Tu-thap-Fence-768x511.jpg',
+                'https://nhaxinh.com/wp-content/uploads/2023/08/Tu-thap-Fence-1-768x511.jpg',
+                'https://nhaxinh.com/wp-content/uploads/2023/08/Tu-thap-Fence-9-768x511.jpg',
+                'https://nhaxinh.com/wp-content/uploads/2023/08/Tu-thap-Fence-10-768x511.jpg',
+                'https://nhaxinh.com/wp-content/uploads/2023/08/Tu-thap-Fence-3-768x511.jpg'
+            ],
+            RoomId: 'room-category-2',
+            CategoryProductId: 'product-category-6'
+        },
+
+        // sản phẩm liên quan tới giường ngủ
+        {
+            _id: 1,
+            ProductName: 'Giường Coastal KD1058-18 1m6',
+            Description: 'Giường Coastal KD1058-18 1m6',
+            Price: 28900000,
+            InStock: true,
+            Materials: 'Khung gỗ Ash - nệm bọc vải',
+            Size: 'D2000 - R1600 - C1080 mm',
+            Review: [],
+            Image: [
+                'https://nhaxinh.com/wp-content/uploads/2023/07/Giuong-Coastal-1m6-xanh-768x511.jpg',
+                'https://nhaxinh.com/wp-content/uploads/2023/07/BST-Coastal-4-768x512.jpg'
+            ],
+            RoomId: 'room-category-3',
+            CategoryProductId: 'product-category-7'
+        },
+        {
+            _id: 2,
+            ProductName: 'Giường Coastal vàng 1m8',
+            Description: 'Giường Coastal vàng 1m8',
+            Price: 31900000,
+            InStock: true,
+            Materials: 'Khung gỗ Ash - nệm bọc vải',
+            Size: 'D2000 - R1800 - C1080 mm',
+            Review: [],
+            Image: [
+                'https://nhaxinh.com/wp-content/uploads/2023/07/Giuong-Coastal-1m8-vang-2-768x511.jpg',
+                'https://nhaxinh.com/wp-content/uploads/2023/07/Giuong-Coastal-1m8-vang-1-768x511.jpg'
+            ],
+            RoomId: 'room-category-3',
+            CategoryProductId: 'product-category-7'
+        },
+
+        // sản phẩm liên quan tới tủ áo
+        {
+            _id: 1,
+            ProductName: 'Tủ áo Acrylic',
+            Description: 'Tủ áo Acrylic',
+            Price: 32310000,
+            InStock: true,
+            Materials: 'Thùng MFC chống ẩm - mặt MDF Acrylic Parc50',
+            Size: 'D1600 - R600 - C2000 mm',
+            Review: [],
+            Image: [
+                'https://nhaxinh.com/wp-content/uploads/2022/04/Tu-ao-Acrylic-768x511.jpg',
+                'https://nhaxinh.com/wp-content/uploads/2022/04/Tu-ao-Acrylic-1-768x511.jpg',
+                'https://nhaxinh.com/wp-content/uploads/2022/04/Tu-ao-Acrylic-2-768x511.jpg',
+            ],
+            RoomId: 'room-category-3',
+            CategoryProductId: 'product-category-8'
+        },
+
+        // sản phẩm liên quan tới bàn đầu giường
+        {
+            _id: 1,
+            ProductName: 'Bàn đầu giường Madame màu P67W',
+            Description: 'Bàn đầu giường Madame màu P67W',
+            Price: 41900000,
+            InStock: true,
+            Materials: 'Chân kim loại màu đen nhấn gold, mặt bàn MDF veneer',
+            Size: 'D550 - R460 - C830',
+            Review: [],
+            Image: [
+                'https://nhaxinh.com/wp-content/uploads/2024/01/Ban-dau-giuong-Madame-mau-P67W-768x511.jpg',
+                'https://nhaxinh.com/wp-content/uploads/2024/01/Ban-dau-giuong-Madame-mau-P67W-1-768x511.jpg',
+                'https://nhaxinh.com/wp-content/uploads/2024/01/Ban-dau-giuong-Madame-mau-P67W-2-768x511.jpg'
+            ],
+            RoomId: 'room-category-3',
+            CategoryProductId: 'product-category-9'
+        },
+        {
+            _id: 2,
+            ProductName: 'Bàn đầu giường Cabo PMA532058 F1',
+            Description: 'Bàn đầu giường Cabo PMA532058 F1',
+            Price: 9100000,
+            InStock: true,
+            Materials: 'MDF màu walnut, chân kim loại sơn đen, mặt ngoài hộc kéo màu xanh Olive',
+            Size: 'D500 - R400 - C550 mm',
+            Review: [],
+            Image: [
+                'https://nhaxinh.com/wp-content/uploads/2022/08/BAN-DAU-GIUONG-CABO-PMA532058-F1-768x511.jpg',
+                'https://nhaxinh.com/wp-content/uploads/2022/08/BAN-DAU-GIUONG-CABO-PMA532058-F1-1-768x511.jpg',
+                'https://nhaxinh.com/wp-content/uploads/2022/08/ban-dau-giuong-cabo-pma532058-f1-2-768x495.jpg'
+            ],
+            RoomId: 'room-category-2',
             CategoryProductId: 'product-category-3'
         }
     ]
