@@ -53,7 +53,7 @@ export default function Header() {
   const isScrolled = scrollY > 0
 
   return (
-    <div className='h-auto'>
+    <div className='h-auto z-10'>
       <div className='h-14 py-2.5 border-b border-solid border-[#F6F7F8] relative'>
         <div className='flex items-center justify-around h-full'>
           {/* Language */}
@@ -298,7 +298,7 @@ export default function Header() {
             </div>
 
             <div className='w-fit'>
-              <Link href='#' className='hover:text-amber-500 text-sm text-nowrap'>
+              <Link href='../components/shop360' className='hover:text-amber-500 text-sm text-nowrap'>
                 CỬA HÀNG 360 ĐỘ
               </Link>
             </div>
