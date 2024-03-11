@@ -16,7 +16,6 @@ export default function LandingPage() {
             <Search />
             <Gallery />
             <MoreInfo />
-            <Shop360 />
             <NewProduct />
             <Blogs />
             <Support />
