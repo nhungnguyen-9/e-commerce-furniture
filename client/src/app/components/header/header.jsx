@@ -353,17 +353,19 @@ export default function Header() {
             </div>
           </div>
           {/* shoping cart at small device */}
-          <div className='hidden absolute top-[32px] right-[12px] average:block'>
-            <Tooltip title='Cart'>
-              <ShoppingBagIcon
-                sx={{
-                  color: 'rgba(47,47,47,0.5)',
-                  '&:hover': { color: 'rgba(47,47,47,0.9)' },
-                }}
-                fontSize='medium'
-              />
-            </Tooltip>
-          </div>
+          <Link href='/cart'>
+            <div className='hidden absolute top-[32px] right-[12px] average:block'>
+              <Tooltip title='Cart'>
+                <ShoppingBagIcon
+                  sx={{
+                    color: 'rgba(47,47,47,0.5)',
+                    '&:hover': { color: 'rgba(47,47,47,0.9)' },
+                  }}
+                  fontSize='medium'
+                />
+              </Tooltip>
+            </div>
+          </Link>
         </div>
         {/* Menu */}
         <Collapse in={open} orientation='horizontal'>
@@ -455,16 +457,16 @@ export default function Header() {
             />
             <div className='hidden average:block'>
               <div className='ml-4 mt-6 hover:text-amber-500'>
-                <Link href='#'>BỘ SƯU TẬP</Link>
+                <Link href='/collection'>BỘ SƯU TẬP</Link>
               </div>
               <div className='ml-4 mt-6 hover:text-amber-500'>
-                <Link href='#'>THIẾT KẾ NỘI THẤT</Link>
+                <Link href='/design'>THIẾT KẾ NỘI THẤT</Link>
               </div>
               <div className='ml-4 mt-6 hover:text-amber-500'>
-                <Link href='#'>CỬA HÀNG 360 ĐỘ</Link>
+                <Link href='/shop360'>CỬA HÀNG 360 ĐỘ</Link>
               </div>
               <div className='ml-4 mt-6 hover:text-amber-500'>
-                <Link href='#'>GÓC CẢM HỨNG</Link>
+                <Link href='/inspiration'>GÓC CẢM HỨNG</Link>
               </div>
               <div className='ml-4 mt-6 hover:text-amber-500'>
                 <Link href='#'>GIỚI THIỆU</Link>
