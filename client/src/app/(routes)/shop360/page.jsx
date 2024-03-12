@@ -12,35 +12,35 @@ import YouTube from 'react-youtube';
 
 const Accordion = styled((props) => (
     <MuiAccordion disableGutters elevation={0} square {...props} />
-  ))(({ theme }) => ({
+))(({ theme }) => ({
     border: `1px solid ${theme.palette.divider}`,
     '&:not(:last-child)': {
-      borderBottom: 0,
+        borderBottom: 0,
     },
     '&::before': {
-      display: 'none',
+        display: 'none',
     },
 }));
 
 const AccordionSummary = styled((props) => (
     <MuiAccordionSummary
-      expandIcon={<ArrowForwardIosSharpIcon sx={{ fontSize: '0.9rem' }} />}
-      {...props}
+        expandIcon={<ArrowForwardIosSharpIcon sx={{ fontSize: '0.9rem' }} />}
+        {...props}
     />
-  ))(({ theme }) => ({
+))(({ theme }) => ({
     backgroundColor:
-      theme.palette.mode === 'dark'
-        ? 'rgba(255, 255, 255, .05)'
-        : 'rgba(0, 0, 0, .03)',
+        theme.palette.mode === 'dark'
+            ? 'rgba(255, 255, 255, .05)'
+            : 'rgba(0, 0, 0, .03)',
     flexDirection: 'row-reverse',
     '& .MuiAccordionSummary-expandIconWrapper.Mui-expanded': {
-      transform: 'rotate(90deg)',
+        transform: 'rotate(90deg)',
     },
     '& .MuiAccordionSummary-content': {
-      marginLeft: theme.spacing(1),
+        marginLeft: theme.spacing(1),
     },
 }));
-  
+
 const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
     padding: theme.spacing(2),
     borderTop: '1px solid rgba(0, 0, 0, .125)',
@@ -50,7 +50,7 @@ export default function Shop360() {
     const [expanded, setExpanded] = React.useState('panel1');
 
     const handleChange = (panel) => (event, newExpanded) => {
-      setExpanded(newExpanded ? panel : false);
+        setExpanded(newExpanded ? panel : false);
     };
 
     return (
@@ -78,10 +78,10 @@ export default function Shop360() {
                     <AccordionDetails>
                         <Typography>
                             <ul className='list-disc ml-[40px]'>
-                                <li>187A Hai Bà Trưng, Phường 6, Quận 3 – (028) 6252 0022 / 6251 2200<br/>(Từ Thứ 2 đến CN: 8h30 – 21h)</li>
-                                <li>107 – 109 Xa Lộ Hà Nội, Phường Thảo Điền, Quận 2 – (028) 3535 1505<br/>(Từ Thứ 2 đến CN: 8h30 – 21h)</li>
-                                <li>Khu TMDV Hồ Bán Nguyệt, Lô CR03, 111 Tôn Dật Tiên, Phường Tân Phú, Quận 7 – (028) 5413 7355<br/>(Thứ 2 đến Thứ 6: 8h30 – 20h; Thứ 7 & CN: 8h30 – 20h30)</li>
-                                <li>L4 Diamond Plaza, 34 Lê Duẩn, Quận 1 – (028) 2200 1079<br/>(Từ Thứ 2 đến CN: 9h30 – 18h)</li>
+                                <li>187A Hai Bà Trưng, Phường 6, Quận 3 – (028) 6252 0022 / 6251 2200<br />(Từ Thứ 2 đến CN: 8h30 – 21h)</li>
+                                <li>107 – 109 Xa Lộ Hà Nội, Phường Thảo Điền, Quận 2 – (028) 3535 1505<br />(Từ Thứ 2 đến CN: 8h30 – 21h)</li>
+                                <li>Khu TMDV Hồ Bán Nguyệt, Lô CR03, 111 Tôn Dật Tiên, Phường Tân Phú, Quận 7 – (028) 5413 7355<br />(Thứ 2 đến Thứ 6: 8h30 – 20h; Thứ 7 & CN: 8h30 – 20h30)</li>
+                                <li>L4 Diamond Plaza, 34 Lê Duẩn, Quận 1 – (028) 2200 1079<br />(Từ Thứ 2 đến CN: 9h30 – 18h)</li>
                             </ul>
                         </Typography>
                     </AccordionDetails>
@@ -94,7 +94,7 @@ export default function Shop360() {
                     <AccordionDetails>
                         <Typography>
                             <ul className='list-disc ml-[40px]'>
-                                <li>442A Đại lộ Bình Dương, Tổ 31, Khu phố Nguyễn Trãi, Phường Lái Thiêu, TP. Thuận An – (027) 4222 2019<br/>(Từ Thứ 2 đến CN: 8h30 – 19h)</li>
+                                <li>442A Đại lộ Bình Dương, Tổ 31, Khu phố Nguyễn Trãi, Phường Lái Thiêu, TP. Thuận An – (027) 4222 2019<br />(Từ Thứ 2 đến CN: 8h30 – 19h)</li>
                             </ul>
                         </Typography>
                     </AccordionDetails>
@@ -107,10 +107,10 @@ export default function Shop360() {
                     <AccordionDetails>
                         <Typography>
                             <ul className='list-disc ml-[40px]'>
-                                <li>Tầng 3, TTTM Sun Plaza, 69 Thụy Khuê, Quận Tây Hồ – (024) 3201 8208<br/>(Từ Thứ 2 đến CN: 9h – 20h)</li>
-                                <li>Tòa nhà F4, 112-114 Trung Kính, Quận Cầu Giấy – (024) 3782 1761<br/>(Từ Thứ 2 đến CN: 8h30 – 21h)</li>
-                                <li>L4 – 04, Tầng 4, TTTM Vincom Center, 54 Nguyễn Chí Thanh, Quận Đống Đa – (024) 3761 7666<br/>(Từ Thứ 2 đến CN: 10h – 21h30)</li>
-                                <li>Tầng 2, Vincom Mega Mall, KĐT Vinhomes Smart City, Phường Đại Mỗ, Quận Nam Từ Liêm – (024) 3202 8027 | (024) 3202 0306<br/>(Từ Thứ 2 đến T6: 10h – 22h, T7 & CN: 9h30 – 22h)</li>
+                                <li>Tầng 3, TTTM Sun Plaza, 69 Thụy Khuê, Quận Tây Hồ – (024) 3201 8208<br />(Từ Thứ 2 đến CN: 9h – 20h)</li>
+                                <li>Tòa nhà F4, 112-114 Trung Kính, Quận Cầu Giấy – (024) 3782 1761<br />(Từ Thứ 2 đến CN: 8h30 – 21h)</li>
+                                <li>L4 – 04, Tầng 4, TTTM Vincom Center, 54 Nguyễn Chí Thanh, Quận Đống Đa – (024) 3761 7666<br />(Từ Thứ 2 đến CN: 10h – 21h30)</li>
+                                <li>Tầng 2, Vincom Mega Mall, KĐT Vinhomes Smart City, Phường Đại Mỗ, Quận Nam Từ Liêm – (024) 3202 8027 | (024) 3202 0306<br />(Từ Thứ 2 đến T6: 10h – 22h, T7 & CN: 9h30 – 22h)</li>
                             </ul>
                         </Typography>
                     </AccordionDetails>
@@ -131,14 +131,14 @@ export default function Shop360() {
             </div>
 
             <p>
-                Cùng bước vào không gian đầy sức sống với các thiết kế tiện nghi, nhìn ngắm các sản phẩm đẹp mắt, đa dạng. Từ chiếc sofa êm ái, bàn ăn rộng rãi cho đến những chiếc ghế nhiều màu sắc. Tất cả thông tin về kích thước và chất liệu đều được hiển thị chi tiết trong video, giúp bạn dễ dàng đưa ra lựa chọn hơn. 
+                Cùng bước vào không gian đầy sức sống với các thiết kế tiện nghi, nhìn ngắm các sản phẩm đẹp mắt, đa dạng. Từ chiếc sofa êm ái, bàn ăn rộng rãi cho đến những chiếc ghế nhiều màu sắc. Tất cả thông tin về kích thước và chất liệu đều được hiển thị chi tiết trong video, giúp bạn dễ dàng đưa ra lựa chọn hơn.
             </p>
 
             <p>
                 Hãy cùng đi dạo một vòng cửa hàng Nhà Xinh qua video dưới đây nhé.
             </p>
 
-            <Video/>
+            <Video />
 
             <div className='flex flex-row flex-wrap w-full h-[1350px]'>
                 <div className='bg-shop360_phongan h-[600px] w-[49%]'>
@@ -168,15 +168,16 @@ export default function Shop360() {
 
 class Video extends React.Component {
     render() {
-      const opts = {
-        height: '768',
-        width: '1366',
-        playerVars: {
-          // https://developers.google.com/youtube/player_parameters
-          autoplay: 1,
-        },
-      };
-  
-      return <YouTube videoId="-044zH6jIF8" opts={opts} />;
+        const opts = {
+            height: '768',
+            width: '1366',
+            playerVars: {
+                // https://developers.google.com/youtube/player_parameters
+                autoplay: 1,
+                mute: 1
+            },
+        };
+
+        return <YouTube videoId="-044zH6jIF8" opts={opts} />;
     }
 }

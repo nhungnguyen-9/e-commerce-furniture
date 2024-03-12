@@ -130,7 +130,7 @@ export const mockData = {
             ProductName: 'Sofa Bolero 3 chỗ + Đôn M3 vải xanh MB408',
             Description: 'Sofa Bolero 3 chỗ + Đôn M3 vải xanh MB408',
             Price: 24550001,
-            Discount: [],
+            Discount: 15,
             InStock: true,
             Materials: 'Chân kim loại sơn đen, bọc vải cao cấp, bao gồm sofa băng dài & đôn',
             Size: 'Sofa: D2250 - R900 - C790, Đôn: D720 - R720 - C420',

@@ -10,7 +10,7 @@ export default function Decoration() {
             <div className='ml-[40px] w-[250px] pl-[30px] small:hidden block'>
                 <h1 className='text-wrap text-[33px] font-medium mt-[300px]'>Đồ trang trí</h1>
                 <p className='my-[10px] text-[14px]'>Mang lại những nguồn cảm hứng và nét sinh động cho không gian</p>
-                <a href='' className='text-gallery_text_link text-[14px]'>
+                <a href='' className='text-gallery_text_link text-[14px] cursor-pointer'>
                     KHÁM PHÁ
                     <ArrowForwardIcon />
                 </a>

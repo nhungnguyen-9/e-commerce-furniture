@@ -286,25 +286,25 @@ export default function Header() {
             </div>
 
             <div className='w-fit'>
-              <Link href='#' className='hover:text-amber-500 text-sm text-nowrap'>
+              <Link href='/collection' className='hover:text-amber-500 text-sm text-nowrap'>
                 BỘ SƯU TẬP
               </Link>
             </div>
 
             <div className='w-fit'>
-              <Link href='#' className='hover:text-amber-500 text-sm text-nowrap'>
+              <Link href='/design' className='hover:text-amber-500 text-sm text-nowrap'>
                 THIẾT KẾ NỘI THẤT
               </Link>
             </div>
 
             <div className='w-fit'>
-              <Link href='../components/shop360' className='hover:text-amber-500 text-sm text-nowrap'>
+              <Link href='/shop360' className='hover:text-amber-500 text-sm text-nowrap'>
                 CỬA HÀNG 360 ĐỘ
               </Link>
             </div>
 
             <div className='w-fit'>
-              <Link href='#' className='hover:text-amber-500 text-sm text-nowrap'>
+              <Link href='/inspiration' className='hover:text-amber-500 text-sm text-nowrap'>
                 GÓC CẢM HỨNG
               </Link>
             </div>
