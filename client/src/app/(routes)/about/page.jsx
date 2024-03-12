@@ -4,7 +4,7 @@ import Image from 'next/image'
 
 export default function About() {
     return (
-        <div className='w-full flex h-[500px] mb-[50px] small:flex-col small:h-[540px]'> 
+        <div className='w-full flex h-[500px] mb-[50px] small:flex-col small:h-[540px]'>
             <div className='w-[50%] bg-about_background pl-[16%] pt-[100px] pr-[2%] small:w-full small:p-[0px] small:py-[20px]'>
                 <h1 className='text-[30px] font-medium mb-[10px] text-about_text'>Tổ ấm của người tinh tế</h1>
                 <p className='text-[18px] text-about_text mb-[20px]'>

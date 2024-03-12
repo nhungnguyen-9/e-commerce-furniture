@@ -22,7 +22,7 @@ export default function Bedroom() {
             <div className='ml-[40px] w-[180px] small:w-[90%] small:mt-[5px] small:ml-[5%]'>
                 <h1 className='text-wrap text-[33px] font-medium w-[100px] small:w-full'>Không gian phòng ngủ</h1>
                 <p className='my-[10px] text-[14px]'>Những mẫu phòng ngủ của Nhà Xinh mang đến cảm giác ấm cúng, gần gũi và thoải mái</p>
-                <a href='' className='text-gallery_text_link text-[14px]'>
+                <a href='' className='text-gallery_text_link text-[14px] cursor-pointer'>
                     MẪU PHÒNG NGỦ
                     <ArrowForwardIcon />
                 </a>

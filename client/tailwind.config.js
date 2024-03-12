@@ -8,15 +8,15 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        'category_image' : "url('/category/banner-clearance-sale.jpg')",
-        'location_image' : "url('/location/cua-hang-nha-xinh-1400x690.jpg')",
-        'shop360_phongan' : "url('/shop360/Ghe-an-cabo-vai-MB204117-2.jpg')",
-        'shop360_phongngu' : "url('/shop360/giuong-iris-dep-gia-tot-hoc-keo-1200x800.jpg')",
-        'shop360_phongkhach' : "url('/shop360/Sofa-Poppy-2.5-cho-vai-vang-5.jpg')",
-        'sales_sofa' : "url('/sales/0210-2-800x800.jpg')",
-        'sales_banan' : "url('/sales/ghe-an-pio-2-533x800.jpg')",
-        'sales_giuongngu' : "url('/sales/mau-phong-ngu-16-5-23.jpg')",
-        'sales_thietkenoithat' : "url('/sales/armchair-maxine-neww-800x800.jpeg')",
+        'category_image': "url('/category/banner-clearance-sale.jpg')",
+        'location_image': "url('/location/cua-hang-nha-xinh-1400x690.jpg')",
+        'shop360_phongan': "url('/shop360/Ghe-an-cabo-vai-MB204117-2.jpg')",
+        'shop360_phongngu': "url('/shop360/giuong-iris-dep-gia-tot-hoc-keo-1200x800.jpg')",
+        'shop360_phongkhach': "url('/shop360/Sofa-Poppy-2.5-cho-vai-vang-5.jpg')",
+        'sales_sofa': "url('/sales/0210-2-800x800.jpg')",
+        'sales_banan': "url('/sales/ghe-an-pio-2-533x800.jpg')",
+        'sales_giuongngu': "url('/sales/mau-phong-ngu-16-5-23.jpg')",
+        'sales_thietkenoithat': "url('/sales/armchair-maxine-neww-800x800.jpeg')",
       },
 
       boxShadow: {
@@ -24,10 +24,10 @@ module.exports = {
       },
 
       screens: {
-        'average': {'max': '850px'},
+        'average': { 'max': '850px' },
         // => @media (max-width: 850px) { ... }
 
-        'small': {'max': '425px'},
+        'small': { 'max': '425px' },
         // => @media (max-width: 425px) { ... }
       },
       borderColor: {

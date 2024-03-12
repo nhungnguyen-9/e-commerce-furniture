@@ -22,7 +22,7 @@ export default function DiningRoom() {
             <div className='w-[600px] small:w-[90%] small:mt-[5px] small:ml-[5%]'>
                 <h1 className='text-wrap text-[33px] font-medium'>Không gian phòng ăn</h1>
                 <p className='my-[10px] text-[14px]'>Một bữa ăn ngon luôn là mong ước của mỗi gia đình. Không gian phòng ăn đóng vai trò rất quan trọng trong văn hóa Việt</p>
-                <a href='' className='text-gallery_text_link text-[14px]'>
+                <a href='' className='text-gallery_text_link text-[14px] cursor-pointer'>
                     MẪU PHÒNG ĂN
                     <ArrowForwardIcon />
                 </a>
