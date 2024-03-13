@@ -17,6 +17,9 @@ module.exports = {
         'sales_banan': "url('/sales/ghe-an-pio-2-533x800.jpg')",
         'sales_giuongngu': "url('/sales/mau-phong-ngu-16-5-23.jpg')",
         'sales_thietkenoithat': "url('/sales/armchair-maxine-neww-800x800.jpeg')",
+        'inspiration_camhung1': "url('/inspiration/bo-suu-tap-osaka-moi-nha-xinh-6522-1346x800.jpg')",
+        'inspiration_camhung2': "url('/inspiration/armchair-dep-mau-hong-hien-dai-13522-305x400.jpg')",
+        'inspiration_camhung3': "url('/inspiration/GIUONG-DEP-GIA-TOT-IRIS-1-400x400.jpg')",
       },
 
       boxShadow: {
