@@ -113,13 +113,16 @@ export default function Inspiration(props) {
                         <button className='border-2 border-black px-[20px] py-[10px] text-[18px] hover:border-white hover:bg-white transition ease-in-out duration-300'>XEM THÊM</button>
                     </div>
                 </div>
+
                 <div className='w-[25%]'>
                     <div className='w-full h-[49%] overflow-hidden'>
                         <div className='w-full h-full bg-inspiration_camhung2 bg-cover bg-no-repeat hover:scale-110 hover:brightness-[90%] transition ease-in-out duration-500 bg-bottom'>
 
                         </div>
                     </div>
+
                     <div className='h-[2%]'></div>
+                    
                     <div className='w-full h-[49%] overflow-hidden'>
                         <div  className='w-full h-full bg-inspiration_camhung3 bg-cover bg-no-repeat hover:scale-110 hover:brightness-[90%] transition ease-in-out duration-500 bg-bottom'>
 
