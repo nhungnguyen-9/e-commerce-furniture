@@ -1,9 +1,9 @@
 'use client'
 import React from 'react'
-import ProductImage from '@/app/components/product/productImage'
 import { mockData } from '@/app/data/mock-data'
+import ProductImage from './ProductImage'
 
-export default function ProductDetail({ }) {
+export default function ProductDetail() {
     return (
         <div className='grid grid-cols-1 md:grid-cols-2'>
             <div>
