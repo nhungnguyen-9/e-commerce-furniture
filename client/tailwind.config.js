@@ -20,6 +20,7 @@ module.exports = {
         'inspiration_camhung1': "url('/inspiration/bo-suu-tap-osaka-moi-nha-xinh-6522-1346x800.jpg')",
         'inspiration_camhung2': "url('/inspiration/armchair-dep-mau-hong-hien-dai-13522-305x400.jpg')",
         'inspiration_camhung3': "url('/inspiration/GIUONG-DEP-GIA-TOT-IRIS-1-400x400.jpg')",
+        'about_vechungtoi': "url(https://nhaxinh.com/wp-content/uploads/2021/11/nha-xinh-lich-su-hinh-thanh-21.jpg)",
       },
 
       boxShadow: {

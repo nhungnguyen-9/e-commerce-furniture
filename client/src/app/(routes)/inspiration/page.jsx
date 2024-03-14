@@ -122,7 +122,7 @@ export default function Inspiration(props) {
                     </div>
 
                     <div className='h-[2%]'></div>
-                    
+
                     <div className='w-full h-[49%] overflow-hidden'>
                         <div  className='w-full h-full bg-inspiration_camhung3 bg-cover bg-no-repeat hover:scale-110 hover:brightness-[90%] transition ease-in-out duration-500 bg-bottom'>
 
