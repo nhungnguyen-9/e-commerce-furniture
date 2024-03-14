@@ -171,7 +171,7 @@ export default function Header() {
                 SẢN PHẨM
                 <ExpandMore />
               </Link>
-              <div className='hidden absolute space-y-1 p-2 group-hover:block top-[38px] inset-x-10'>
+              <div className='hidden absolute space-y-1 p-2 group-hover:block top-[50px] inset-x-10'>
                 <div className='flex flex-row justify-evenly h-full bg-white w-fit mt-6'>
                   <CategoryList
                     items={[
@@ -264,7 +264,7 @@ export default function Header() {
                 PHÒNG
                 <ExpandMore />
               </Link>
-              <div className='hidden absolute space-y-1 p-2 group-hover:block top-[38px]'>
+              <div className='hidden absolute space-y-1 p-2 group-hover:block top-[50px]'>
                 <div className='flex flex-row justify-evenly h-full bg-white mt-4'>
                   <CategoryList
                     items={[
