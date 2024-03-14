@@ -20,6 +20,9 @@ module.exports = {
         'inspiration_camhung1': "url('/inspiration/bo-suu-tap-osaka-moi-nha-xinh-6522-1346x800.jpg')",
         'inspiration_camhung2': "url('/inspiration/armchair-dep-mau-hong-hien-dai-13522-305x400.jpg')",
         'inspiration_camhung3': "url('/inspiration/GIUONG-DEP-GIA-TOT-IRIS-1-400x400.jpg')",
+        'about_vechungtoi': "url(https://nhaxinh.com/wp-content/uploads/2021/11/nha-xinh-lich-su-hinh-thanh-21.jpg)",
+        'collection': "url(https://nhaxinh.com/wp-content/uploads/2021/10/elegance-bo-suu-tap-dep.jpg)",
+        'design': "url(https://nhaxinh.com/wp-content/uploads/2023/05/nha-xinh-thiet-ke-noi-that-ecopark-16523.jpg)",
       },
 
       boxShadow: {
@@ -51,6 +54,9 @@ module.exports = {
         "about_text": "rgb(83, 80, 80)",
         "gallery_text_link": "#A9A9B2",
         "button_about": "#7a9c59",
+        "design_arcodion_1": "#7A9C59",
+        "design_arcodion_2": "#2F809D",
+        "design_arcodion_3": "#879654",
       },
       fontSize: {
         'span': '1.15em'

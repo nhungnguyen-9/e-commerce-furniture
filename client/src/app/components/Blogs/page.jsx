@@ -7,7 +7,6 @@ export default function Blogs() {
     return (
         <div>
             <Inspiration />
-            <About />
             <Stories />
         </div>
     )
