@@ -125,7 +125,7 @@ export default function Header() {
                 />
               </Tooltip>
             </Link>
-            <Link href='/loginSignUp' className='flex items-center text-slate-500 hover:text-slate-900'>
+            <Link href='/login' className='flex items-center text-slate-500 hover:text-slate-900'>
               <p className='float-left average:hidden'>Đăng nhập</p>
               <PersonIcon
                 sx={{
@@ -469,7 +469,7 @@ export default function Header() {
                 <Link href='/inspiration'>GÓC CẢM HỨNG</Link>
               </div>
               <div className='ml-4 mt-6 hover:text-amber-500'>
-                <Link href='#'>GIỚI THIỆU</Link>
+                <Link href='/about'>GIỚI THIỆU</Link>
               </div>
               <div className='ml-4 mt-6 hover:text-amber-500'>
                 <Link href='#'>KHUYẾN MÃI</Link>
