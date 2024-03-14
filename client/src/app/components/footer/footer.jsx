@@ -42,7 +42,7 @@ export default function Footer() {
                         <div className='font-[14px]'>
                             <ul>
                                 <li className='mt-1'>
-                                    <Link href={'/'}>Giới thiệu</Link>
+                                    <Link href='/about'>Giới thiệu</Link>
                                 </li>
                                 <li className='mt-1'>
                                     <Link href={'/'}>Chuyện Nhà Xinh</Link>
@@ -101,19 +101,11 @@ export default function Footer() {
                         </div>
                     </div>
                 </div>
-                <div className='flex flex-col items-center text-[rgba(255,255,255,.5)] md:flex-row justify-between'>
+                <div className='text-center text-[rgba(255,255,255,.5)] md:flex-row justify-between'>
                     <div>
                         <p>
-                            © 2024 - Website này dựa trên website Nội Thất Nhà Xinh
+                            © 2024 - Website này được xây dựng nhằm mục đích học tập - Dựa trên website nhaxinh.com
                         </p>
-                    </div>
-                    <div className='mt-2 min-[549px]:ml-[300px]'>
-                        <Image
-                            src='https://nhaxinh.com/wp-content/uploads/2021/09/image-15.png'
-                            width='105'
-                            height='40'
-                            alt='Bo-Cong-Thuong'
-                        />
                     </div>
                 </div>
             </div>
