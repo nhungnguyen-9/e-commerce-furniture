@@ -51,7 +51,7 @@ export default function Footer() {
                                     <Link href={'/'}>Tổng công ty</Link>
                                 </li>
                                 <li className='mt-1'>
-                                    <Link href={'/'}>Tuyển dụng</Link>
+                                    <Link href={'/recruit'}>Tuyển dụng</Link>
                                 </li>
                                 <li className='mt-1'>
                                     <Link href={'/'}>Thẻ hội viên</Link>
