@@ -16,7 +16,7 @@
     "@mui/material": "^5.15.5",
     "@mui/material-nextjs": "^5.15.5",
     "@mui/styled-engine-sc": "^6.0.0-alpha.12",
-    "axios": "^1.6.7",
+    "axios": "^1.6.8",
     "lodash": "^4.17.21",
     "next": "14.0.4",
     "next-auth": "^4.24.7",

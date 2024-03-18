@@ -23,6 +23,7 @@ module.exports = {
         'about_vechungtoi': "url(https://nhaxinh.com/wp-content/uploads/2021/11/nha-xinh-lich-su-hinh-thanh-21.jpg)",
         'collection': "url(https://nhaxinh.com/wp-content/uploads/2021/10/elegance-bo-suu-tap-dep.jpg)",
         'design': "url(https://nhaxinh.com/wp-content/uploads/2023/05/nha-xinh-thiet-ke-noi-that-ecopark-16523.jpg)",
+        'recruit': "url(https://nhaxinh.com/wp-content/uploads/2022/07/phong-khach-bac-au-miami-tuoi-sang-1.jpg)",
       },
 
       boxShadow: {

@@ -17,15 +17,18 @@ import TextField from '@mui/material/TextField'
 import InputAdornment from '@mui/material/InputAdornment'
 import SearchIcon from '@mui/icons-material/Search'
 import Dropdown from './Dropdown'
-import CategoryList from './CategoryList'
+import RoomCategoryList from './RoomCategoryList'
+import ProductCategoryList from './ProductCategoryList'
 import CloseIcon from '@mui/icons-material/Close'
 import { Tooltip } from '@mui/material'
+import { mockData } from "@/app/data/mock-data";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="right" ref={ref} {...props} />
 })
 
 export default function Header() {
+  const livingroom = mockData.categories.rooms.find(room => room._id === 'room-category-1');
 
   const [open, setOpen] = useState(false)
   const [scrollY, setScrollY] = useState(0)
@@ -173,92 +176,16 @@ export default function Header() {
               </Link>
               <div className='hidden absolute space-y-1 p-2 group-hover:block top-[50px] inset-x-10'>
                 <div className='flex flex-row justify-evenly h-full bg-white w-fit mt-6'>
-                  <CategoryList
-                    items={[
-                      'Sofa',
-                      'Sofa góc',
-                      'Ghế thư giãn',
-                      'Armchair',
-                      'Ghế dài & đôn',
-                      'Bàn bên',
-                      'Bàn nước',
-                      'Bàn Console',
-                      'Tủ tivi',
-                      'Kệ trưng bày',
-                      'Tủ giày',
-                    ]}
-                  />
-                  <CategoryList
-                    items={[
-                      'Bàn ăn',
-                      'Ghế ăn',
-                      'Ghế bar',
-                      'Tủ ly',
-                      'Xe đẩy',
-                      'Tủ bếp',
-                      'Thiết bị bếp',
-                    ]}
-                  />
-                  <CategoryList
-                    items={[
-                      'Giường ngủ',
-                      'Bàn đầu giường',
-                      'Bàn trang điểm',
-                      'Tủ áo',
-                      'Tủ âm tường',
-                      'Tủ hộc kéo',
-                      'Nệm',
-                    ]}
-                  />
-                  <CategoryList
-                    items={[
-                      'Bàn làm việc',
-                      'Ghế làm việc',
-                      'Kệ sách',
-                      'Bàn ngoài trời',
-                      'Ghế ngoài trời',
-                    ]}
-                  />
-                  <CategoryList
-                    items={[
-                      'Đèn trang trí',
-                      'Bàn đầu giường',
-                      'Bàn trang điểm',
-                      'Tủ áo',
-                      'Tủ âm tường',
-                      'Tủ hộc kéo',
-                      'Nệm',
-                    ]}
-                  />
-                  <CategoryList
-                    items={[
-                      'Giường ngủ',
-                      'Bàn đầu giường',
-                      'Bàn trang điểm',
-                      'Tủ áo',
-                      'Tủ âm tường',
-                      'Tủ hộc kéo',
-                      'Nệm',
-                    ]}
-                  />
-                  <CategoryList
-                    items={[
-                      'Giường ngủ',
-                      'Bàn đầu giường',
-                      'Bàn trang điểm',
-                      'Tủ áo',
-                      'Tủ âm tường',
-                      'Tủ hộc kéo',
-                      'Nệm',
-                    ]}
-                  />
+                  <ProductCategoryList />
                 </div>
               </div>
             </div>
 
             <div className='group w-fit'>
               <Link
-                href='#'
+                href={{ 
+                  pathname: `/rooms/${livingroom._id}`, 
+                  query: { name: livingroom.categoryName, description: livingroom.description } }}
                 className='hover:text-amber-500 text-sm group-hover:block'
               >
                 PHÒNG
@@ -266,21 +193,7 @@ export default function Header() {
               </Link>
               <div className='hidden absolute space-y-1 p-2 group-hover:block top-[50px]'>
                 <div className='flex flex-row justify-evenly h-full bg-white mt-4'>
-                  <CategoryList
-                    items={[
-                      'Sofa',
-                      'Sofa góc',
-                      'Ghế thư giãn',
-                      'Armchair',
-                      'Ghế dài & đôn',
-                      'Bàn bên',
-                      'Bàn nước',
-                      'Bàn Console',
-                      'Tủ tivi',
-                      'Kệ trưng bày',
-                      'Tủ giày',
-                    ]}
-                  />
+                  <RoomCategoryList />
                 </div>
               </div>
             </div>
