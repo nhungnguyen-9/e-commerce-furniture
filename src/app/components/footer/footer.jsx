@@ -45,19 +45,10 @@ export default function Footer() {
                                     <Link href='/about'>Giới thiệu</Link>
                                 </li>
                                 <li className='mt-1'>
-                                    <Link href={'/'}>Chuyện Nhà Xinh</Link>
+                                    <Link href={'/inspiration'}>Chuyện Nhà Xinh</Link>
                                 </li>
                                 <li className='mt-1'>
-                                    <Link href={'/'}>Tổng công ty</Link>
-                                </li>
-                                <li className='mt-1'>
-                                    <Link href={'/'}>Tuyển dụng</Link>
-                                </li>
-                                <li className='mt-1'>
-                                    <Link href={'/'}>Thẻ hội viên</Link>
-                                </li>
-                                <li className='mt-1'>
-                                    <Link href={'/'}>Đổi trả hàng</Link>
+                                    <Link href={'/recruit'}>Tuyển dụng</Link>
                                 </li>
                             </ul>
                         </div>
@@ -113,5 +104,3 @@ export default function Footer() {
         </div>
     )
 }
-
-
