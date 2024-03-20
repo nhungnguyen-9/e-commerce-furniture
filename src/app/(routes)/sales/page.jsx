@@ -4,7 +4,7 @@ import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 
 export default function Sales() {
     return (
-        <div>
+        <div className='w-full'>
             <div className='w-[90%] ml-[5%] h-[800px] flex flex-row'>
                 <div className='w-[48%] mr-[2%]'>
                     <h1 className='text-center text-[35px] font-medium'>MUA HÀNG KHÔNG GIỚI HẠN - TRẢ GÓP 0% LÃI SUẤT</h1>
@@ -95,16 +95,18 @@ export default function Sales() {
                 </div>
             </div>
 
-            <div className='bg-location_image w-[100%] h-[550px] scale-125 mb-[69px] small:scale-100 small:m-0 small:h-[280px] small:bg-center small:bg-no-repeat small:bg-cover'>
-                <div className='absolute top-0 right-0 bottom-0 left-0 bg-black opacity-25 small:w-full'></div>
-                <h1 className='absolute ml-[30%] mt-[23%] text-center text-[60px] text-white small:w-full small:p-0 small:m-0 small:text-[28px] small:mt-[140px]'>Xem, chạm và cảm nhận</h1>
-                <button className='absolute ml-[45%] mt-[30%] text-center text-[15px] p-1 text-white border-2 border-white hover:bg-white hover:text-black small:w-[30%] small:mt-[200px] small:ml-[140px] small:text-[10px]'>
-                    <p className='ml-1'>
+            <div className='relative bg-location_image bg-cover bg-center w-full h-[630px] small:scale-100 small:m-0 small:h-[280px] small:bg-center small:bg-no-repeat small:bg-cover'>
+            <div className='absolute top-0 right-0 bottom-0 left-0 bg-black opacity-25 small:w-full'></div>
+            <div className='relative top-10 left-0 right-0 text-center'>
+                <h1 className='absolute left-0 right-0 top-96 m-auto text-7xl font-extrabold text-white small:w-full small:p-0 small:m-0 small:text-[28px]'>Xem, chạm và cảm nhận</h1>
+                <button className='absolute mt-[33%] ml-[-65px] text-[15px] py-2 px-4 text-white border-2 border-white hover:bg-white hover:text-[#666] small:w-[30%] small:mt-[200px] small:ml-[140px] small:text-[10px]'>
+                    <p className='ml-1 font-bold text-xl'>
                         Tìm cửa hàng
                         <ChevronRightIcon />
                     </p>
                 </button>
             </div>
+        </div>
         </div>
     )
 }

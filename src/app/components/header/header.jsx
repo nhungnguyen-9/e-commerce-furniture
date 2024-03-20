@@ -102,7 +102,7 @@ export default function Header() {
 
           {/* Cart */}
           <div className='flex items-center ml-auto h-7 space-x-4 md:mr-[20px] lg:mr-[120px] average:hidden'>
-            <a href='#'>
+            <a href='/shop360'>
               <PlaceOutlinedIcon
                 sx={{
                   color: 'rgba(47,47,47,0.5)',
