@@ -13,7 +13,9 @@ const RoomCategoryList = () => {
                     <Link href={{
                         pathname: `/rooms/${room._id}`,
                         query: { id: room._id, name: room.categoryName, description: room.description, image: room.image }
-                    }}>
+                    }}
+                        as={`/rooms/${room._id}`} passHref
+                    >
                         <div className="font-[14px] text-nowrap text-slate-500 hover:text-slate-950">
                             {room.categoryName}
                         </div>

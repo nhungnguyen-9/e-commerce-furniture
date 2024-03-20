@@ -28,7 +28,9 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 })
 
 export default function Header() {
-  const livingroom = mockData.categories.rooms.find(room => room._id === 'room-category-1');
+  const room = mockData.categories.rooms.find(room => room._id === 'room-category-1');
+
+  const categoriesProduct = room ? room.categoriesProduct : [];
 
   const [open, setOpen] = useState(false)
   const [scrollY, setScrollY] = useState(0)
@@ -184,10 +186,11 @@ export default function Header() {
             <div className='group w-fit'>
               <Link
                 href={{
-                  pathname: `/rooms/${livingroom._id}`,
-                  query: { name: livingroom.categoryName, description: livingroom.description }
+                  pathname: `/rooms/${room._id}`,
+                  query: { id: room._id, name: room.categoryName, description: room.description, image: room.image }
                 }}
                 className='hover:text-amber-500 text-sm group-hover:block'
+                as={`/rooms/${room._id}`} passHref
               >
                 PHÒNG
                 <ExpandMore />
