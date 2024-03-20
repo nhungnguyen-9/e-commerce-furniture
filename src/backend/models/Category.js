@@ -5,9 +5,9 @@ const categorySchema = new mongoose.Schema({
         type: String,
         require: true
     },
-    description: {
+    slug: {
         type: String,
-        require: true
+        lowercase: true
     },
     image: {
         type: String,
@@ -17,7 +17,12 @@ const categorySchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         require: true,
         ref: 'Product'
-    }]
+    }],
+    roomId: {
+        type: mongoose.Schema.Types.ObjectId,
+        require: true,
+        ref: 'Room'
+    },
 },
     {
         timestamp: true

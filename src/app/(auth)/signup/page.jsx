@@ -25,8 +25,8 @@ export default function Signup() {
             })
 
             if (res.status == 200 || res.status == 201) {
-                toast.success("Đăng ký thành công!");
                 router.push("/");
+                toast.success("Đăng ký thành công!");
             }
         } catch (error) {
             toast.error(error)
