@@ -184,8 +184,8 @@ export default function Header() {
             <div className='group w-fit'>
               <Link
                 href={{
-                  pathname: `/rooms/${livingroom._id}`,
-                  query: { name: livingroom.categoryName, description: livingroom.description }
+                  pathname: `/rooms/${livingroom.slug}`,
+                  query: { slug: livingroom.slug }
                 }}
                 className='hover:text-amber-500 text-sm group-hover:block'
               >

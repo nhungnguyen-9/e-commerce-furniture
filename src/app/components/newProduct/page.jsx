@@ -44,32 +44,37 @@ export default function NewProduct() {
                     </div>
                 ))}
             </Carousel>
+
         </div>
     )
 }
 
 function Item({ product }) {
-    const formattedPrice = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(product.Price);
+    const formattedPrice = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(Math.round(product.price)).replace(/\./g, ',')
 
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
     return (
-        <Link href='/product'>
+        <Link href={`/products/${product.slug}`}>
             <div className='relative group border-2 hover:border-gray-200 border-white w-[300px] h-[380px] p-[10px] small:w-full'
                 onMouseEnter={() => {
-                    const nextIndex = (currentImageIndex + 1) % product.Image.length;
+                    const nextIndex = (currentImageIndex + 1) % product.image.length;
                     setCurrentImageIndex(nextIndex);
                 }}
                 onMouseLeave={() => setCurrentImageIndex(0)}
             >
                 <div className='h-[200px]'>
                     <img
-                        src={product.Image[currentImageIndex]}
-                        alt={product.Name}
+                        src={
+                            product?.image[currentImageIndex]
+                                ? product?.image[currentImageIndex].url
+                                : "/images/default_product.png"
+                        }
+                        alt={product.name}
                         className="w-full h-full object-cover transition duration-300"
                     />
                 </div>
-                {product.Discount > 0 && (
+                {product.discount > 0 && (
                     <div className='z-10 text-white text-center'>
                         <Image
                             src={'/bg_bage.png'}
@@ -78,10 +83,10 @@ function Item({ product }) {
                             alt='bage'
                             className='absolute top-4 right-4'
                         />
-                        <p className='text-white absolute top-6 right-4 z-20 text-xs'>-{product.Discount}%</p>
+                        <p className='text-white absolute top-6 right-4 z-20 text-xs'>-{product.discount}%</p>
                     </div>
                 )}
-                <p className='h-[60px]'>{product.ProductName}</p>
+                <p className='h-[60px]'>{product.name}</p>
                 <p className='text-right'>{formattedPrice}</p>
 
                 <div className='flex items-center justify-between mt-6 opacity-0 group-hover:opacity-100 transition-opacity'>

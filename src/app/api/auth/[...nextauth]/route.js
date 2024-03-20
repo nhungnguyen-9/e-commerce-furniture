@@ -1,7 +1,6 @@
 import NextAuth from "next-auth/next"
 import CredentialsProvider from "next-auth/providers/credentials"
 import User from "@/backend/models/User"
-import { signJwtToken } from "@/backend/config/jwt"
 import bcrypt from 'bcrypt'
 import { connect } from "@/backend/config/mongodb"
 import GoogleProvider from 'next-auth/providers/google'
@@ -9,15 +8,12 @@ import GoogleProvider from 'next-auth/providers/google'
 const handler = NextAuth({
     providers: [
         CredentialsProvider({
-            type: 'credentials',
-            credentials: {
-                email: { label: 'Email', type: 'text' },
-                password: { label: 'Password', type: 'password' }
-            },
-            async authorize(credentials, req) {
-                await connect()
-
+            name: 'credentials',
+            credentials: {},
+            async authorize(credentials) {
                 const { email, password } = credentials
+
+                await connect()
 
                 const user = await User.findOne({ email })
 
@@ -29,16 +25,9 @@ const handler = NextAuth({
 
                 if (!comparePassword) {
                     throw new Error('Đăng nhập không hợp lệ!')
-                } else {
-                    const { password, ...others } = user._doc
-
-                    const accessToken = signJwtToken(others, { expiresIn: "6d" })
-
-                    return {
-                        ...others,
-                        accessToken
-                    }
                 }
+
+                return user
             }
         }),
         GoogleProvider({
@@ -50,7 +39,7 @@ const handler = NextAuth({
         strategy: 'jwt'
     },
     pages: {
-        signIn: '/login'
+        signIn: '/'
     },
     secret: process.env.NEXTAUTH_SECRET,
     callbacks: {
@@ -69,26 +58,26 @@ const handler = NextAuth({
                     })
                     const res = await newUser.save()
                     if (res.status === 200 || res.status === 201) {
-                        console.log(res)
                         return user
                     }
                 } catch (error) {
                     console.log(error)
                 }
             }
+            return user
         },
         async jwt({ token, user }) {
             if (user) {
-                token.accessToken = user.accessToken
-                token._id = user._id
+                token.email = user.email
+                token.name = user.name
             }
 
             return token
         },
         async session({ session, token }) {
-            if (token) {
-                session.user._id = token._id
-                session.user.accessToken = token.accessToken
+            if (session.user) {
+                session.user.email = token.email
+                session.user.name = token.name
             }
 
             return session

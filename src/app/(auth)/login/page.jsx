@@ -18,8 +18,8 @@ export default function Login() {
         try {
             const res = await signIn('credentials', { email, password, redirect: false })
             if (res?.error == null) {
-                toast.success('Đăng nhập thành công!')
                 router.push('/')
+                toast.success('Đăng nhập thành công!')
             } else {
                 toast.error('Email hoặc mật khẩu không đúng!')
             }

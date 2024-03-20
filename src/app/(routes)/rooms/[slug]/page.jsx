@@ -10,12 +10,12 @@ const Room = () => {
     // const roomId = searchParams.get('id');
     // const categoriesProduct = mockData.categories.rooms.find(room => room._id === roomId).categoriesProduct;
 
-    // Get the room ID from the query parameters
-    const roomId = searchParams.get('id');
+    // Get the room slug from the query parameters
+    const roomSlug = searchParams.get('slug');
 
-    const room = mockData.categories.rooms.find(room => room._id === roomId);
+    const room = mockData.categories.rooms.find(room => room.slug === roomSlug);
 
-    const categoriesProduct = room ? room.categoriesProduct : [];
+    const categoriesProduct = room ? room.category : [];
 
     return (
         <div>
@@ -25,8 +25,8 @@ const Room = () => {
                 <h1 className='absolute bottom-[50px] left-[100px] text-white font-bold text-[50px]'>{searchParams.get('name')}</h1>
                 <div className='absolute bottom-[50px] right-[100px] flex flex-row text-white text-[20px]'>
                     <a href=''>Trang chủ</a>
-                    <p className='mx-[10px]'>/</p>
-                    <p className='font-semibold'>{searchParams.get('name')}</p>
+                    <div className='mx-[10px]'>/</div>
+                    <div className='font-semibold'>{searchParams.get('name')}</div>
                 </div>
             </div>
 
@@ -34,24 +34,24 @@ const Room = () => {
                 <div className='bg-gray-100 w-[23%] pt-[2%]'>
                     <h1 className='pl-[10%] border-l-[3px] mb-[10px] border-orange-400 font-semibold text-[17px]'>Nội thất phòng</h1>
                     <div className='pl-[10%] flex flex-col space-y-[10px]'>
-                        {categoriesProduct.map((item, index) => (
-                            <a key={index} href=''>{item.categoryProductName}</a>
+                        {categoriesProduct.map((item) => (
+                            <a key={item.slug} href=''>{item.name}</a>
                         ))}
                     </div>
                 </div>
 
                 <div className='w-[77%] flex flex-row flex-wrap pl-[5%] pr-[5%] justify-between'>
-                    {categoriesProduct.map((item, index) => (
-                        <div key={index} className='w-[45%] h-[350px] mb-[30px]'>
+                    {categoriesProduct.map((item) => (
+                        <div key={item.slug} className='w-[45%] h-[350px] mb-[30px]'>
                             <div className='w-full h-[200px] overflow-hidden'>
                                 <img
                                     src={item.image}
-                                    alt={item.categoryProductName}
+                                    alt={item.name}
                                 />
                             </div>
 
                             <div className='mt-[5px]'>
-                                <h1 className='font-semibold text-[20px] mb-[10px]'>{item.categoryProductName}</h1>
+                                <h1 className='font-semibold text-[20px] mb-[10px]'>{item.name}</h1>
                                 <p className='text-[15px]'>{item.description}</p>
                             </div>
                         </div>

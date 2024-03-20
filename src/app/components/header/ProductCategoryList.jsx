@@ -9,14 +9,14 @@ const ProductCategoryList = () => {
     return (
         <div className="flex flex-col w-fit mr-4 ml-4">
             {rooms.map(room => (
-                <div key={room._id} className="mb-3">
-                    {room.categoriesProduct.map(product => (
-                        <div key={product._id}>
+                <div key={room.slug} className="mb-3">
+                    {room.category.map(product => (
+                        <div key={product.slug}>
                             <Link
-                                href={`/rooms/${room._id}/products/${product._id}`}
+                                href={`/rooms/${room.slug}/products/${product.slug}`}
                                 className="font-[14px] text-nowrap text-slate-500 hover:text-slate-950"
                             >
-                                {product.categoryProductName}
+                                {product.name}
                             </Link>
                         </div>
                     ))}
