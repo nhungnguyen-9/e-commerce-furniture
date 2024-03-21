@@ -2,12 +2,10 @@ import mongoose from "mongoose"
 
 const reviewSchema = new mongoose.Schema({
     name: {
-        type: String,
-        require: true
+        type: String
     },
     comment: {
-        type: String,
-        require: true
+        type: String
     },
     user: {
         type: mongoose.Schema.Types.ObjectId,
@@ -20,6 +18,10 @@ const productSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true
+    },
+    slug: {
+        type: String,
+        lowercase: true
     },
     description: {
         type: String,
@@ -57,12 +59,7 @@ const productSchema = new mongoose.Schema({
             }
         }
     ],
-    room: {
-        type: mongoose.Schema.Types.ObjectId,
-        require: true,
-        ref: 'Room'
-    },
-    category: {
+    categoryId: {
         type: mongoose.Schema.Types.ObjectId,
         require: true,
         ref: 'Category'

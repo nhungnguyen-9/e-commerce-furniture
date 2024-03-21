@@ -1,19 +1,31 @@
 'use client'
 import React from 'react'
-import { mockData } from '@/app/data/mock-data'
 import ProductImage from './ProductImage'
+import BreadCrumbs from '@/app/components/product/BreadCrumbs'
+import Image from 'next/image'
 
-export default function ProductDetail() {
+export default function ProductDetail({ product }) {
+    console.log(product)
     return (
-        <div className='grid grid-cols-1 md:grid-cols-2'>
+        <div className=''>
+            <BreadCrumbs />
             <div>
-                <ProductImage />
-            </div>
-            <div>
-                {mockData.products.map((product, index) => {
-                    <h1>{product.ProductName}</h1>
-
-                })}
+                <div>
+                    <div>small images</div>
+                    <div>
+                        {/* <Image
+                            src={
+                                product?.image[0]
+                                    ? product?.image[0].url
+                                    : "/images/default_product.png"
+                            }
+                            alt="Product title"
+                            width={340}
+                            height={340}
+                        /> */}
+                    </div>
+                </div>
+                <div></div>
             </div>
         </div>
     )

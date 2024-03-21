@@ -5,9 +5,9 @@ const roomSchema = new mongoose.Schema({
         type: String,
         require: true
     },
-    description: {
+    slug: {
         type: String,
-        require: true
+        lowercase: true
     },
     image: {
         type: String,
