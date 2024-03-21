@@ -5,6 +5,7 @@ import Footer from '@/app/components/footer/footer'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import Provider from './SessionProvider'
+import { GlobalProvider } from './GlobalProvider'
 
 const roboto = Roboto({ subsets: ['latin'], weight: ['400', '500', '700'] })
 
@@ -17,6 +18,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={roboto.className}>
         <div className='flex flex-col min-h-screen'>
+          {/* <GlobalProvider> */}
           <Provider>
             <Header />
             <ToastContainer
@@ -34,6 +36,7 @@ export default function RootLayout({ children }) {
             <main className='flex-grow'>{children}</main>
             <Footer />
           </Provider>
+          {/* </GlobalProvider> */}
         </div>
       </body>
     </html>

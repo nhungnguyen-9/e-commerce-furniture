@@ -8,7 +8,7 @@ export default function ProductCard({ product }) {
 
     return (
         <div>
-            <Link href={`/products/${product.slug}`}>
+            <Link href={`/product/${product.slug}`}>
                 <div className='relative group border-2 hover:border-gray-200 border-white w-[300px] h-[380px] p-[10px] small:w-full'
                     onMouseEnter={() => {
                         const nextIndex = (currentImageIndex + 1) % product.image.length

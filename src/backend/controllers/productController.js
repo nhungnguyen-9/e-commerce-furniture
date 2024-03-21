@@ -13,3 +13,15 @@ export const getAllProducts = async (req, res, next) => {
         products
     })
 }
+
+
+export const getProductDetails = async (slug) => {
+    console.log('slug Ctrl: ', slug)
+    const product = await Product.findOne({ slug })
+
+    if (!product) {
+        return next(new ErrorHandler("Product not found.", 404))
+    }
+
+    res.status(200).json(product)
+}

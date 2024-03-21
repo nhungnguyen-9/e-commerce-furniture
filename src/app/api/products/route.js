@@ -3,6 +3,8 @@ import { NextResponse, NextRequest } from "next/server"
 import Category from '@/backend/models/Category'
 import slugify from 'slugify'
 import Product from '@/backend/models/Product'
+import { createRouter } from 'next-connect'
+import { getAllProducts } from '@/backend/controllers/productController'
 
 connect()
 
@@ -53,7 +55,6 @@ export async function POST(req) {
         return NextResponse.json({ error: error.message }, { status: 500 })
     }
 }
-
 
 export async function GET(req) {
     try {
