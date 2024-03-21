@@ -186,11 +186,10 @@ export default function Header() {
             <div className='group w-fit'>
               <Link
                 href={{
-                  pathname: `/rooms/${livingroom.slug}`,
-                  query: { slug: livingroom.slug }
+                  pathname: `/rooms/${room.slug}`,
+                  query: { slug: room.slug, name: room.name, image: room.image }
                 }}
                 className='hover:text-amber-500 text-sm group-hover:block'
-                as={`/rooms/${room._id}`} passHref
               >
                 PHÒNG
                 <ExpandMore />
