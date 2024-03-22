@@ -217,7 +217,7 @@ export default function ProductDetail({ product }) {
                                 <button
                                     className="py-3 px-5 border border-black hover:bg-slate-200"
                                     onClick={addToCartHandler}
-                                    disabled={!inStock}
+                                    disabled={!product?.inStock}
                                 >
                                     THÊM VÀO GIỎ
                                 </button>
