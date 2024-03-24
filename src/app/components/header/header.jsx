@@ -24,6 +24,8 @@ import CloseIcon from '@mui/icons-material/Close'
 import { Tooltip } from '@mui/material'
 import { mockData } from "@/app/data/mock-data";
 import CartContext from '@/context/CartContext'
+import Menu from '@mui/material/Menu'
+import MenuItem from '@mui/material/MenuItem'
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="right" ref={ref} {...props} />
@@ -60,6 +62,16 @@ export default function Header() {
   }, [])
 
   const isScrolled = scrollY > 0
+
+  const [anchorEl, setAnchorEl] = useState(null);
+
+  const handleMouseEnter = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleMouseLeave = () => {
+    setAnchorEl(null);
+  };
 
   return (
     <div className='h-auto z-10'>
@@ -135,7 +147,11 @@ export default function Header() {
                 <div className='bg-red-500 absolute text-white text-[10px] font-semibold rounded-full px-1 right-[225px] top-[12px]'>{cartItems?.length || ''}</div>
               </Tooltip>
             </Link>
-            <Link href='/login' className='flex items-center text-slate-500 hover:text-slate-900'>
+            <Link 
+            href='/login' 
+            className='flex items-center text-slate-500 hover:text-slate-900'
+            onMouseEnter={handleMouseEnter}
+            >
               <p className='float-left average:hidden'>Đăng nhập</p>
               <PersonIcon
                 sx={{
@@ -145,6 +161,46 @@ export default function Header() {
                 }}
               />
             </Link>
+            <Menu
+            anchorEl={anchorEl}
+            open={Boolean(anchorEl)}
+            onClick={handleMouseLeave}
+            onMouseLeave={handleMouseLeave}
+            PaperProps={{
+              elevation: 0,
+              sx: {
+                overflow: 'visible',
+                filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
+                mt: 1.5,
+                '& .MuiAvatar-root': {
+                  width: 32,
+                  height: 32,
+                  ml: -0.5,
+                  mr: 1,
+                },
+                '&::before': {
+                  content: '""',
+                  display: 'block',
+                  position: 'absolute',
+                  top: 0,
+                  right: 14,
+                  width: 10,
+                  height: 10,
+                  bgcolor: 'background.paper',
+                  transform: 'translateY(-50%) rotate(45deg)',
+                  zIndex: 0,
+                },
+              },
+            }}
+            transformOrigin={{ horizontal: 'right', vertical: 'top' }}
+            anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
+            >
+              <MenuItem onClick={null}>Thông tin của tôi</MenuItem>
+              <MenuItem onClick={null}>Đơn hàng</MenuItem>
+              <MenuItem onClick={null}>Sản phẩm vừa xem</MenuItem>
+              <MenuItem onClick={null}>Wishlist</MenuItem>
+              <MenuItem onClick={null}>Đăng xuất</MenuItem>  
+            </Menu>
           </div>
         </div>
       </div>
