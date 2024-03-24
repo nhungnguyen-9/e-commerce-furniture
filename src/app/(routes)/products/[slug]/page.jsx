@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react'
 import ProductDetail from '../../../components/product/ProductDetail'
 import axios from 'axios'
+import Gallery from '@/app/components/gallery/page'
 
 export default function Product({ params }) {
     const [product, setProduct] = useState([])
@@ -19,8 +20,10 @@ export default function Product({ params }) {
     }, [params.slug])
 
     return (
-        <div>
+        <div className="">
+            <hr className='max-w-screen-xl mx-auto px-4' />
             <ProductDetail product={product} />
+            <Gallery />
         </div>
     )
 }

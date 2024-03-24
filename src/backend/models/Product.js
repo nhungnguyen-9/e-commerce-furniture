@@ -63,7 +63,12 @@ const productSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         require: true,
         ref: 'Category'
-    }
+    },
+    roomId: {
+        type: mongoose.Schema.Types.ObjectId,
+        require: true,
+        ref: 'Room'
+    },
 },
     {
         timestamps: true

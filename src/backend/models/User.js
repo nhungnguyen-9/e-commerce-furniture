@@ -17,11 +17,27 @@ const userSchema = new mongoose.Schema({
     },
     avatar: {
         public_id: String,
-        url: String
+        url: String,
     },
     role: {
         type: String,
         default: 'user'
+    },
+    wishlist: {
+        type: Array,
+        default: []
+    },
+    cart: {
+        type: Array,
+        default: []
+    },
+    products: {
+        type: Array,
+        default: []
+    },
+    orders: {
+        type: Array,
+        default: []
     },
     createdAt: {
         type: Date,

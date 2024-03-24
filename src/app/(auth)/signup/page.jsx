@@ -33,6 +33,10 @@ export default function Signup() {
         }
     }
 
+    const loginWithGoogle = () => {
+        signIn('google', { callbackUrl: '/' })
+    }
+
     return (
         <div className='mb-8 mt-4'>
             <form onSubmit={handleSubmit}>
@@ -88,7 +92,7 @@ export default function Signup() {
 
                         <button
                             className='bg-white tracking-wide font-semibold text-lg text-black w-full rounded-md py-2 mt-3 mb-8 flex items-center gap-4 justify-center border-2 shadow-lg'
-                            onClick={() => signIn('google')}
+                            onClick={loginWithGoogle}
                         >
                             <Image src='/google.jpg' width={40} height={40} alt='google' className='rounded-md' />
                             ĐĂNG KÝ BẰNG GOOGLE

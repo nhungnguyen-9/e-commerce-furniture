@@ -17,6 +17,11 @@ const roomSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         require: true,
         ref: 'Category'
+    }],
+    product: [{
+        type: mongoose.Schema.Types.ObjectId,
+        require: true,
+        ref: 'Product'
     }]
 },
     {

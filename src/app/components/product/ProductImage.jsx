@@ -1,36 +1,31 @@
-// import React from 'react'
-// import Image from 'next/image'
+import React, { useState } from 'react'
+import Image from 'next/image'
 
-// export default function ProductImage({ product }) {
-//     return (
-//         <aside>
-//             <div className="border border-gray-200 shadow-sm p-3 text-center rounded mb-5">
-//                 <img
-//                     className="object-cover inline-block"
-//                     src={product?.image[0]
-//                         ? product?.image[0].url
-//                         : "/images/default_product.png"}
-//                     alt="Product title"
-//                     width="340"
-//                     height="340"
-//                 />
-//             </div>
-//             <div className="space-x-2 overflow-auto text-center whitespace-nowrap">
-//                 {/* {product?.images?.map((img) => (
-//                   <a
-//                     className="inline-block border border-gray-200 p-1 rounded-md hover:border-blue-500 cursor-pointer"
-//                     onClick={() => setImgPreview(img?.url)}
-//                   >
-//                     <img
-//                       className="w-14 h-14"
-//                       src={img.url}
-//                       alt="Product title"
-//                       width="500"
-//                       height="500"
-//                     />
-//                   </a>
-//                 ))} */}
-//             </div>
-//         </aside>
-//     )
-// }
+export default function ProductImage({ productImg }) {
+    const [mainImage, setMainImage] = useState(productImg[0]);
+
+    return (
+        <div className="flex flex-col gap-3 max-w-[500px">
+            <Image
+                src={mainImage}
+                width={500}
+                height={500}
+                alt="product"
+                className="w-96 h-96 rounded-lg shadow-xl object-cover"
+            />
+            <div className="flex gap-2 overflow-auto tailwind-scrollbar-hide">
+                {productImg.map((image, index) => (
+                    <Image
+                        key={index}
+                        src={image}
+                        height={200}
+                        width={200}
+                        alt="product"
+                        className={`w-20 h-20 rounded-lg object-cover cursor-pointer ${mainImage === image ? "border-2 border-black" : ""}`}
+                        onClick={() => setMainImage(image)}
+                    />
+                ))}
+            </div>
+        </div>
+    )
+}

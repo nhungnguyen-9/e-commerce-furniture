@@ -10,18 +10,16 @@ const handler = NextAuth({
         CredentialsProvider({
             name: 'credentials',
             credentials: {},
-            async authorize(credentials) {
-                const { email, password } = credentials
-
+            async authorize(credentials, req) {
                 await connect()
 
-                const user = await User.findOne({ email })
+                const user = await User.findOne({ email: credentials.email })
 
                 if (!user) {
                     throw new Error('Đăng nhập không hợp lệ!')
                 }
 
-                const comparePassword = await bcrypt.compare(password, user.password)
+                const comparePassword = await bcrypt.compare(credentials.password, user.password)
 
                 if (!comparePassword) {
                     throw new Error('Đăng nhập không hợp lệ!')
@@ -43,28 +41,29 @@ const handler = NextAuth({
     },
     secret: process.env.NEXTAUTH_SECRET,
     callbacks: {
-        async signIn({ user, account }) {
+        async signIn({ profile, account }) {
             if (account.provider === 'google') {
                 try {
-                    const { name, email } = user
                     await connect()
-                    const ifUserExists = await User.findOne({ email })
-                    if (ifUserExists) {
-                        return user
+                    let user = await User.findOne({ email: profile.email })
+                    if (!user) {
+                        user = await User.create({
+                            email: profile.email,
+                            name: profile.name,
+                            avatar: profile.image,
+                            wishlist: [],
+                            cart: [],
+                            orders: [],
+                            products: []
+                        })
                     }
-                    const newUser = new User({
-                        name: name,
-                        email: email
-                    })
-                    const res = await newUser.save()
-                    if (res.status === 200 || res.status === 201) {
-                        return user
-                    }
+                    return user
+
                 } catch (error) {
                     console.log(error)
                 }
             }
-            return user
+            return true
         },
         async jwt({ token, user }) {
             if (user) {

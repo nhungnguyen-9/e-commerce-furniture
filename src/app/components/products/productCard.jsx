@@ -1,21 +1,36 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
+import CartContext from '@/context/CartContext'
 
 export default function ProductCard({ product }) {
     const formattedPrice = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(Math.round(product.price)).replace(/\./g, ',')
     const [currentImageIndex, setCurrentImageIndex] = useState(0)
 
+    const { addItemToCart } = useContext(CartContext)
+
+    const addToCartHandler = () => {
+        addItemToCart({
+            product: product.slug,
+            name: product.name,
+            price: product.price,
+            discount: product.discount,
+            image: product.image[0].url,
+            materials: product.materials,
+            size: product.size
+        })
+    }
+
     return (
         <div>
-            <Link href={`/products/${product.slug}`}>
-                <div className='relative group border-2 hover:border-gray-200 border-white w-[300px] h-[380px] p-[10px] small:w-full'
-                    onMouseEnter={() => {
-                        const nextIndex = (currentImageIndex + 1) % product.image.length
-                        setCurrentImageIndex(nextIndex)
-                    }}
-                    onMouseLeave={() => setCurrentImageIndex(0)}
-                >
+            <div className='relative group border-2 hover:border-gray-200 border-white w-[300px] h-[400px] p-[10px] small:w-full'
+                onMouseEnter={() => {
+                    const nextIndex = (currentImageIndex + 1) % product.image.length
+                    setCurrentImageIndex(nextIndex)
+                }}
+                onMouseLeave={() => setCurrentImageIndex(0)}
+            >
+                <Link href={`/products/${product.slug}`}>
                     <div className='h-[200px]'>
                         <img
                             src={
@@ -40,14 +55,25 @@ export default function ProductCard({ product }) {
                         </div>
                     )}
                     <div className='h-[60px]'>{product.name}</div>
-                    <div className='text-right'>{formattedPrice}</div>
+                    {product.discount ? (
+                        <div className='text-right'>
+                            {formattedPrice ? (
+                                <div className='text-sm text-red-600'>{new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(Math.round(product.price * (1 - product.discount / 100))).replace(/\./g, ',')}</div>
+                            ) : null}
+                            <div className='text-sm text-black line-through pt-2'>{formattedPrice}</div>
+                        </div>
+                    ) : (
+                        <div className='text-sm text-right pt-2 text-black'>{formattedPrice}</div>
+                    )}
 
-                    <div className='flex items-center justify-between mt-6 opacity-0 group-hover:opacity-100 transition-opacity'>
-                        <button className='border-black border-2 px-3 py-2 font-semibold hover:bg-black hover:text-white'>THÊM VÀO GIỎ</button>
+                </Link>
+                <div className='flex items-center justify-between mt-6 opacity-0 group-hover:opacity-100 transition-opacity'>
+                    <button className='border-black border-2 px-3 py-2 font-semibold hover:bg-black hover:text-white' onClick={addToCartHandler} >THÊM VÀO GIỎ</button>
+                    <Link href={`/products/${product.slug}`}>
                         <button className='border-black border-2 px-3 py-2 bg-black text-white'>XEM THÊM</button>
-                    </div>
+                    </Link>
                 </div>
-            </Link>
+            </div>
         </div>
     )
 }

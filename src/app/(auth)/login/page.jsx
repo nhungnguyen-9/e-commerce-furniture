@@ -16,8 +16,13 @@ export default function Login() {
         e.preventDefault()
 
         try {
-            const res = await signIn('credentials', { email, password, redirect: false })
-            if (res?.error == null) {
+            const res = await signIn('credentials',
+                {
+                    email: email,
+                    password: password,
+                    redirect: false
+                })
+            if (res?.ok) {
                 router.push('/')
                 toast.success('Đăng nhập thành công!')
             } else {
@@ -26,6 +31,10 @@ export default function Login() {
         } catch (error) {
             console.log(error)
         }
+    }
+
+    const loginWithGoogle = () => {
+        signIn('google', { callbackUrl: '/' })
     }
 
     return (
@@ -76,7 +85,7 @@ export default function Login() {
                         <button
                             type='submit'
                             className='bg-white tracking-wide font-semibold text-lg text-black w-full rounded-md py-2 mt-3 mb-8 flex items-center gap-4 justify-center border-2 shadow-lg'
-                            onClick={() => signIn('google')}
+                            onClick={loginWithGoogle}
                         >
                             <Image src='/google.jpg' width={40} height={40} alt='google' className='rounded-md' />
                             TIẾP TỤC VỚI GOOGLE
