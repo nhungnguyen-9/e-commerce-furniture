@@ -41,24 +41,25 @@ export const CartProvider = ({ children }) => {
             materials,
             size,
             quantity,
-        };
-
-        const isItemExist = cart?.cartItems?.find(
-            (i) => i.product === item.product
-        );
+        }
 
         let newCartItems;
 
-        if (isItemExist) {
-            newCartItems = cart?.cartItems?.map((i) =>
-                i.product === isItemExist.product ? item : i
-            );
+        const existingItemIndex = cart?.cartItems.findIndex(
+            (i) => i.product === item.product
+        )
+
+        if (existingItemIndex !== -1) {
+            const existingItem = cart?.cartItems[existingItemIndex]
+            const updatedItem = { ...existingItem, quantity: existingItem.quantity + quantity }
+            newCartItems = [...cart?.cartItems]
+            newCartItems[existingItemIndex] = updatedItem
         } else {
-            newCartItems = [...(cart?.cartItems || []), item];
+            newCartItems = [...(cart?.cartItems || []), item]
         }
 
-        localStorage.setItem("cart", JSON.stringify({ cartItems: newCartItems }));
-        setCartToState();
+        localStorage.setItem("cart", JSON.stringify({ cartItems: newCartItems }))
+        setCartToState()
     };
 
     const deleteItemFromCart = (slug) => {
