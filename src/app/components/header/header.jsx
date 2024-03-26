@@ -1,5 +1,4 @@
 'use client'
-'use client'
 import React, { useState, useEffect, useContext } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -22,8 +21,9 @@ import RoomCategoryList from './RoomCategoryList'
 import ProductCategoryList from './ProductCategoryList'
 import CloseIcon from '@mui/icons-material/Close'
 import { Tooltip } from '@mui/material'
-import { mockData } from "@/app/data/mock-data";
+import { mockData } from "@/app/data/mock-data"
 import CartContext from '@/context/CartContext'
+import { signOut, useSession } from 'next-auth/react'
 import Menu from '@mui/material/Menu'
 import MenuItem from '@mui/material/MenuItem'
 
@@ -66,12 +66,22 @@ export default function Header() {
   const [anchorEl, setAnchorEl] = useState(null);
 
   const handleMouseEnter = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
+    setAnchorEl(event.currentTarget)
+  }
 
   const handleMouseLeave = () => {
-    setAnchorEl(null);
-  };
+    setAnchorEl(null)
+  }
+
+  // display user
+  const [user, setUser] = useState(null)
+  const { data } = useSession()
+  // console.log(data)
+  useEffect(() => {
+    if (data) {
+      setUser(data?.user)
+    }
+  }, [data])
 
   return (
     <div className='h-auto z-10'>
@@ -120,14 +130,14 @@ export default function Header() {
 
           {/* Cart */}
           <div className='flex items-center ml-auto h-7 space-x-4 md:mr-[20px] lg:mr-[120px] tablet:hidden mobile:hidden'>
-            <a href='#'>
+            <Link href='#'>
               <PlaceOutlinedIcon
                 sx={{
                   color: 'rgba(47,47,47,0.5)',
                   '&:hover': { color: 'rgba(47,47,47,0.9)' },
                 }}
               />
-            </a>
+            </Link>
             <Link href='/account/wishlist'>
               <FavoriteBorderIcon
                 sx={{
@@ -137,70 +147,87 @@ export default function Header() {
               />
             </Link>
             <Link href='/gio-hang'>
-              <Tooltip title='Cart' sx={{ position: 'relative' }}>
-                <ShoppingBagIcon
+              <Tooltip title='Cart'>
+                <div className='relative'>
+                  <ShoppingBagIcon
+                    sx={{
+                      color: 'rgba(47,47,47,0.5)',
+                      '&:hover': { color: 'rgba(47,47,47,0.9)' },
+                    }}
+                  />
+                  <div className='bg-red-500 absolute text-white text-[10px] font-semibold rounded-full px-1 right-[-8px] top-0'>{cartItems?.length || ''}</div>
+                </div>
+              </Tooltip>
+            </Link>
+
+            {/* display user */}
+            {!user ? (
+              <Link href='/login' className='flex items-center text-slate-500 hover:text-slate-900'>
+                <p className='float-left average:hidden'>Đăng nhập</p>
+                <PersonIcon
                   sx={{
                     color: 'rgba(47,47,47,0.5)',
+                    fontSize: '18px',
                     '&:hover': { color: 'rgba(47,47,47,0.9)' },
                   }}
                 />
-                <div className='bg-red-500 absolute text-white text-[10px] font-semibold rounded-full px-1 right-[225px] top-[12px]'>{cartItems?.length || ''}</div>
-              </Tooltip>
-            </Link>
-            <Link 
-            href='/login' 
-            className='flex items-center text-slate-500 hover:text-slate-900'
-            onMouseEnter={handleMouseEnter}
-            >
-              <p className='float-left tablet:hidden mobile:hidden'>Đăng nhập</p>
-              <PersonIcon
-                sx={{
-                  color: 'rgba(47,47,47,0.5)',
-                  fontSize: '18px',
-                  '&:hover': { color: 'rgba(47,47,47,0.9)' },
-                }}
-              />
-            </Link>
-            <Menu
-            anchorEl={anchorEl}
-            open={Boolean(anchorEl)}
-            onClick={handleMouseLeave}
-            onMouseLeave={handleMouseLeave}
-            PaperProps={{
-              elevation: 0,
-              sx: {
-                overflow: 'visible',
-                filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
-                mt: 1.5,
-                '& .MuiAvatar-root': {
-                  width: 32,
-                  height: 32,
-                  ml: -0.5,
-                  mr: 1,
-                },
-                '&::before': {
-                  content: '""',
-                  display: 'block',
-                  position: 'absolute',
-                  top: 0,
-                  right: 14,
-                  width: 10,
-                  height: 10,
-                  bgcolor: 'background.paper',
-                  transform: 'translateY(-50%) rotate(45deg)',
-                  zIndex: 0,
-                },
-              },
-            }}
-            transformOrigin={{ horizontal: 'right', vertical: 'top' }}
-            anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
-            >
-              <MenuItem onClick={null}>Thông tin của tôi</MenuItem>
-              <MenuItem onClick={null}>Đơn hàng</MenuItem>
-              <MenuItem onClick={null}>Sản phẩm vừa xem</MenuItem>
-              <MenuItem onClick={null}>Wishlist</MenuItem>
-              <MenuItem onClick={null}>Đăng xuất</MenuItem>  
-            </Menu>
+              </Link>
+            ) : (
+              <div>
+                <Link href='/tai-khoan/edit-account' className='flex items-center text-slate-500 hover:text-slate-900' onMouseEnter={handleMouseEnter}>
+                  <p className='float-left average:hidden'>{user?.name}</p>
+                  <PersonIcon
+                    sx={{
+                      color: 'rgba(47,47,47,0.5)',
+                      fontSize: '18px',
+                      '&:hover': { color: 'rgba(47,47,47,0.9)' },
+                    }}
+                  />
+                </Link>
+                <Menu
+                  anchorEl={anchorEl}
+                  open={Boolean(anchorEl)}
+                  onClick={handleMouseLeave}
+                  onMouseLeave={handleMouseLeave}
+                  PaperProps={{
+                    elevation: 0,
+                    sx: {
+                      overflow: 'visible',
+                      filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
+                      mt: 1.5,
+                      '& .MuiAvatar-root': {
+                        width: 32,
+                        height: 32,
+                        ml: -0.5,
+                        mr: 1,
+                      },
+                      '&::before': {
+                        content: '""',
+                        display: 'block',
+                        position: 'absolute',
+                        top: 0,
+                        right: 14,
+                        width: 10,
+                        height: 10,
+                        bgcolor: 'background.paper',
+                        transform: 'translateY(-50%) rotate(45deg)',
+                        zIndex: 0,
+                      },
+                    },
+                  }}
+                  transformOrigin={{ horizontal: 'right', vertical: 'top' }}
+                  anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
+                >
+                  <Link href='/tai-khoan/edit-account'>
+                    <MenuItem>Thông tin của tôi</MenuItem>
+                  </Link>
+                  <MenuItem onClick={null}>Đơn hàng</MenuItem>
+                  <MenuItem onClick={null}>Sản phẩm vừa xem</MenuItem>
+                  <MenuItem onClick={null}>Wishlist</MenuItem>
+                  <MenuItem onClick={() => signOut()}>Đăng xuất</MenuItem>
+                </Menu>
+              </div>
+            )}
           </div>
         </div>
       </div>
