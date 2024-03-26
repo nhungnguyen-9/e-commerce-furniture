@@ -7,7 +7,7 @@ export default function ProductCard({ product }) {
     const formattedPrice = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(Math.round(product.price)).replace(/\./g, ',')
     const [currentImageIndex, setCurrentImageIndex] = useState(0)
 
-    const { addItemToCart } = useContext(CartContext)
+    const { addItemToCart, cart } = useContext(CartContext)
 
     const addToCartHandler = () => {
         const existingCartItem = cart?.cartItems?.find(item => item.product === product.slug)
@@ -26,7 +26,7 @@ export default function ProductCard({ product }) {
                 image: product.image[0].url,
                 materials: product.materials,
                 size: product.size,
-                quantity: quantity
+                quantity: 1
             })
         }
     }
