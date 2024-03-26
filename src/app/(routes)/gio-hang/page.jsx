@@ -13,25 +13,27 @@ export default function Cart() {
     const { addItemToCart, deleteItemFromCart, cart } = useContext(CartContext)
 
     const increaseQty = (cartItem) => {
-        const newQty = cartItem?.quantity + 1;
-        const item = { ...cartItem, quantity: newQty };
+        const newQty = cartItem?.quantity + 1
+        const item = { ...cartItem, quantity: newQty }
 
-        addItemToCart(item);
-    };
+        addItemToCart(item)
+    }
 
     const decreaseQty = (cartItem) => {
-        const newQty = cartItem?.quantity - 1;
-        const item = { ...cartItem, quantity: newQty };
-
-        if (newQty <= 0) return;
-
-        addItemToCart(item);
-    };
+        const newQty = cartItem?.quantity - 1
+        if (newQty < 1) {
+            // If the new quantity is less than 1, remove the item from the cart
+            deleteItemFromCart(cartItem.product);
+        } else {
+            const item = { ...cartItem, quantity: newQty };
+            addItemToCart(item);
+        }
+    }
 
     const amount = cart?.cartItems?.reduce(
         (acc, item) => acc + item.quantity * item.price,
         0
-    );
+    )
 
     const totalAmount = (Number(amount))
 

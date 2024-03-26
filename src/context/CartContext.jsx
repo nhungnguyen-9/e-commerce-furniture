@@ -1,17 +1,17 @@
 "use client"
 
-import { useRouter } from "next/navigation";
-import { createContext, useState, useEffect } from "react";
+import { useRouter } from "next/navigation"
+import { createContext, useState, useEffect } from "react"
 
 const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
     const [cart, setCart] = useState([]);
 
-    const router = useRouter;
+    const router = useRouter()
 
     useEffect(() => {
-        setCartToState();
+        setCartToState()
     }, []);
 
     const setCartToState = () => {
@@ -73,6 +73,7 @@ export const CartProvider = ({ children }) => {
         <CartContext.Provider
             value={{
                 cart,
+                setCart,
                 addItemToCart,
                 deleteItemFromCart,
             }}

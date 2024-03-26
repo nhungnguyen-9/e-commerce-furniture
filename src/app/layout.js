@@ -17,9 +17,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={roboto.className}>
-        <CartProvider>
-          <div className='flex flex-col min-h-screen'>
-            <Provider>
+        <div className='flex flex-col min-h-screen'>
+          <Provider>
+            <CartProvider>
               <Header />
               <ToastContainer
                 position='bottom-right'
@@ -35,9 +35,9 @@ export default function RootLayout({ children }) {
               />
               <main className='flex-grow'>{children}</main>
               <Footer />
-            </Provider>
-          </div>
-        </CartProvider>
+            </CartProvider>
+          </Provider>
+        </div>
       </body>
     </html>
   )

@@ -62,7 +62,7 @@ export default function ProductDetail({ product }) {
     //     fetchBreadcrumbs();
     // }, [product]);
 
-    const { addItemToCart, cart } = useContext(CartContext)
+    const { addItemToCart, cart, setCart } = useContext(CartContext)
 
     const imgRef = useRef(null)
     const [quantity, setQuantity] = useState(1)
@@ -107,7 +107,7 @@ export default function ProductDetail({ product }) {
     const addToCartHandler = () => {
         const existingCartItem = cart?.cartItems?.find(item => item.product === product.slug);
         if (existingCartItem) {
-            const newQuantity = existingCartItem.quantity + 1;
+            const newQuantity = existingCartItem.quantity + quantity;
             const updatedCartItems = cart.cartItems.map(item =>
                 item.product === product.slug ? { ...item, quantity: newQuantity } : item
             );
