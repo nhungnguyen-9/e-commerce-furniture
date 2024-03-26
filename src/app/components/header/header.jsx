@@ -332,7 +332,7 @@ export default function Header() {
             />
           </div>
 
-          {/* Search at small reponsive */}
+          {/* Search at mobile reponsive */}
           <div className='group'>
             <button className='absolute top-[30px] right-[45px] hidden hover:bg-gray-600 group-hover:block rounded w-[35px] h-[35px] tablet:block mobile:block'>
               <SearchIcon className='hover:fill-white' fontSize='medium' />
@@ -356,7 +356,7 @@ export default function Header() {
               </div>
             </div>
           </div>
-          {/* shoping cart at small device */}
+          {/* shoping cart at mobile device */}
           <Link href='/cart'>
             <div className='hidden absolute top-[32px] right-[12px] tablet:block mobile:block'>
               <Tooltip title='Cart'>

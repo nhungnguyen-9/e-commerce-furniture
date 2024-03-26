@@ -12,7 +12,7 @@ export default function Footer() {
     return (
         <div className='bg-[#303036] text-[#f1f1e6] px-5'>
             <div className='max-w-[1320px] mx-auto pb-7 pt-8'>
-                <div className='grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4'>
+                <div className='grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 tablet:max-w-full'>
                     <div>
                         <span className='font-span text-span leading-span tracking-span'>KẾT NỐI VỚI NHÀ XINH</span>
                         <div className='bg-[rgba(255,255,255,.3)] font-[0.875em] h-[3px] max-w-[30px] my-[1em] mx-0'></div>
