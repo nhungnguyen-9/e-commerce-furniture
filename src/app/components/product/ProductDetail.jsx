@@ -62,7 +62,7 @@ export default function ProductDetail({ product }) {
     //     fetchBreadcrumbs();
     // }, [product]);
 
-    const { addItemToCart } = useContext(CartContext)
+    const { addItemToCart, cart } = useContext(CartContext)
 
     const imgRef = useRef(null)
     const [quantity, setQuantity] = useState(1)
@@ -105,16 +105,33 @@ export default function ProductDetail({ product }) {
     ];
 
     const addToCartHandler = () => {
-        addItemToCart({
-            product: product.slug,
-            name: product.name,
-            price: product.price,
-            discount: product.discount,
-            image: product.image[0].url,
-            materials: product.materials,
-            size: product.size
-        })
-    }
+        const existingCartItem = cart?.cartItems?.find(item => item.product === product.slug);
+        if (existingCartItem) {
+            const newQuantity = existingCartItem.quantity + 1;
+            const updatedCartItems = cart.cartItems.map(item =>
+                item.product === product.slug ? { ...item, quantity: newQuantity } : item
+            );
+            updateCartItems(updatedCartItems);
+        } else {
+            addItemToCart({
+                product: product.slug,
+                name: product.name,
+                price: product.price,
+                discount: product.discount,
+                image: product.image[0].url,
+                materials: product.materials,
+                size: product.size,
+                quantity: quantity
+            });
+        }
+    };
+
+    const updateCartItems = (updatedCartItems) => {
+        // Update local storage and cart context
+        localStorage.setItem("cart", JSON.stringify({ cartItems: updatedCartItems }));
+        // Set the updated cart items to the context
+        setCart({ ...cart, cartItems: updatedCartItems });
+    };
 
     return (
         <div>
@@ -190,12 +207,12 @@ export default function ProductDetail({ product }) {
                             <div className="flex items-center gap-8 my-5">
                                 <div className="flex flex-col gap-2">
                                     <div className="flex gap-4 items-center shadow-md p-3 ">
-                                        <Plus
+                                        <Minus
                                             className="hover:text-red-1 cursor-pointer"
                                             onClick={() => quantity > 1 && setQuantity(quantity - 1)}
                                         />
                                         <div className="text-body-bold">{quantity}</div>
-                                        <Minus
+                                        <Plus
                                             className="hover:text-red-1 cursor-pointer"
                                             onClick={() => setQuantity(quantity + 1)}
                                         />

@@ -24,6 +24,7 @@ import CloseIcon from '@mui/icons-material/Close'
 import { Tooltip } from '@mui/material'
 import { mockData } from "@/app/data/mock-data";
 import CartContext from '@/context/CartContext'
+import { useSession } from 'next-auth/react'
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="right" ref={ref} {...props} />
@@ -60,6 +61,16 @@ export default function Header() {
   }, [])
 
   const isScrolled = scrollY > 0
+
+  // display user
+  const [user, setUser] = useState(null)
+  const { data } = useSession()
+  // console.log(data)
+  useEffect(() => {
+    if (data) {
+      setUser(data?.user)
+    }
+  }, [data])
 
   return (
     <div className='h-auto z-10'>
@@ -108,14 +119,14 @@ export default function Header() {
 
           {/* Cart */}
           <div className='flex items-center ml-auto h-7 space-x-4 md:mr-[20px] lg:mr-[120px] average:hidden'>
-            <a href='#'>
+            <Link href='#'>
               <PlaceOutlinedIcon
                 sx={{
                   color: 'rgba(47,47,47,0.5)',
                   '&:hover': { color: 'rgba(47,47,47,0.9)' },
                 }}
               />
-            </a>
+            </Link>
             <Link href='/account/wishlist'>
               <FavoriteBorderIcon
                 sx={{
@@ -125,26 +136,43 @@ export default function Header() {
               />
             </Link>
             <Link href='/gio-hang'>
-              <Tooltip title='Cart' sx={{ position: 'relative' }}>
-                <ShoppingBagIcon
+              <Tooltip title='Cart'>
+                <div className='relative'>
+                  <ShoppingBagIcon
+                    sx={{
+                      color: 'rgba(47,47,47,0.5)',
+                      '&:hover': { color: 'rgba(47,47,47,0.9)' },
+                    }}
+                  />
+                  <div className='bg-red-500 absolute text-white text-[10px] font-semibold rounded-full px-1 right-[-8px] top-0'>{cartItems?.length || ''}</div>
+                </div>
+              </Tooltip>
+            </Link>
+
+            {/* display user */}
+            {!user ? (
+              <Link href='/login' className='flex items-center text-slate-500 hover:text-slate-900'>
+                <p className='float-left average:hidden'>Đăng nhập</p>
+                <PersonIcon
                   sx={{
                     color: 'rgba(47,47,47,0.5)',
+                    fontSize: '18px',
                     '&:hover': { color: 'rgba(47,47,47,0.9)' },
                   }}
                 />
-                <div className='bg-red-500 absolute text-white text-[10px] font-semibold rounded-full px-1 right-[225px] top-[12px]'>{cartItems?.length || ''}</div>
-              </Tooltip>
-            </Link>
-            <Link href='/login' className='flex items-center text-slate-500 hover:text-slate-900'>
-              <p className='float-left average:hidden'>Đăng nhập</p>
-              <PersonIcon
-                sx={{
-                  color: 'rgba(47,47,47,0.5)',
-                  fontSize: '18px',
-                  '&:hover': { color: 'rgba(47,47,47,0.9)' },
-                }}
-              />
-            </Link>
+              </Link>
+            ) : (
+              <Link href='/tai-khoan/edit-account' className='flex items-center text-slate-500 hover:text-slate-900'>
+                <p className='float-left average:hidden'>{user?.name}</p>
+                <PersonIcon
+                  sx={{
+                    color: 'rgba(47,47,47,0.5)',
+                    fontSize: '18px',
+                    '&:hover': { color: 'rgba(47,47,47,0.9)' },
+                  }}
+                />
+              </Link>
+            )}
           </div>
         </div>
       </div>
