@@ -7,11 +7,11 @@ export default function Category() {
     return (
         <div>
             {/* Bulletin board */}
-            <div className='overflow-hidden h-full w-full object-cover'>
+            <div className='relative overflow-hidden h-full w-full object-cover'>
                 <div className='bg-category_image w-full h-[782px] hover:scale-110 transition duration-700 object-cover cursor-grab active:cursor-grabbing'>
                 </div>
 
-                <div className='w-fit h-fit left-[36%] small:left-[5%] average:left-[27%] absolute top-[350px] flex flex-col justify-center items-center cursor-grab active:cursor-grabbing'>
+                <div className='absolute top-0 w-full h-full flex flex-col justify-center items-center cursor-grab active:cursor-grabbing'>
                     <p className='text-center text-white text-[18px]'>CLEARANCE</p>
                     <p className='text-center text-white text-[25px]'>DỌN TỒN KHO – ĐÓN HÀNG MỚI</p>
                     <p className='text-center text-white text-[18px]'>ƯU ĐÃI ĐẾN</p>
@@ -23,66 +23,42 @@ export default function Category() {
             </div>
 
             {/* Category */}
-            <div>
-                <div className='w-full h-fit bg-white flex flex-row small:flex-col average:flex-col'>
-                    <div className='w-1/2 h-[580px] relative overflow-hidden pl-[20px] mt-[20px] small:w-full small:p-0 small:my-2 small:h-[250px] average:w-full average:p-0 average:my-2 average:h-[700px]'>
-                        <div className='relative bottom-48'>
-                            <Link href='#a'>
-                                <Image
-                                    src='/category/BST-COASTAL-SOFA-VANG.jpg'
-                                    width={898}
-                                    height={1000}
-                                    quality={100}
-                                    alt='Sofa'
-                                />
-                                <p className='text-[20px] relative bottom-[350px] text-center uppercase text-white font-semibold small:bottom-[150px]'>sofa</p>
-                            </Link>
-                        </div>
+            <div className='p-[20px]'>
+                <div className='w-full h-fit bg-white flex flex-row mobile:flex-col mobile:h-[1560px]'>
+                    <div className='w-1/2 h-[620px] bg-category_sofa bg-cover bg-bottom mobile:w-full mobile:h-[300px] mobile:mb-[20px]'>
+                        <Link href='#' className='w-full h-full flex flex-col items-center justify-center'>
+                            <p className='text-[20px] text-center uppercase text-white font-semibold'>sofa</p>
+                        </Link>
                     </div>
 
-                    <div className='flex flex-row flex-wrap items-start w-1/2 h-[600px] mb-[20px] small:flex-col small:w-full small:h-fit small:mb-2 average:flex-col average:w-full average:h-fit average:mb-2 average:overflow-hidden'>
-                        <Link href='#1' className='w-[50%] h-[300px] overflow-hidden p-[20px] small:w-full small:p-0 small:m-0 small:h-[250px] average:w-full average:p-0 average:m-0 average:h-[500px]'>
-                            <Image
-                                src='/category/ban-an-vuong.jpg'
-                                width={700}
-                                height={700}
-                                quality={100}
-                                alt='Sofa'
-                            />
-                            <p className='text-[20px] text-center uppercase text-white font-semibold relative bottom-[300px]'>bàn ăn</p>
-                        </Link>
+                    <div className='flex flex-row flex-wrap items-start w-1/2 h-[600px] mb-[20px] mobile:w-full'>
+                        <div className='flex flex-row w-full pl-[20px] mb-[20px] mobile:p-0 mobile:m-0 mobile:flex-col mobile:mb-[20px]'>
+                            <div className='w-1/2 h-[300px] bg-category_table bg-cover bg-bottom mobile:w-full mobile:mb-[20px]'>
+                                <Link href='#1' className='w-full h-full flex flex-col items-center justify-center'>
+                                    <p className='text-[20px] relative text-center uppercase text-white font-semibold'>bàn ăn</p>
+                                </Link>
+                            </div>
 
-                        <Link href='#2' className='w-[359px] h-[280px] overflow-hidden relative mt-[20px] mr-[20px] small:w-full small:mt-2 small:p-0 small:h-[250px] average:w-full average:p-0 average:m-0 average:h-[600px]'>
-                            <Image
-                                src='/category/giuong-ngu-pio.jpg'
-                                fill='true'
-                                quality={100}
-                                alt='Sofa'
-                            />
-                            <p className='text-[20px] text-center uppercase text-white font-semibold relative -bottom-[100px]'>giường</p>
-                        </Link>
+                            <div className='w-1/2 h-[300px] bg-category_bed bg-cover bg-bottom ml-[20px] mobile:w-full mobile:m-0'>
+                                <Link href='#1' className='w-full h-full flex flex-col items-center justify-center'>
+                                    <p className='text-[20px] relative text-center uppercase text-white font-semibold'>giường</p>
+                                </Link>
+                            </div>
+                        </div>
 
-                        <Link href='#3' className='w-[50%] h-[300px] overflow-hidden p-[20px] small:w-full small:p-0 small:mt-2 small:h-[250px] average:w-full average:p-0 average:m-0 average:h-[600px]'>
-                            <Image
-                                src='/category/banner-armchair.jpg'
-                                width={600}
-                                height={501}
-                                quality={100}
-                                alt='Sofa'
-                            />
-                            <p className='text-[20px] text-center uppercase text-white font-semibold relative bottom-[250px]'>armchair</p>
-                        </Link>
+                        <div className='flex flex-row w-full pl-[20px] mobile:p-0 mobile:m-0 mobile:flex-col'>
+                            <div className='w-1/2 h-[300px] bg-category_armchair bg-cover bg-bottom mobile:w-full mobile:mb-[20px]'>
+                                <Link href='#1' className='w-full h-full flex flex-col items-center justify-center'>
+                                    <p className='text-[20px] relative text-center uppercase text-white font-semibold'>armchair</p>
+                                </Link>
+                            </div>
 
-                        <Link href='#4' className='w-[50%] h-[300px] overflow-hidden pt-[20px] pr-[20px] small:w-full small:p-0 small:mt-2 small:h-[250px] average:w-full average:p-0 average:m-0 average:h-[600px]'>
-                            <Image
-                                src='/category/ghe-phong-an.jpg'
-                                width={749}
-                                height={800}
-                                quality={100}
-                                alt='Sofa'
-                            />
-                            <p className='text-[20px] text-center uppercase text-white font-semibold relative bottom-[350px]'>ghế ăn</p>
-                        </Link>
+                            <div className='w-1/2 h-[300px] bg-category_chair bg-cover bg-bottom ml-[20px] mobile:w-full mobile:m-0'>
+                                <Link href='#1' className='w-full h-full flex flex-col items-center justify-center'>
+                                    <p className='text-[20px] relative text-center uppercase text-white font-semibold'>ghế ăn</p>
+                                </Link>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

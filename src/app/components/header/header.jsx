@@ -78,8 +78,8 @@ export default function Header() {
       <div className='h-14 py-2.5 border-b border-solid border-[#F6F7F8] relative'>
         <div className='flex items-center justify-around h-full'>
           {/* Language */}
-          <div className='flex items-center mr-auto h-7 space-x-1 md:ml-[-95px] lg:ml-[2px] average:absolute average:mr-[200px]'>
-            <a href='#' className='ml-28 average:ml-5 average:hidden'>
+          <div className='flex items-center mr-auto h-7 space-x-1 md:ml-[-95px] lg:ml-[2px] tablet:absolute tablet:mr-[200px] mobile:absolute mobile:mr-[200px]'>
+            <a href='#' className='ml-28 tablet:ml-5 tablet:hidden mobile:ml-5 mobile:hidden'>
               <Image
                 className='rounded-full'
                 src='/header/VietNam_flag.png'
@@ -88,38 +88,38 @@ export default function Header() {
                 alt='Icon Language'
               />
             </a>
-            <a href='#' className='!text-slate-300 text-sm average:hidden'>
+            <a href='#' className='!text-slate-300 text-sm tablet:hidden mobile:hidden'>
               VN
             </a>
-            <a href='#' className='!text-slate-900 text-sm average:hidden'>
+            <a href='#' className='!text-slate-900 text-sm tablet:hidden mobile:hidden'>
               EN
             </a>
             {/* Information */}
             <div className='relative left-14 flex flex-row justify-evenly space-x-4'>
-              <a href='#' className='text-sm font-bold average:text-center'>
+              <a href='#' className='text-sm font-bold'>
                 <CallIcon sx={{ fontSize: '15px' }} />
                 1800 7200
               </a>
               <Link
                 href='/about'
-                className='text-sm text-slate-500 hover:text-slate-900 average:hidden'
+                className='text-sm text-slate-500 hover:text-slate-900 tablet:hidden mobile:hidden'
               >
                 Giới thiệu
               </Link>
               <Link
                 href='/sales'
-                className='text-sm text-slate-500 hover:text-slate-900 average:hidden'
+                className='text-sm text-slate-500 hover:text-slate-900 tablet:hidden mobile:hidden'
               >
                 Khuyến mãi
               </Link>
-              <Link href='/' className='text-sm text-red-600 average:hidden'>
+              <Link href='/' className='text-sm text-red-600 tablet:hidden mobile:hidden'>
                 Giảm giá đặc biệt
               </Link>
             </div>
           </div>
 
           {/* Cart */}
-          <div className='flex items-center ml-auto h-7 space-x-4 md:mr-[20px] lg:mr-[120px] average:hidden'>
+          <div className='flex items-center ml-auto h-7 space-x-4 md:mr-[20px] lg:mr-[120px] tablet:hidden mobile:hidden'>
             <a href='#'>
               <PlaceOutlinedIcon
                 sx={{
@@ -152,7 +152,7 @@ export default function Header() {
             className='flex items-center text-slate-500 hover:text-slate-900'
             onMouseEnter={handleMouseEnter}
             >
-              <p className='float-left average:hidden'>Đăng nhập</p>
+              <p className='float-left tablet:hidden mobile:hidden'>Đăng nhập</p>
               <PersonIcon
                 sx={{
                   color: 'rgba(47,47,47,0.5)',
@@ -208,7 +208,7 @@ export default function Header() {
       <div
         className={`h-[90px] ${isScrolled ? 'fixed top-0 w-full bg-white shadow-[12px 12px 50px rgba(0, 0, 0, 0.4)] transition-transform -translate-y-2' : 'sticky'} bg-white`}
       >
-        <div className='flex items-center h-full ml-24 md:ml-0 lg:ml-24 average:ml-0'>
+        <div className='flex items-center h-full ml-24 md:ml-0 lg:ml-24 tablet:ml-0 mobile:ml-0'>
           <Button
             onClick={handleTransitionButtonClick}
             style={{ color: '#000000' }}
@@ -216,7 +216,7 @@ export default function Header() {
           >
             <MenuIcon fontSize='large' />
           </Button>
-          <Link href='/' className='w-36 h-14 mr-10 average:mr-0 average:absolute average:right-[35%]'>
+          <Link href='/' className='w-36 h-14 mr-10 tablet:mr-0 tablet:absolute tablet:right-[35%] mobile:mr-0 mobile:absolute mobile:right-[35%]'>
             <div className='w-36 h-14'>
               <Image
                 src='/header/logo-nha-xinh.png'
@@ -228,7 +228,7 @@ export default function Header() {
             </div>
           </Link>
           {/* Category */}
-          <div className='flex flex-row items-center space-x-4 flex-wrap w-2/3 justify-start average:hidden'>
+          <div className='flex flex-row items-center space-x-4 flex-wrap w-2/3 justify-start tablet:hidden mobile:hidden'>
             <div className='group w-fit'>
               <Link
                 href='/shop'
@@ -288,7 +288,7 @@ export default function Header() {
           </div>
 
           {/* Search */}
-          <div className='relative md:ml-14 average:hidden w-[480px]'>
+          <div className='relative md:ml-14 w-[480px] tablet:hidden mobile:hidden'>
             <TextField
               id='outlined-basic'
               label='Tìm sản phẩm'
@@ -305,9 +305,9 @@ export default function Header() {
             />
           </div>
 
-          {/* Search at small reponsive */}
+          {/* Search at mobile reponsive */}
           <div className='group'>
-            <button className='absolute top-[30px] right-[45px] hidden hover:bg-gray-600 average:block group-hover:block rounded w-[35px] h-[35px]'>
+            <button className='absolute top-[30px] right-[45px] hidden hover:bg-gray-600 group-hover:block rounded w-[35px] h-[35px] tablet:block mobile:block'>
               <SearchIcon className='hover:fill-white' fontSize='medium' />
             </button>
             <div className='hidden absolute right-11 py-4 top-[70px] group-hover:block bg-white shadow-sm border-2'>
@@ -329,9 +329,9 @@ export default function Header() {
               </div>
             </div>
           </div>
-          {/* shoping cart at small device */}
+          {/* shoping cart at mobile device */}
           <Link href='/cart'>
-            <div className='hidden absolute top-[32px] right-[12px] average:block'>
+            <div className='hidden absolute top-[32px] right-[12px] tablet:block mobile:block'>
               <Tooltip title='Cart'>
                 <ShoppingBagIcon
                   sx={{
@@ -432,7 +432,7 @@ export default function Header() {
                 'Tượng trang trí',
               ]}
             />
-            <div className='hidden average:block'>
+            <div className='hidden tablet:block mobile:block'>
               <div className='ml-4 mt-6 hover:text-amber-500'>
                 <Link href='/collection'>BỘ SƯU TẬP</Link>
               </div>

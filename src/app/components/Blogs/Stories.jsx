@@ -75,9 +75,9 @@ export default function Stories(props) {
     }, []);
 
     return (
-        <div className='small:w-full small:h-fit'>
+        <div className=''>
             <h1 className='text-center text-[40px] font-medium mb-7'>Chuyện Nhà Xinh</h1>
-            <Carousel className='mb-[70px] h-[550px] block small:hidden' animation='slide'>
+            {/* <Carousel className='mb-[70px] h-[550px] block small:hidden' animation='slide'>
                 {groupedPages.map((group, groupIndex) => (
                     <div key={groupIndex} className='w-full flex flex-row'>
                         {group.map((item, i) => (
@@ -85,9 +85,9 @@ export default function Stories(props) {
                         ))}
                     </div>
                 ))}
-            </Carousel>
+            </Carousel> */}
 
-            <Carousel className='mb-[70px] h-[550px] small:block hidden small:w-full small:h-[430px]' animation='slide'>
+            <Carousel className='mb-[70px] h-[550px] block' animation='slide'>
             {
                 pages.map((item, i) => <Item key={i} item={item} /> )
             }
@@ -99,21 +99,14 @@ export default function Stories(props) {
 function Item(props)
 {
     return (
-        <div className='flex h-[500px] justify-center items-center w-full'>
-            <a href='' className='flex flex-col justify-center items-center space-y-[16px] w-[50%] group small:w-full'>
-                <div className='w-[700px] h-[380px] overflow-hidden relative group-hover:brightness-105'>
-                    <Image 
-                    src={props.item.imageUrl}
-                    width={props.item.width}
-                    height={props.item.height}
-                    style={{objectFit: 'cover'}}
-                    quality={100}
-                    alt="Item 1"
-                    />
+        <div className='flex h-[500px] justify-center items-center w-screen'>
+            <a href='' className='flex flex-col justify-center items-center space-y-[16px] w-[50%] group mobile:w-full'>
+                <div className='w-[700px] h-[380px] overflow-hidden bg-cover bg-bottom relative group-hover:brightness-105 mobile:h-[250px] mobile:w-full' style={{ backgroundImage: `url(${props.item.imageUrl})` }}>
                 </div>
-                <div className='h-[100px] transition duration-300 group-hover:-translate-y-2 small:h-[300px] small:w-full'>
-                    <h2 className='text-[20px] font-medium h-[50px] w-[700px] text-center small:w-full small:h-[80px]'>{props.item.title}</h2>
-                    <p className='h-[50px] w-[700px] text-center small:w-full small:h-[80px]'>{props.item.description}</p>
+
+                <div className='h-[100px] transition duration-300 group-hover:-translate-y-2 mobile:w-full mobile:space-y-[40px]'>
+                    <h2 className='text-[20px] font-medium h-[50px] w-[700px] text-center mobile:w-full'>{props.item.title}</h2>
+                    <p className='h-[50px] w-[700px] text-center mobile:w-full'>{props.item.description}</p>
                 </div>
             </a>
         </div>

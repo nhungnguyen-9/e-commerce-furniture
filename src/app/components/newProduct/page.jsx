@@ -55,7 +55,7 @@ function Item({ product }) {
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
     return (
-        <Link href={`/products/${product.slug}`}>
+        <div href={`/products/${product.slug}`}>
             <div className='relative group border-2 hover:border-gray-200 border-white w-[300px] h-[400px] p-[10px] small:w-full'
                 onMouseEnter={() => {
                     const nextIndex = (currentImageIndex + 1) % product.image.length;
@@ -105,6 +105,6 @@ function Item({ product }) {
                     </Link>
                 </div>
             </div>
-        </Link>
+        </div>
     )
 }

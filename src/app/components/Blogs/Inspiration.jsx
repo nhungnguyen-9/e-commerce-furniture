@@ -64,7 +64,7 @@ export default function Inspiration(props) {
     return (
         <div className=''>
             <h1 className='text-center text-[40px] font-medium mb-7'>Góc cảm hứng</h1>
-            <Carousel className='mb-[40px] h-[550px] block small:hidden' animation='slide'>
+            {/* <Carousel className='mb-[40px] h-[550px] block small:hidden' animation='slide'>
             {groupedPages.map((group, groupIndex) => (
                     <div key={groupIndex} className='w-full flex flex-row'>
                         {group.map((item, i) => (
@@ -72,10 +72,10 @@ export default function Inspiration(props) {
                         ))}
                     </div>
                 ))}
-            </Carousel>
+            </Carousel> */}
 
             <Carousel
-            className='mb-[40px] h-[550px] small:block hidden small:h-[350px]' 
+            className='mb-[40px] h-[550px] block' 
             animation='slide'
             >
             {pages.map((item, i) => (   
@@ -93,21 +93,14 @@ export default function Inspiration(props) {
 function Item(props)
 {
     return (
-        <div className='flex flex-col h-[500px] w-[50%] small:w-full small:h-[400px]'>
+        <div className='flex h-[500px] justify-center items-center w-screen'>
             <a href='' className='flex flex-col justify-center items-center space-y-[16px] group'>
-                <div className='w-[700px] h-[400px] overflow-hidden relative group-hover:brightness-105 small:w-full small:h-[220px]'>
-                    <Image 
-                    src={props.item.imageUrl}
-                    width={props.item.width}
-                    height={props.item.height}
-                    style={{objectFit: 'cover'}}
-                    quality={100}
-                    alt="Item 1"
-                    />
+                <div className='w-[700px] h-[400px] overflow-hidden relative bg-cover bg-bottom group-hover:brightness-105 mobile:h-[250px] mobile:w-full' style={{ backgroundImage: `url(${props.item.imageUrl})` }}>
                 </div>
-                <div className='h-[100px] transition duration-300 group-hover:-translate-y-2 small:w-full small:flex small:flex-col'>
-                    <h2 className='text-[20px] font-medium h-[50px] w-[700px] text-center text-wrap small:text-wrap small:w-full'>{props.item.title}</h2>
-                    <p className='h-[50px] w-[700px] text-center small:text-wrap small:w-full small:pt-[20px]'>{props.item.description}</p>
+
+                <div className='h-[100px] transition duration-300 group-hover:-translate-y-2 mobile:space-y-[20px]'>
+                    <h2 className='text-[20px] font-medium h-[50px] w-[700px] text-center text-wrap mobile:w-full'>{props.item.title}</h2>
+                    <p className='h-[50px] w-[700px] text-center mobile:w-full'>{props.item.description}</p>
                 </div>
             </a>
         </div>
