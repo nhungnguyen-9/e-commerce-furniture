@@ -6,6 +6,7 @@ import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import Provider from './SessionProvider'
 import { CartProvider } from '@/context/CartContext'
+import FacebookCustomerChat from './components/FacebookCustomerChat'
 
 const roboto = Roboto({ subsets: ['latin'], weight: ['400', '500', '700'] })
 
@@ -33,7 +34,9 @@ export default function RootLayout({ children }) {
                 pauseOnHover
                 theme="colored"
               />
-              <main className='flex-grow'>{children}</main>
+              <main className='flex-grow'>{children}
+                <FacebookCustomerChat />
+              </main>
               <Footer />
             </CartProvider>
           </Provider>

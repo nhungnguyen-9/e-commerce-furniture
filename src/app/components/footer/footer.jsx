@@ -31,7 +31,7 @@ export default function Footer() {
                                     <a href='https://www.facebook.com/nhaxinhvn'>Facebook</a>
                                 </p>
                                 <p className='mb-[1.3em] mt-8'>
-                                    <a className='uppercase border-slate-100 border-solid border-[1px] sm:font-[12px] py-[8px] px-[15px] md:py-[8px] px-[20px] font-[14px]' href="https://nhaxinh.com/he-thong-cua-hang/">hệ thống cửa hàng</a>
+                                    <a className='uppercase border-slate-100 border-solid border-[1px] sm:font-[12px] py-[8px] md:py-[8px] px-[20px] font-[14px]' href="https://nhaxinh.com/he-thong-cua-hang/">hệ thống cửa hàng</a>
                                 </p>
                             </div>
                         </div>
