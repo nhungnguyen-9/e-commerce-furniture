@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import Image from 'next/image'
 
+
 export default function ProductImage({ productImg }) {
     const [mainImage, setMainImage] = useState(productImg[0]);
 

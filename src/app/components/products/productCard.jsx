@@ -2,6 +2,8 @@ import React, { useState, useContext } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import CartContext from '@/context/CartContext'
+import { LazyLoadImage } from 'react-lazy-load-image-component'
+import 'react-lazy-load-image-component/src/effects/blur.css'
 
 export default function ProductCard({ product }) {
     const formattedPrice = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(Math.round(product.price)).replace(/\./g, ',')
@@ -49,7 +51,8 @@ export default function ProductCard({ product }) {
             >
                 <Link href={`/products/${product.slug}`}>
                     <div className='h-[200px]'>
-                        <img
+                        <LazyLoadImage
+                            effect="blur"
                             src={
                                 product?.image[currentImageIndex]
                                     ? product?.image[currentImageIndex].url
