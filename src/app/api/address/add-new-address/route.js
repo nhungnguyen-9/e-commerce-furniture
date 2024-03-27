@@ -1,13 +1,15 @@
 import { connect } from '@/backend/config/mongodb'
-import { NextResponse, NextRequest } from "next/server"
+import { NextResponse } from "next/server"
 import Address from '@/backend/models/Address'
+import { getServerSession } from 'next-auth/next'
+import { isAuthUser } from '@/backend/middlewares/auth'
 
 connect()
 
 export async function POST(req) {
     try {
-        // kiểm tra xem người dùng có authorize hay không
-        const session =  await getSession({req})
+        // await isAuthUser(req)
+        const session = await getServerSession({ req })
 
         if (!session) {
             return NextResponse.json({
