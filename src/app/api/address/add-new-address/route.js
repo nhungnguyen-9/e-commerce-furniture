@@ -1,29 +1,31 @@
 import { connect } from '@/backend/config/mongodb'
-import { NextResponse, NextRequest } from "next/server"
+import { NextResponse } from "next/server"
 import Address from '@/backend/models/Address'
+import { auth } from '@/utils/auth'
+
+export const dynamic = "force-dynamic"
 
 connect()
 
 export async function POST(req) {
+    const session = await auth()
+
+    if (!session) {
+        return NextResponse.json({
+            message: "Bạn phải đăng nhập để thêm địa chỉ!",
+            success: false,
+        }, { status: 401 })
+    }
+
     try {
-        // kiểm tra xem người dùng có authorize hay không
-        const session =  await getSession({req})
-
-        if (!session) {
-            return NextResponse.json({
-                message: "Bạn phải đăng nhập để thêm địa chỉ!",
-                success: false,
-            }, { status: 401 })
-        }
-
-        const { fullName, address, province, city, phoneNo } = await req.json()
-
+        const { fullName, address, province, city, phoneNo, userID } = await req.json()
         const newAddress = new Address({
             fullName,
             address,
             province,
             city,
-            phoneNo
+            phoneNo,
+            userID
         })
 
         const savedAddress = await newAddress.save()
@@ -31,7 +33,7 @@ export async function POST(req) {
         return NextResponse.json({
             message: "Thêm địa chỉ thành công!",
             success: true,
-            savedAddress,
+            savedAddress
         })
     } catch (error) {
         console.log(error)

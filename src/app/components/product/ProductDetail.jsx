@@ -16,6 +16,7 @@ import Box from '@mui/material/Box'
 import { Plus, Minus } from "lucide-react"
 import HeartFavorite from './HeartFavorite'
 import CartContext from '@/context/CartContext'
+import { toast } from 'react-toastify'
 
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
@@ -115,6 +116,7 @@ export default function ProductDetail({ product }) {
                 item.product === product.slug ? { ...item, quantity: newQuantity } : item
             );
             updateCartItems(updatedCartItems);
+            toast.success('Cập nhập giỏ hàng thành công!')
         } else {
             addItemToCart({
                 product: product.slug,
@@ -126,6 +128,7 @@ export default function ProductDetail({ product }) {
                 size: product.size,
                 quantity: quantity
             });
+            toast.success('Thêm sản phẩm vào giỏ hàng thành công!')
         }
     };
 
@@ -222,19 +225,14 @@ export default function ProductDetail({ product }) {
                                         />
                                     </div>
                                 </div>
-                                <button
-                                    className="outline text-base-bold py-3 px-4 bg-black text-white"
-                                // onClick={() => {
-                                //     cart.addItem({
-                                //         item: productInfo,
-                                //         quantity,
-                                //         color: selectedColor,
-                                //         size: selectedSize,
-                                //     });
-                                // }}
-                                >
-                                    MUA NGAY
-                                </button>
+                                <Link href='/gio-hang'>
+                                    <button
+                                        className="outline text-base-bold py-3 px-4 bg-black text-white"
+                                        onClick={addToCartHandler}
+                                    >
+                                        MUA NGAY
+                                    </button>
+                                </Link>
                                 <button
                                     className="py-3 px-5 border border-black hover:bg-slate-200"
                                     onClick={addToCartHandler}

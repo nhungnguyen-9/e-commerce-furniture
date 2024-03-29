@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import CartContext from '@/context/CartContext'
+import { toast } from 'react-toastify'
 import { LazyLoadImage } from 'react-lazy-load-image-component'
 import 'react-lazy-load-image-component/src/effects/blur.css'
 
@@ -9,7 +10,7 @@ export default function ProductCard({ product }) {
     const formattedPrice = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(Math.round(product.price)).replace(/\./g, ',')
     const [currentImageIndex, setCurrentImageIndex] = useState(0)
 
-    const { addItemToCart, cart } = useContext(CartContext)
+    const { addItemToCart, cart, setCart } = useContext(CartContext)
 
     const addToCartHandler = () => {
         const existingCartItem = cart?.cartItems?.find(item => item.product === product.slug)
@@ -19,6 +20,7 @@ export default function ProductCard({ product }) {
                 item.product === product.slug ? { ...item, quantity: newQuantity } : item
             )
             updateCartItems(updatedCartItems)
+            toast.success('Cập nhập giỏ hàng thành công!')
         } else {
             addItemToCart({
                 product: product.slug,
@@ -30,6 +32,7 @@ export default function ProductCard({ product }) {
                 size: product.size,
                 quantity: 1
             })
+            toast.success('Thêm sản phẩm vào giỏ hàng thành công!')
         }
     }
 

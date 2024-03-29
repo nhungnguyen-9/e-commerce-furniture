@@ -20,7 +20,8 @@ export default function Login() {
                 {
                     email: email,
                     password: password,
-                    redirect: false
+                    redirect: false,
+                    callbackUrl: process.env.NEXT_PUBLIC_API_URL
                 })
             if (res?.ok) {
                 router.push('/')

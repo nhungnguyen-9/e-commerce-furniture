@@ -8,8 +8,9 @@ export default function Sidebar() {
         signOut()
     }
     return (
-        <div className="md:w-1/3 lg:w-1/4 px-4">
-            <ul className="sidebar">
+        <div className="md:w-1/3 lg:w-1/4 px-4 bg-[#F6F7F8]">
+            <div className='font-bold text-xl mt-5'>Tài khoản cá nhân</div>
+            <ul className="sidebar mt-4 font-semibold">
                 <li>
                     {" "}
                     <Link

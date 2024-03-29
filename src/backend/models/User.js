@@ -15,10 +15,6 @@ const userSchema = new mongoose.Schema({
         require: true,
         minLength: 6
     },
-    avatar: {
-        public_id: String,
-        url: String,
-    },
     role: {
         type: String,
         default: 'user'
