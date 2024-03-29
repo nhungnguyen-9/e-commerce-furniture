@@ -5,8 +5,7 @@ import { useSession } from 'next-auth/react'
 import TextField from '@mui/material/TextField'
 import axios from 'axios'
 import { toast } from 'react-toastify'
-import { fetchAllAddress } from '@/backend/services/address'
-import { isAuthUser } from '@/backend/middlewares/auth'
+import { fetchAllAddress, updateAddress, deleteAddress } from '@/backend/services/address'
 
 export default function Profile() {
     const { data } = useSession()
@@ -22,8 +21,9 @@ export default function Profile() {
     const [city, setCity] = useState('')
     const [phoneNo, setPhoneNo] = useState('')
 
+    // ADD ADDRESS
     const handleAddOrUpdateAddress = async (e) => {
-        e.preventDefault();
+        e.preventDefault()
 
         try {
             const newAddress = {
@@ -31,50 +31,83 @@ export default function Profile() {
                 address,
                 province,
                 city,
-                phoneNo
-            };
-            const res = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/address/add-new-address`, newAddress)
+                phoneNo,
+                userID: user.id
+            }
+
+            let res
+
+            if (currentEditedAddressId) {
+                newAddress._id = currentEditedAddressId
+                res = await updateAddress(newAddress)
+            } else {
+                res = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/address/add-new-address`, newAddress)
+            }
             const data = res.data
 
-            if (data.success) {
-                toast.success('Thêm địa chỉ thành công!');
-                await getAllAddress()
+            if (data) {
                 setFullName('')
                 setAddress('')
                 setProvince('')
                 setCity('')
                 setPhoneNo('')
                 setShowAddressForm(false)
-            } else {
-                toast.error('Không thể thêm địa chỉ! Vui lòng thử lại');
+                toast.success('Cập nhập địa chỉ thành công!')
+                await fetchAddresses()
+                setCurrentEditedAddressId(null)
             }
         } catch (error) {
-            console.log('🚀 ~ handleAddOrUpdateAddress ~ error:', error);
+            console.log('🚀 ~ handleAddOrUpdateAddress ~ error:', error)
         }
     }
 
-    async function getAllAddress() {
-        const res = await fetchAllAddress()
-        if (res) {
-            setAddresses(res)
+    // GET ALL ADDRESSES
+    async function fetchAddresses() {
+        try {
+            const res = await fetchAllAddress()
+            if (res.success) {
+                setAddresses(res.data)
+            }
+        } catch (error) {
+            console.error('Error fetching addresses:', error)
+            toast.error('Đã xảy ra lỗi khi lấy địa chỉ. Vui lòng thử lại sau')
         }
     }
 
     useEffect(() => {
-        getAllAddress()
+        fetchAddresses()
     }, [])
 
+    // UPDATE
     function handleUpdateAddress(getCurrentAddress) {
         setShowAddressForm(true)
-        setFullName(getCurrentAddress.fullName);
-        setAddress(getCurrentAddress.address);
-        setProvince(getCurrentAddress.province);
-        setCity(getCurrentAddress.city);
-        setPhoneNo(getCurrentAddress.phoneNo);
+        setFullName(getCurrentAddress.fullName)
+        setAddress(getCurrentAddress.address)
+        setProvince(getCurrentAddress.province)
+        setCity(getCurrentAddress.city)
+        setPhoneNo(getCurrentAddress.phoneNo)
         setCurrentEditedAddressId(getCurrentAddress._id)
 
         setCurrentEditedAddressId(getCurrentAddress._id)
     }
+
+    // DELETE
+    async function handleDelete(id) {
+        try {
+            const res = await deleteAddress(id)
+
+            if (res.success) {
+                toast.success(res.message)
+                fetchAddresses()
+            } else {
+                toast.error('Có lỗi trong quá trình xóa!')
+            }
+        } catch (error) {
+            console.error('Error deleting address:', error)
+            toast.error('Đã xảy ra lỗi khi xóa địa chỉ! Vui lòng thử lại sau')
+        }
+    }
+
 
     return (
         <div className='w-full'>
@@ -101,7 +134,7 @@ export default function Profile() {
                                 <p>Tỉnh / Thành phố: {item?.city} </p>
                                 <p>Số điện thoại: {item?.phoneNo} </p>
                                 <button className='mt-5 mr-5 inline-block bg-black text-white px-5 py-3 text-xs font-medium' onClick={() => handleUpdateAddress(item)}>CẬP NHẬP</button>
-                                <button className='mt-5 inline-block bg-black text-white px-5 py-3 text-xs font-medium'>XÓA</button>
+                                <button className='mt-5 inline-block bg-black text-white px-5 py-3 text-xs font-medium' onClick={() => handleDelete(item._id)}>XÓA</button>
                             </div>)
                             : <p className='italic text-yellow-600'>* Không tìm thấy địa chỉ! Vui lòng thêm địa chỉ bên dưới</p>
                     }

@@ -13,6 +13,7 @@ export default function Cart() {
     const { addItemToCart, deleteItemFromCart, cart } = useContext(CartContext)
 
     const increaseQty = (cartItem) => {
+        console.log('🚀 ~ increaseQty ~ cartItem:', cartItem)
         const newQty = cartItem?.quantity + 1
         const item = { ...cartItem, quantity: newQty }
 

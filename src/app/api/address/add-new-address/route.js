@@ -1,31 +1,29 @@
 import { connect } from '@/backend/config/mongodb'
 import { NextResponse } from "next/server"
 import Address from '@/backend/models/Address'
-import { getServerSession } from 'next-auth/next'
-import { isAuthUser } from '@/backend/middlewares/auth'
+import { auth } from '@/utils/auth'
 
 connect()
 
 export async function POST(req) {
+    const session = await auth()
+
+    if (!session) {
+        return NextResponse.json({
+            message: "Bạn phải đăng nhập để thêm địa chỉ!",
+            success: false,
+        }, { status: 401 })
+    }
+
     try {
-        // await isAuthUser(req)
-        const session = await getServerSession({ req })
-
-        if (!session) {
-            return NextResponse.json({
-                message: "Bạn phải đăng nhập để thêm địa chỉ!",
-                success: false,
-            }, { status: 401 })
-        }
-
-        const { fullName, address, province, city, phoneNo } = await req.json()
-
+        const { fullName, address, province, city, phoneNo, userID } = await req.json()
         const newAddress = new Address({
             fullName,
             address,
             province,
             city,
-            phoneNo
+            phoneNo,
+            userID
         })
 
         const savedAddress = await newAddress.save()
@@ -33,7 +31,7 @@ export async function POST(req) {
         return NextResponse.json({
             message: "Thêm địa chỉ thành công!",
             success: true,
-            savedAddress,
+            savedAddress
         })
     } catch (error) {
         console.log(error)

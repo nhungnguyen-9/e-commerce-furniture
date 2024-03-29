@@ -218,19 +218,14 @@ export default function ProductDetail({ product }) {
                                         />
                                     </div>
                                 </div>
-                                <button
-                                    className="outline text-base-bold py-3 px-4 bg-black text-white"
-                                // onClick={() => {
-                                //     cart.addItem({
-                                //         item: productInfo,
-                                //         quantity,
-                                //         color: selectedColor,
-                                //         size: selectedSize,
-                                //     });
-                                // }}
-                                >
-                                    MUA NGAY
-                                </button>
+                                <Link href='/gio-hang'>
+                                    <button
+                                        className="outline text-base-bold py-3 px-4 bg-black text-white"
+                                        onClick={addToCartHandler}
+                                    >
+                                        MUA NGAY
+                                    </button>
+                                </Link>
                                 <button
                                     className="py-3 px-5 border border-black hover:bg-slate-200"
                                     onClick={addToCartHandler}

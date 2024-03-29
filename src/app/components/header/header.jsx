@@ -357,16 +357,19 @@ export default function Header() {
             </div>
           </div>
           {/* shoping cart at mobile device */}
-          <Link href='/cart'>
+          <Link href='/gio-hang'>
             <div className='hidden absolute top-[32px] right-[12px] tablet:block mobile:block'>
               <Tooltip title='Cart'>
-                <ShoppingBagIcon
-                  sx={{
-                    color: 'rgba(47,47,47,0.5)',
-                    '&:hover': { color: 'rgba(47,47,47,0.9)' },
-                  }}
-                  fontSize='medium'
-                />
+                <div className='relative'>
+                  <ShoppingBagIcon
+                    sx={{
+                      color: 'rgba(47,47,47,0.5)',
+                      '&:hover': { color: 'rgba(47,47,47,0.9)' },
+                    }}
+                    fontSize='medium'
+                  />
+                  <div className='bg-red-500 absolute text-white text-[10px] font-semibold rounded-full px-1 right-[-8px] top-0'>{cartItems?.length || ''}</div>
+                </div>
               </Tooltip>
             </div>
           </Link>

@@ -1,40 +1,49 @@
 import { connect } from '@/backend/config/mongodb'
-import { NextResponse } from "next/server"
+import { NextResponse } from 'next/server'
 import Address from '@/backend/models/Address'
-import { getServerSession } from 'next-auth'
-import User from '@/backend/models/User'
-import { isAuthUser } from '@/backend/middlewares/auth'
+import { auth } from '@/utils/auth'
 
 connect()
 
-export async function GET(req, res) {
+export async function DELETE(req) {
     try {
         const { searchParams } = new URL(req.url)
-        const id = searchParams.get('id')
+        const id = searchParams.get("id")
 
         if (!id) {
             return NextResponse.json({
                 success: false,
-                message: 'Address ID is required'
+                message: "Address ID is required"
             })
         }
-        const isAuthUser = await isAuthUser(req)
+
+        const isAuthUser = await auth()
 
         if (isAuthUser) {
             const deletedAddress = await Address.findByIdAndDelete(id)
+
             if (deletedAddress) {
                 return NextResponse.json({
                     success: true,
-                    message: 'Address is deleted successfully'
-                })
+                    message: "Xóa địa chỉ thành công!"
+                });
+            } else {
+                return NextResponse.json({
+                    success: false,
+                    message: "Không thể xóa địa chỉ! Vui lòng thử lại"
+                });
             }
         } else {
             return NextResponse.json({
                 success: false,
-                message: 'Failed to delete address'
-            })
+                message: "Bạn chưa được xác thực"
+            });
         }
-    } catch (error) {
-        return NextResponse.json({ error: error.message }, { status: 500 })
+    } catch (e) {
+        console.log(e)
+        return NextResponse.json({
+            success: false,
+            message: "Đã xảy ra lỗi xảy ra! Vui lòng thử lại sau"
+        })
     }
 }

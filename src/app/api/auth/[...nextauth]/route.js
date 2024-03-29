@@ -5,7 +5,7 @@ import bcrypt from 'bcrypt'
 import { connect } from "@/backend/config/mongodb"
 import GoogleProvider from 'next-auth/providers/google'
 
-const handler = NextAuth({
+export const authOptions = {
     providers: [
         CredentialsProvider({
             name: 'credentials',
@@ -66,28 +66,26 @@ const handler = NextAuth({
             return true
         },
         async jwt({ token, user }) {
-            // if (user) {
-            //     token.email = user.email
-            //     token.name = user.name
-            // }
-
             user && (token.user = user)
-
             return token
         },
-        async session({ session, token }) {
-            // if (session.user) {
-            //     session.user.email = token.email
-            //     session.user.name = token.name
-            // }
+        async session({ session }) {
+            // console.log('🚀 ~ session ~ token:', token)
+            const sessionUser = await User.findOne({ email: session.user.email })
+            // console.log('🚀 ~ session ~ sessionUser:', sessionUser)
+            // session.user = token.user
+            // console.log('🚀 ~ session ~ session.user:', session.user)
 
-            session.user = token.user
 
-            delete session?.user?.password
+            session.user.id = sessionUser._id.toString()
+            // console.log('🚀 ~ session ~ session.user.id:', session.user.id)
 
+            // console.log('🚀 ~ session ~ session:', session)
             return session
         }
     }
-})
+}
+
+const handler = NextAuth(authOptions)
 
 export { handler as GET, handler as POST }
