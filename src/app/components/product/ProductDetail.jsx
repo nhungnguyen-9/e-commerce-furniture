@@ -16,6 +16,7 @@ import Box from '@mui/material/Box'
 import { Plus, Minus } from "lucide-react"
 import HeartFavorite from './HeartFavorite'
 import CartContext from '@/context/CartContext'
+import { toast } from 'react-toastify'
 
 // import { getBreadcrumbsBySlug } from '@/backend/services/product'
 
@@ -112,6 +113,7 @@ export default function ProductDetail({ product }) {
                 item.product === product.slug ? { ...item, quantity: newQuantity } : item
             );
             updateCartItems(updatedCartItems);
+            toast.success('Cập nhập giỏ hàng thành công!')
         } else {
             addItemToCart({
                 product: product.slug,
@@ -123,6 +125,7 @@ export default function ProductDetail({ product }) {
                 size: product.size,
                 quantity: quantity
             });
+            toast.success('Thêm sản phẩm vào giỏ hàng thành công!')
         }
     };
 

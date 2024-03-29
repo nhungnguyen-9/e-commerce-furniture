@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import CartContext from '@/context/CartContext'
+import { toast } from 'react-toastify'
 
 export default function ProductCard({ product }) {
     const formattedPrice = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(Math.round(product.price)).replace(/\./g, ',')
@@ -17,6 +18,7 @@ export default function ProductCard({ product }) {
                 item.product === product.slug ? { ...item, quantity: newQuantity } : item
             )
             updateCartItems(updatedCartItems)
+            toast.success('Cập nhập giỏ hàng thành công!')
         } else {
             addItemToCart({
                 product: product.slug,
@@ -28,6 +30,7 @@ export default function ProductCard({ product }) {
                 size: product.size,
                 quantity: 1
             })
+            toast.success('Thêm sản phẩm vào giỏ hàng thành công!')
         }
     }
 

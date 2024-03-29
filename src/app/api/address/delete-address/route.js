@@ -3,6 +3,8 @@ import { NextResponse } from 'next/server'
 import Address from '@/backend/models/Address'
 import { auth } from '@/utils/auth'
 
+export const dynamic = "force-dynamic"
+
 connect()
 
 export async function DELETE(req) {
