@@ -18,6 +18,9 @@ import HeartFavorite from './HeartFavorite'
 import CartContext from '@/context/CartContext'
 import { toast } from 'react-toastify'
 
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
+
 // import { getBreadcrumbsBySlug } from '@/backend/services/product'
 
 function TabPanel(props) {
@@ -156,7 +159,8 @@ export default function ProductDetail({ product }) {
                                         <div className='text-white absolute top-6 right-4 z-20 text-xs'>-{product.discount}%</div>
                                     </div>
                                 )}
-                                <img
+                                <LazyLoadImage
+                                    effect="blur"
                                     ref={imgRef}
                                     className={`object-cover inline-block ${isZoomed ? 'w-full h-auto cursor-zoom-out' : 'cursor-zoom-in'}`}
                                     src={selectedImg}
@@ -258,16 +262,16 @@ export default function ProductDetail({ product }) {
                                     onChangeIndex={handleChangeIndex}
                                 >
                                     <TabPanel value={value} index={0} dir={theme.direction}>
-                                        <div className='my-2'>-  Các sản phẩm nội thất tại Nhà Xinh đa số đều được sản xuất tại nhà máy của công ty cổ phần xây dựng kiến trúc AA với đội ngũ nhân viên và công nhân ưu tú cùng cơ sở vật chất hiện đại (http://www.aacorporation.com/). Nhà Xinh đã kiểm tra kỹ lưỡng từ nguồn nguyên liệu cho đến sản phẩm hoàn thiện cuối cùng.</div>
-                                        <div className='my-2'>-  Nhà Xinh bảo hành một năm cho các trường hợp có lỗi về kỹ thuật trong quá trình sản xuất hay lắp đặt.</div>
-                                        <div className='my-2'>-  Quý khách không nên tự sửa chữa mà hãy báo ngay cho Nhà Xinh qua hotline: 1800 7200.</div>
-                                        <div className='my-2'>-  Sau thời gian hết hạn bảo hành, nếu quý khách có bất kỳ yêu cầu hay thắc mắc thì vui lòng liên hệ với Nhà Xinh để được hướng dẫn và giải quyết các vấn đề gặp phải.</div>
+                                        <span className='my-2'>-  Các sản phẩm nội thất tại Nhà Xinh đa số đều được sản xuất tại nhà máy của công ty cổ phần xây dựng kiến trúc AA với đội ngũ nhân viên và công nhân ưu tú cùng cơ sở vật chất hiện đại (http://www.aacorporation.com/). Nhà Xinh đã kiểm tra kỹ lưỡng từ nguồn nguyên liệu cho đến sản phẩm hoàn thiện cuối cùng.</span>
+                                        <span className='my-2'>-  Nhà Xinh bảo hành một năm cho các trường hợp có lỗi về kỹ thuật trong quá trình sản xuất hay lắp đặt.</span>
+                                        <span className='my-2'>-  Quý khách không nên tự sửa chữa mà hãy báo ngay cho Nhà Xinh qua hotline: 1800 7200.</span>
+                                        <span className='my-2'>-  Sau thời gian hết hạn bảo hành, nếu quý khách có bất kỳ yêu cầu hay thắc mắc thì vui lòng liên hệ với Nhà Xinh để được hướng dẫn và giải quyết các vấn đề gặp phải.</span>
                                     </TabPanel>
                                     <TabPanel value={value} index={1} dir={theme.direction}>
-                                        <div className='font-semibold my-2'>GIAO HÀNG TẬN NƠI</div>
-                                        <div className='my-2'>Nhà Xinh cung cấp dịch vụ giao hàng tận nơi, lắp ráp và sắp xếp vị trí theo đúng ý muốn của quý khách:</div>
-                                        <div className='my-2'>- MIỄN PHÍ giao hàng trong các Quận nội thành Tp.Hồ Chí Minh và Hà Nội, áp dụng cho các đơn hàng trị giá trên 10 triệu.</div>
-                                        <div className='my-2'>- Đối với khu vực các tỉnh lân cận: Tính phí hợp lý theo dựa trên quãng đường vận chuyển</div>
+                                        <span className='font-semibold my-2'>GIAO HÀNG TẬN NƠI</span>
+                                        <span className='my-2'>Nhà Xinh cung cấp dịch vụ giao hàng tận nơi, lắp ráp và sắp xếp vị trí theo đúng ý muốn của quý khách:</span>
+                                        <span className='my-2'>- MIỄN PHÍ giao hàng trong các Quận nội thành Tp.Hồ Chí Minh và Hà Nội, áp dụng cho các đơn hàng trị giá trên 10 triệu.</span>
+                                        <span className='my-2'>- Đối với khu vực các tỉnh lân cận: Tính phí hợp lý theo dựa trên quãng đường vận chuyển</span>
                                     </TabPanel>
                                 </div>
                             </div>
