@@ -14,7 +14,7 @@ export default function Sidebar() {
                 <li>
                     {" "}
                     <Link
-                        href="/me"
+                        href='/tai-khoan/edit-account'
                         className="block px-3 py-2 text-gray-800 hover:bg-blue-100 hover:text-blue-500 rounded-md"
                     >
                         Thông tin cá nhân
@@ -23,7 +23,7 @@ export default function Sidebar() {
                 <li>
                     {" "}
                     <Link
-                        href="/me/orders"
+                        href='/tai-khoan/order'
                         className="block px-3 py-2 text-gray-800 hover:bg-blue-100 hover:text-blue-500 rounded-md"
                     >
                         Đơn hàng của bạn

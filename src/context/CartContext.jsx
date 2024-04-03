@@ -66,7 +66,19 @@ export const CartProvider = ({ children }) => {
 
         localStorage.setItem("cart", JSON.stringify({ cartItems: newCartItems }));
         setCartToState();
-    };
+    }
+
+    const saveOnCheckout = ({ totalAmount }) => {
+        const checkoutInfo = {
+            totalAmount
+        }
+
+        const newCart = { ...cart, checkoutInfo }
+
+        localStorage.setItem('cart', JSON.stringify(newCart))
+        setCartToState()
+        router.push('/thanh-toan')
+    }
 
     return (
         <CartContext.Provider
@@ -75,6 +87,7 @@ export const CartProvider = ({ children }) => {
                 setCart,
                 addItemToCart,
                 deleteItemFromCart,
+                saveOnCheckout
             }}
         >
             {children}
