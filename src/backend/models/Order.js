@@ -8,9 +8,7 @@ const orderSchema = new mongoose.Schema({
     },
     orderItems: [
         {
-            name: { type: String, require: true },
             qty: { type: Number, require: true },
-            image: { type: String, require: true },
             product:
             {
                 type: mongoose.Schema.Types.ObjectId,
@@ -20,46 +18,27 @@ const orderSchema = new mongoose.Schema({
         }
     ],
     shippingAddress: {
-        address: { type: String, require: true },
-        city: { type: String, require: true },
+        type: mongoose.Schema.Types.ObjectId,
+        require: true,
+        ref: 'Address'
     },
     paymentMethod: {
         type: String,
-        require: true,
-        default: 'Paypal'
-    },
-    paymentResult: {
-        id: { type: String },
-        status: { type: String },
-        update_time: { type: String },
-        email_address: { type: String }
-    },
-    shippingPrice: {
-        type: Number,
-        require: true,
-        default: 0.0
+        require: true
     },
     totalPrice: {
         type: Number,
         require: true,
         default: 0.0
     },
-    isPaid: {
-        type: Boolean,
-        require: true,
-        default: false
+    orderStatus: {
+        type: String,
+        default: "Đang xử lý"
     },
-    paidAt: {
-        type: Date
+    createAt: {
+        type: Date,
+        default: Date.now
     },
-    isDelivered: {
-        type: Boolean,
-        require: true,
-        default: false
-    },
-    deliveredAt: {
-        type: Date
-    }
 },
     {
         timestamps: true

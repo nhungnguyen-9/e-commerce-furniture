@@ -10,7 +10,7 @@ import HeartFavorite from '@/app/components/product/HeartFavorite'
 import { X, ShoppingCart } from 'lucide-react'
 
 export default function Cart() {
-    const { addItemToCart, deleteItemFromCart, cart } = useContext(CartContext)
+    const { addItemToCart, deleteItemFromCart, cart, saveOnCheckout } = useContext(CartContext)
 
     const increaseQty = (cartItem) => {
         console.log('🚀 ~ increaseQty ~ cartItem:', cartItem)
@@ -37,6 +37,13 @@ export default function Cart() {
     )
 
     const totalAmount = (Number(amount))
+
+    const checkoutHandler = () => {
+        const data = {
+            totalAmount
+        }
+        saveOnCheckout(data)
+    }
 
     return (
         <div className='container max-w-screen-xl mx-auto mb-20'>
@@ -156,7 +163,7 @@ export default function Cart() {
                                     <ShoppingCart /> TIẾP TỤC MUA HÀNG
                                 </button>
                             </Link>
-                            <button className='flex gap-2 items-center font-bold text-white bg-black px-12 py-3'>
+                            <button className='flex gap-2 items-center font-bold text-white bg-black px-12 py-3' onClick={checkoutHandler}>
                                 ĐẶT HÀNG
                             </button>
                         </div>
