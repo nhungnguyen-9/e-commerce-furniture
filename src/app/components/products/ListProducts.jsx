@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import FilterProducts from '@/app/components/products/FilterProducts';
 import ProductCard from './productCard';
 import { usePathname, useSearchParams } from 'next/navigation'
@@ -45,7 +45,7 @@ export default function ListProducts({ data }) {
     };
 
     return (
-        <div className='max-w-[1320px] mx-auto'>
+        <Suspense className='max-w-[1320px] mx-auto'>
             <FilterProducts onFilterChange={handleFilterChange} />
 
             <div className='grid grid-cols-4'>
@@ -53,6 +53,6 @@ export default function ListProducts({ data }) {
                     return <ProductCard key={product?.slug} product={product} />;
                 })}
             </div>
-        </div>
+        </Suspense>
     );
 }
