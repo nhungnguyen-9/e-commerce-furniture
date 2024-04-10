@@ -26,12 +26,15 @@ import CartContext from '@/context/CartContext'
 import { signOut, useSession } from 'next-auth/react'
 import Menu from '@mui/material/Menu'
 import MenuItem from '@mui/material/MenuItem'
+import { useRouter } from 'next/navigation'
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="right" ref={ref} {...props} />
 })
 
 export default function Header() {
+  const router = useRouter()
+  const [searchParam, setSearchParam] = useState('');
 
   const { cart } = useContext(CartContext)
   const cartItems = cart?.cartItems
@@ -40,6 +43,10 @@ export default function Header() {
 
   const [open, setOpen] = useState(false)
   const [scrollY, setScrollY] = useState(0)
+
+  const handleSearch = () => {
+    router.push(`/shop?search=${encodeURIComponent(searchParam)}`);
+  };
 
   const handleClose = () => {
     setOpen(false)
@@ -321,10 +328,12 @@ export default function Header() {
               label='Tìm sản phẩm'
               variant='outlined'
               size='small'
+              value={searchParam}
+              onChange={(e) => setSearchParam(e.target.value)}
               InputProps={{
                 endAdornment: (
                   <InputAdornment position='start'>
-                    <SearchIcon />
+                    <SearchIcon onClick={handleSearch} />
                   </InputAdornment>
                 ),
                 sx: { borderRadius: 20, width: '273px' }

@@ -3,7 +3,7 @@ import ListProducts from '@/app/components/products/ListProducts'
 import axios from 'axios'
 import Image from 'next/image'
 import Link from 'next/link'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, Suspense } from 'react'
 
 export default function Shop() {
     const [productData, setProductData] = useState([])
@@ -22,7 +22,7 @@ export default function Shop() {
     }, [])
 
     return (
-        <div>
+        <Suspense>
             <div className=''>
                 <div className='h-[500px] bg-cover bg-center overflow-hidden relative' >
                     <Image src='https://res.cloudinary.com/dq7vzcw0s/image/upload/v1710854160/nhaxinh/rooms/banner-trang-chu-san-pham-dep-oki_r9i6kl.jpg' width={1461} height={522} alt='home' className='w-full  brightness-[70%]' />
@@ -36,6 +36,6 @@ export default function Shop() {
                 </div>
             </div>
             <ListProducts data={productData} />
-        </div>
+        </Suspense>
     )
 }
