@@ -1,6 +1,7 @@
 import { Heart } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import axios from "axios";
 
 const HeartFavorite = ({ product, updateSignedInUser }) => {
     const router = useRouter();
@@ -9,7 +10,9 @@ const HeartFavorite = ({ product, updateSignedInUser }) => {
 
     const getUser = async () => {
         try {
-          const res = await fetch("/backend/controllers/userController");
+          // const res = await fetch("/api/users");    
+          const res = await axios.get('/api/users')         
+          console.log(res)
           const data = await res.json();
           setUser(data); // Lấy thông tin người dùng từ dữ liệu trả về
           setIsLiked(data.wishlist.includes(product._id));
@@ -19,14 +22,16 @@ const HeartFavorite = ({ product, updateSignedInUser }) => {
       };
     
       useEffect(() => {
-        getUser(); // Gọi getUser khi component mount
-      }, []);
+        if (user) {
+          getUser();
+        }
+      }, [user]);
     
       const handleLike = async (e) => {
         e.preventDefault();
         try {
           if (!user) {
-            router.push("/sign-in");
+            router.push("/login");
             return;
           } else {
             const res = await fetch("/api/wishlist", {
