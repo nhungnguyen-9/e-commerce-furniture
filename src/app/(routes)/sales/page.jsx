@@ -32,7 +32,7 @@ export default function Sales() {
                 </div>
             </div>
 
-            <div className='flex flex-row mobile:flex-col w-[90%] ml-[5%] h-[850px] average:h-fit mobile:h-fit average:mb-[20px] mobile:mb-[20px] text-center'>
+            <div className='flex flex-row mobile:flex-col w-[90%] ml-[5%] h-[850px] mobile:h-fit mobile:mb-[20px] text-center'>
                 <div className='w-[38%] mr-[2%] mobile:w-full'>
                     <form className='flex flex-col space-y-[10px] items-center justify-center'>
                         <h1 className='text-[25px] font-bold'>ĐĂNG KÝ TƯ VẤN TẠI NHÀ</h1>
@@ -66,21 +66,23 @@ export default function Sales() {
                 </div>
             </div>
 
-            <div className='border-t-2 border-gray-300 w-[90%] ml-[5%] h-fit flex flex-row average:flex-col justify-center items-start pt-[50px] space-x-[20px] average:space-x-0 average:h-fit average:mb-[70px]'>
-                <div className='w-[600px] h-[600px] bg-sales_sofa bg-cover average:h-[500px] average:w-full bg-bottom average:mb-[20px]'>
+            <div className='border-t-2 border-gray-300 w-[90%] ml-[5%] h-fit flex flex-row justify-center items-start pt-[50px] space-x-[20px] average:space-x-0 average:h-fit average:mb-[70px] mobile:flex-col mobile:space-x-0 mobile:space-y-5 mobile:mb-5'>
+                <div className='w-[600px] h-[600px] bg-sales_sofa bg-cover bg-bottom mobile:w-full mobile:mr-0 mobile:ml-0 mobile:h-[300px]'>
                     <div className='w-full h-full flex flex-col justify-center items-center'>
                         <h1 className='font-bold text-white text-center text-[20px]'>SOFA</h1>
-                        <a href='' className='font-bold text-black text-center w-[30%] average:w-[20%] bg-white px-[10px] py-[5px] hover:bg-gray-300'>XEM NGAY</a>
+                        <a href='' className='font-bold text-black text-center w-[30%] bg-white px-[10px] py-[5px] hover:bg-gray-300'>XEM NGAY</a>
                     </div>
                 </div>
-                <div className='w-[300px] h-[600px] bg-sales_banan bg-cover average:h-[500px] average:w-full bg-bottom average:mb-[20px]'>
+
+                <div className='w-[300px] h-[600px] bg-sales_banan bg-cover bg-bottom mobile:w-full mobile:mr-0 mobile:ml-0 mobile:h-[300px]'>
                     <div className='w-full h-full flex flex-col justify-center items-center'>
                         <h1 className='font-bold text-white text-center text-[20px]'>BÀN ĂN</h1>
                         <a href='' className='font-bold text-black text-center w-[60%] average:w-[20%] bg-white px-[10px] py-[5px] hover:bg-gray-300'>XEM NGAY</a>
                     </div>
                 </div>
-                <div className='w-[300px] h-[600px] flex flex-col space-y-[20px] average:w-full average:h-fit average:mb-[20px]'>
-                    <div className='bg-sales_giuongngu bg-cover bg-bottom h-[50%] average:h-[500px]'>
+
+                <div className='w-[300px] h-[600px] flex flex-col space-y-[20px] mobile:w-full mobile:mr-0 mobile:ml-0 mobile:h-[600px]'>
+                    <div className='bg-sales_giuongngu bg-cover bg-bottom h-[50%]'>
                         <div className='w-full h-full flex flex-col justify-center items-center'>
                             <h1 className='font-bold text-white text-center text-[20px]'>GIƯỜNG NGỦ</h1>
                             <a href='' className='font-bold text-black text-center w-[60%] average:w-[20%] bg-white px-[10px] py-[5px] hover:bg-gray-300'>XEM NGAY</a>

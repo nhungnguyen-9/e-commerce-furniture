@@ -6,7 +6,7 @@ import { toast } from 'react-toastify'
 import { LazyLoadImage } from 'react-lazy-load-image-component'
 import 'react-lazy-load-image-component/src/effects/blur.css'
 
-export default function ProductCard({ product }) {
+export default function ProductCard({ product, updateSignedInUser }) {
     const formattedPrice = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(Math.round(product.price)).replace(/\./g, ',')
     const [currentImageIndex, setCurrentImageIndex] = useState(0)
 

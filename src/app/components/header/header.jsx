@@ -92,7 +92,7 @@ export default function Header() {
 
   return (
     <div className='h-auto z-10'>
-      <div className='h-14 py-2.5 border-b border-solid border-[#F6F7F8] relative'>
+      <div className='h-14 py-2.5 border-b border-solid border-[#F6F7F8] relative tablet:hidden mobile:hidden'>
         <div className='flex items-center justify-around h-full'>
           {/* Language */}
           <div className='flex items-center mr-auto h-7 space-x-1 md:ml-[-95px] lg:ml-[2px] tablet:absolute tablet:mr-[200px] mobile:absolute mobile:mr-[200px]'>
@@ -113,7 +113,7 @@ export default function Header() {
             </a>
             {/* Information */}
             <div className='relative left-14 flex flex-row justify-evenly space-x-4'>
-              <a href='#' className='text-sm font-bold'>
+              <a href='#' className='text-sm font-bold tablet:hidden mobile:hidden'>
                 <CallIcon sx={{ fontSize: '15px' }} />
                 1800 7200
               </a>
@@ -129,9 +129,9 @@ export default function Header() {
               >
                 Khuyến mãi
               </Link>
-              <Link href='/' className='text-sm text-red-600 tablet:hidden mobile:hidden'>
+              {/* <Link href='/' className='text-sm text-red-600 tablet:hidden mobile:hidden'>
                 Giảm giá đặc biệt
-              </Link>
+              </Link> */}
             </div>
           </div>
 
@@ -341,10 +341,10 @@ export default function Header() {
             />
           </div>
 
-          {/* Search at mobile reponsive */}
+          {/* Search at mobile reponsive */}  
           <div className='group'>
-            <button className='absolute top-[30px] right-[45px] hidden hover:bg-gray-600 group-hover:block rounded w-[35px] h-[35px] tablet:block mobile:block'>
-              <SearchIcon className='hover:fill-white' fontSize='medium' />
+            <button className='absolute top-[30px] right-[45px] hidden focus:bg-gray-600 group-hover:block rounded w-[35px] h-[35px] tablet:block mobile:block'>
+              <SearchIcon className='focus:fill-white' fontSize='medium' />
             </button>
             <div className='hidden absolute right-11 py-4 top-[70px] group-hover:block bg-white shadow-sm border-2'>
               <div className='px-5'>
@@ -353,10 +353,12 @@ export default function Header() {
                   label='Tìm sản phẩm'
                   variant='outlined'
                   size='small'
+                  value={searchParam}
+                  onChange={(e) => setSearchParam(e.target.value)}
                   InputProps={{
                     endAdornment: (
                       <InputAdornment position='start'>
-                        <SearchIcon />
+                        <SearchIcon onClick={handleSearch} />
                       </InputAdornment>
                     ),
                     sx: { borderRadius: 20 }
@@ -473,29 +475,26 @@ export default function Header() {
             />
             <div className='hidden tablet:block mobile:block'>
               <div className='ml-4 mt-6 hover:text-amber-500'>
-                <Link href='/collection'>BỘ SƯU TẬP</Link>
+                <Link href='/collection' onClick={handleClose}>BỘ SƯU TẬP</Link>
               </div>
               <div className='ml-4 mt-6 hover:text-amber-500'>
-                <Link href='/design'>THIẾT KẾ NỘI THẤT</Link>
+                <Link href='/design' onClick={handleClose}>THIẾT KẾ NỘI THẤT</Link>
               </div>
               <div className='ml-4 mt-6 hover:text-amber-500'>
-                <Link href='/shop360'>CỬA HÀNG 360 ĐỘ</Link>
+                <Link href='/shop360' onClick={handleClose}>CỬA HÀNG 360 ĐỘ</Link>
               </div>
               <div className='ml-4 mt-6 hover:text-amber-500'>
-                <Link href='/inspiration'>GÓC CẢM HỨNG</Link>
+                <Link href='/inspiration' onClick={handleClose}>GÓC CẢM HỨNG</Link>
               </div>
               <div className='ml-4 mt-6 hover:text-amber-500'>
-                <Link href='/about'>GIỚI THIỆU</Link>
+                <Link href='/about' onClick={handleClose}>GIỚI THIỆU</Link>
               </div>
               <div className='ml-4 mt-6 hover:text-amber-500'>
-                <Link href='#'>KHUYẾN MÃI</Link>
+                <Link href='/sales' onClick={handleClose}>KHUYẾN MÃI</Link>
               </div>
-              <div className='ml-4 mt-6 hover:text-amber-500'>
+              {/* <div className='ml-4 mt-6 hover:text-amber-500'>
                 <Link href='#'>GIẢM GIÁ ĐẶC BIỆT</Link>
-              </div>
-              <div className='ml-4 mt-6 hover:text-amber-500'>
-                <Link href='#'><CallIcon sx={{ fontSize: '15px' }} />1800 7200</Link>
-              </div>
+              </div> */}
             </div>
           </Dialog>
         </Collapse>

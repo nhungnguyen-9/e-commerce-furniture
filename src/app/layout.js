@@ -7,6 +7,7 @@ import 'react-toastify/dist/ReactToastify.css'
 import Provider from './SessionProvider'
 import { CartProvider } from '@/context/CartContext'
 import FacebookCustomerChat from './components/FacebookCustomerChat'
+import { ClerkProvider } from '@clerk/nextjs'
 
 const roboto = Roboto({ subsets: ['latin'], weight: ['400', '500', '700'] })
 
@@ -58,23 +59,24 @@ export default function RootLayout({ children }) {
         <div className='flex flex-col min-h-screen'>
           <Provider>
             <CartProvider>
-              <Header />
-              <ToastContainer
-                position='bottom-right'
-                autoClose={2000}
-                hideProgressBar={false}
-                newestOnTop={false}
-                closeOnClick
-                rtl={false}
-                pauseOnFocusLoss
-                draggable
-                pauseOnHover
-                theme="colored"
-              />
-              <main className='flex-grow'>{children}
-                <FacebookCustomerChat />
-              </main>
-              <Footer />
+              <ClerkProvider>
+                <Header />
+                <ToastContainer
+                  position='bottom-right'
+                  autoClose={2000}
+                  hideProgressBar={false}
+                  closeOnClick
+                  rtl={false}
+                  pauseOnFocusLoss
+                  draggable
+                  pauseOnHover
+                  theme="colored"
+                />
+                  <main className='flex-grow'>{children}
+                    <FacebookCustomerChat />
+                  </main>
+                <Footer />
+              </ClerkProvider>
             </CartProvider>
           </Provider>
         </div>
