@@ -11,48 +11,48 @@ export const getProductDetails = async (productId) => {
 }
 
 export default function WishList() {
-    const { user } = useUser()
+    // const { user } = User
 
-    const [signedInUser, setSignedInUser] = useState(null)
+    // const [signedInUser, setSignedInUser] = useState(null)
     const [wishlist, setWishlist] = useState([])
   
-    const getUser = async () => {
-      try {
-        const res = await fetch("/api/users")
-        const data = await res.json()
-        setSignedInUser(data)
-        setLoading(false)
-      } catch (err) {
-        console.log("[users_GET", err)
-      }
-    }
+    // const getUser = async () => {
+    //   try {
+    //     const res = await fetch("/api/users")
+    //     const data = await res.json()
+    //     setSignedInUser(data)
+    //     setLoading(false)
+    //   } catch (err) {
+    //     console.log("[users_GET", err)
+    //   }
+    // }
   
-    useEffect(() => {
-      if (user) {
-        getUser()
-      }
-    }, [user])
+    // useEffect(() => {
+    //   if (user) {
+    //     getUser()
+    //   }
+    // }, [user])
   
-    const getWishlistProducts = async () => {
+    // const getWishlistProducts = async () => {
   
-      if (!signedInUser) return
+    //   if (!signedInUser) return
   
-      const wishlistProducts = await Promise.all(signedInUser.wishlist.map(async (productId) => {
-        const res = await getProductDetails(productId)
-        return res
-      }))
+    //   const wishlistProducts = await Promise.all(signedInUser.wishlist.map(async (productId) => {
+    //     const res = await getProductDetails(productId)
+    //     return res
+    //   }))
   
-      setWishlist(wishlistProducts)
-    }
+    //   setWishlist(wishlistProducts)
+    // }
   
-    useEffect(() => {
-      if (signedInUser) {
-        getWishlistProducts()
-      }
-    }, [signedInUser])
+    // useEffect(() => {
+    //   if (signedInUser) {
+    //     getWishlistProducts()
+    //   }
+    // }, [signedInUser])
   
     const updateSignedInUser = (updatedUser) => {
-      setSignedInUser(updatedUser)
+      // setSignedInUser(updatedUser)
     }
 
     return (

@@ -1,7 +1,6 @@
 import { Heart } from "lucide-react";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import User from "@/backend/models/User"
 
 const HeartFavorite = ({ product, updateSignedInUser }) => {
     const router = useRouter();
