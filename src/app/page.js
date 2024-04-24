@@ -1,3 +1,4 @@
+'use client'
 import LandingPage from './pages/landingPage/page'
 
 export default function Home() {

@@ -25,7 +25,7 @@ export default function Support() {
                     <input className='w-full h-[40px] pl-4 border-[1px] border-gray-300 outline-none focus:border-blue-400' type='email' placeholder='Enter email' />
                     <textarea className='w-full h-[80px] min-h-[45px] max-h-[250px] pt-2 pl-4 border-[1px] border-gray-300 outline-none focus:border-blue-400' placeholder='Nội dung liên hệ'></textarea>
                     <input type="file" />
-                    <input className='relative text-[16px] font-semibold p-[10px] bg-slate-900 text-white mobile:w-[20%] mobile:ml-[40%]' type="submit" value="GỬI YÊU CẦU" />
+                    <input className='relative text-[16px] font-semibold p-[10px] bg-slate-900 text-white mobile:w-[120px] mobile:ml-[40%]' type="submit" value="GỬI YÊU CẦU" />
                     <div className='hidden *:ml-[20px] text-center border-orange-300 border-2 rounded-[8px] text-[18px] w-fit h-fit px-3 py-1'>One or more fields have an error. Please check and try again.</div>
                 </form>
             </div>

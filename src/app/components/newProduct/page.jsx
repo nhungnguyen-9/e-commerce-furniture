@@ -24,9 +24,9 @@ export default function NewProduct() {
                 </Link>
             </div>
 
-            <div className='flex flex-row flex-wrap justify-start content-around grid-cols-4 mt-[40px] ml-[40px] small:hidden'>
+            <div className='flex flex-row flex-wrap justify-start mt-[40px] ml-[40px]'>
                 {limitedProducts.map((product, index) => (
-                    <div key={index} className='w-[25%]'>
+                    <div key={index} className='grow'>
                         <Item product={product} />
                     </div>
                 ))}

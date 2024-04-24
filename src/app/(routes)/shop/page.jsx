@@ -1,5 +1,6 @@
 'use client'
 import ListProducts from '@/app/components/products/ListProducts'
+import { dark } from '@mui/material/styles/createPalette'
 import axios from 'axios'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -20,6 +21,7 @@ export default function Shop() {
 
         fetchData()
     }, [])
+
 
     return (
         <Suspense>

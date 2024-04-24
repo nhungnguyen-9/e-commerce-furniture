@@ -1,9 +1,59 @@
-import React from 'react'
+'use client'
+import React, { useEffect, useState } from 'react'
 import ChevronRightIcon from '@mui/icons-material/ChevronRight'
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder'
+import ProductCard from '@/app/components/products/productCard'
+
+// export const getProductDetails = async (productId) => {
+//     const product = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/products/${productId}`)
+//     console.log(product)
+//     return await product.json()
+// }
 
 export default function WishList() {
-    //const formattedPrice = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(Math.round(product.price * (1 - product.discount / 100))).replace(/\./g, ',');
+    // const { user } = User
+
+    // const [signedInUser, setSignedInUser] = useState(null)
+    const [wishlist, setWishlist] = useState([])
+  
+    // const getUser = async () => {
+    //   try {
+    //     const res = await fetch("/api/users")
+    //     const data = await res.json()
+    //     setSignedInUser(data)
+    //     setLoading(false)
+    //   } catch (err) {
+    //     console.log("[users_GET", err)
+    //   }
+    // }
+  
+    // useEffect(() => {
+    //   if (user) {
+    //     getUser()
+    //   }
+    // }, [user])
+  
+    // const getWishlistProducts = async () => {
+  
+    //   if (!signedInUser) return
+  
+    //   const wishlistProducts = await Promise.all(signedInUser.wishlist.map(async (productId) => {
+    //     const res = await getProductDetails(productId)
+    //     return res
+    //   }))
+  
+    //   setWishlist(wishlistProducts)
+    // }
+  
+    // useEffect(() => {
+    //   if (signedInUser) {
+    //     getWishlistProducts()
+    //   }
+    // }, [signedInUser])
+  
+    // const updateSignedInUser = (updatedUser) => {
+    //   setSignedInUser(updatedUser)
+    // }
 
     return (
         <div>
@@ -24,110 +74,14 @@ export default function WishList() {
                     <div className='w-full flex flex-row flex-wrap justify-start'>
 
                         {/* Wishlist Product */}
-                        <div className='w-[30%] mr-[3%] h-[320px] mb-[10px]'>
-                                <div className='w-full h-[200px] overflow-hidden'>
-                                    <img
-                                        src='https://nhaxinh.com/wp-content/uploads/2024/02/armchair-xoay-jadora-360-do-nhieu-lua-chon-4-300x200.jpg'
-                                        alt='Ảnh sản phẩm'
-                                    />
-                                </div>
+                        {/* {wishlist.length === 0 && (
+                        <p>No items in your wishlist</p>
+                        )}
 
-                                <div className='w-full mt-[5px] relative'>
-                                    <div className='flex flex-row w-full items-center'>
-                                        <h1 className='text-[17px] mb-[10px] w-[90%]'>Tên sản phẩm</h1>
-                                        <button className='group'>
-                                            <FavoriteBorderIcon 
-                                            className='group-hover:text-black text-[#e60073]'
-                                            />
-                                        </button>
-                                    </div>
-                                    <p className='w-full text-[15px] text-right'>{new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(100000).replace(/\./g, ',')}</p>
-                                </div>
-                        </div>
-
-                        <div className='w-[30%] mr-[3%] h-[320px] mb-[10px]'>
-                                <div className='w-full h-[200px] overflow-hidden'>
-                                    <img
-                                        src='https://nhaxinh.com/wp-content/uploads/2024/02/armchair-xoay-jadora-360-do-nhieu-lua-chon-4-300x200.jpg'
-                                        alt='Ảnh sản phẩm'
-                                    />
-                                </div>
-
-                                <div className='w-full mt-[5px] relative'>
-                                    <div className='flex flex-row w-full items-center'>
-                                        <h1 className='text-[17px] mb-[10px] w-[90%]'>Tên sản phẩm</h1>
-                                        <button className='group'>
-                                            <FavoriteBorderIcon 
-                                            className='group-hover:text-black text-[#e60073]'
-                                            />
-                                        </button>
-                                    </div>
-                                    <p className='w-full text-[15px] text-right'>{new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(100000).replace(/\./g, ',')}</p>
-                                </div>
-                        </div>
-
-                        <div className='w-[30%] mr-[3%] h-[320px] mb-[10px]'>
-                                <div className='w-full h-[200px] overflow-hidden'>
-                                    <img
-                                        src='https://nhaxinh.com/wp-content/uploads/2024/02/armchair-xoay-jadora-360-do-nhieu-lua-chon-4-300x200.jpg'
-                                        alt='Ảnh sản phẩm'
-                                    />
-                                </div>
-
-                                <div className='w-full mt-[5px] relative'>
-                                    <div className='flex flex-row w-full items-center'>
-                                        <h1 className='text-[17px] mb-[10px] w-[90%]'>Tên sản phẩm</h1>
-                                        <button className='group'>
-                                            <FavoriteBorderIcon 
-                                            className='group-hover:text-black text-[#e60073]'
-                                            />
-                                        </button>
-                                    </div>
-                                    <p className='w-full text-[15px] text-right'>{new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(100000).replace(/\./g, ',')}</p>
-                                </div>
-                        </div>
-
-                        <div className='w-[30%] mr-[3%] h-[320px] mb-[10px]'>
-                                <div className='w-full h-[200px] overflow-hidden'>
-                                    <img
-                                        src='https://nhaxinh.com/wp-content/uploads/2024/02/armchair-xoay-jadora-360-do-nhieu-lua-chon-4-300x200.jpg'
-                                        alt='Ảnh sản phẩm'
-                                    />
-                                </div>
-
-                                <div className='w-full mt-[5px] relative'>
-                                    <div className='flex flex-row w-full items-center'>
-                                        <h1 className='text-[17px] mb-[10px] w-[90%]'>Tên sản phẩm</h1>
-                                        <button className='group'>
-                                            <FavoriteBorderIcon 
-                                            className='group-hover:text-black text-[#e60073]'
-                                            />
-                                        </button>
-                                    </div>
-                                    <p className='w-full text-[15px] text-right'>{new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(100000).replace(/\./g, ',')}</p>
-                                </div>
-                        </div>
-
-                        <div className='w-[30%] mr-[3%] h-[320px] mb-[10px]'>
-                                <div className='w-full h-[200px] overflow-hidden'>
-                                    <img
-                                        src='https://nhaxinh.com/wp-content/uploads/2024/02/armchair-xoay-jadora-360-do-nhieu-lua-chon-4-300x200.jpg'
-                                        alt='Ảnh sản phẩm'
-                                    />
-                                </div>
-
-                                <div className='w-full mt-[5px] relative'>
-                                    <div className='flex flex-row w-full items-center'>
-                                        <h1 className='text-[17px] mb-[10px] w-[90%]'>Tên sản phẩm</h1>
-                                        <button className='group'>
-                                            <FavoriteBorderIcon 
-                                            className='group-hover:text-black text-[#e60073]'
-                                            />
-                                        </button>
-                                    </div>
-                                    <p className='w-full text-[15px] text-right'>{new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(100000).replace(/\./g, ',')}</p>
-                                </div>
-                        </div>
+                        {wishlist.map((product) => (
+                            <ProductCard key={product._id} product={product} updateSignedInUser={updateSignedInUser} />
+                        ))} */}
+                        <p>No items in your wishlist</p>
                     </div>
                 </div>
             </div>

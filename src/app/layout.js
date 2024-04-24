@@ -63,7 +63,6 @@ export default function RootLayout({ children }) {
                 position='bottom-right'
                 autoClose={2000}
                 hideProgressBar={false}
-                newestOnTop={false}
                 closeOnClick
                 rtl={false}
                 pauseOnFocusLoss
@@ -71,9 +70,9 @@ export default function RootLayout({ children }) {
                 pauseOnHover
                 theme="colored"
               />
-              <main className='flex-grow'>{children}
-                <FacebookCustomerChat />
-              </main>
+                <main className='flex-grow'>{children}
+                  <FacebookCustomerChat />
+                </main>
               <Footer />
             </CartProvider>
           </Provider>
