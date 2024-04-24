@@ -3,58 +3,57 @@ import React, { useEffect, useState } from 'react'
 import ChevronRightIcon from '@mui/icons-material/ChevronRight'
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder'
 import ProductCard from '@/app/components/products/productCard'
-import User from '@/backend/models/User'
 
-export const getProductDetails = async (productId) => {
-    const product = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/products/${productId}`)
-    console.log(product)
-    return await product.json()
-}
+// export const getProductDetails = async (productId) => {
+//     const product = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/products/${productId}`)
+//     console.log(product)
+//     return await product.json()
+// }
 
 export default function WishList() {
-    const { user } = User
+    // const { user } = User
 
     // const [signedInUser, setSignedInUser] = useState(null)
     const [wishlist, setWishlist] = useState([])
   
-    const getUser = async () => {
-      try {
-        const res = await fetch("/api/users")
-        const data = await res.json()
-        setSignedInUser(data)
-        setLoading(false)
-      } catch (err) {
-        console.log("[users_GET", err)
-      }
-    }
+    // const getUser = async () => {
+    //   try {
+    //     const res = await fetch("/api/users")
+    //     const data = await res.json()
+    //     setSignedInUser(data)
+    //     setLoading(false)
+    //   } catch (err) {
+    //     console.log("[users_GET", err)
+    //   }
+    // }
   
-    useEffect(() => {
-      if (user) {
-        getUser()
-      }
-    }, [user])
+    // useEffect(() => {
+    //   if (user) {
+    //     getUser()
+    //   }
+    // }, [user])
   
-    const getWishlistProducts = async () => {
+    // const getWishlistProducts = async () => {
   
-      if (!signedInUser) return
+    //   if (!signedInUser) return
   
-      const wishlistProducts = await Promise.all(signedInUser.wishlist.map(async (productId) => {
-        const res = await getProductDetails(productId)
-        return res
-      }))
+    //   const wishlistProducts = await Promise.all(signedInUser.wishlist.map(async (productId) => {
+    //     const res = await getProductDetails(productId)
+    //     return res
+    //   }))
   
-      setWishlist(wishlistProducts)
-    }
+    //   setWishlist(wishlistProducts)
+    // }
   
-    useEffect(() => {
-      if (signedInUser) {
-        getWishlistProducts()
-      }
-    }, [signedInUser])
+    // useEffect(() => {
+    //   if (signedInUser) {
+    //     getWishlistProducts()
+    //   }
+    // }, [signedInUser])
   
-    const updateSignedInUser = (updatedUser) => {
-      setSignedInUser(updatedUser)
-    }
+    // const updateSignedInUser = (updatedUser) => {
+    //   setSignedInUser(updatedUser)
+    // }
 
     return (
         <div>
@@ -75,13 +74,14 @@ export default function WishList() {
                     <div className='w-full flex flex-row flex-wrap justify-start'>
 
                         {/* Wishlist Product */}
-                        {wishlist.length === 0 && (
+                        {/* {wishlist.length === 0 && (
                         <p>No items in your wishlist</p>
                         )}
 
                         {wishlist.map((product) => (
                             <ProductCard key={product._id} product={product} updateSignedInUser={updateSignedInUser} />
-                        ))}
+                        ))} */}
+                        <p>No items in your wishlist</p>
                     </div>
                 </div>
             </div>
