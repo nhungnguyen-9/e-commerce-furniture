@@ -1,4 +1,3 @@
-import User from "@/lib/models/User";
 import { connect } from '@/backend/config/mongodb'
 import { auth } from "@/utils/auth";
 
