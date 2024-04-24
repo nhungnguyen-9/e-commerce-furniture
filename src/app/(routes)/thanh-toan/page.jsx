@@ -9,6 +9,7 @@ import axios from 'axios'
 import { useRouter } from 'next/navigation'
 import { createNewOrder } from '@/backend/services/order'
 
+
 export default function Checkout() {
     const { cart } = useContext(CartContext)
     const { data } = useSession()
@@ -16,6 +17,8 @@ export default function Checkout() {
     const [addresses, setAddresses] = useState([])
     const [shippingInfo, setShippingInfo] = useState('')
     const [selectedPaymentMethod, setSelectedPaymentMethod] = useState('')
+
+    const [paymentUrl, setPaymentUrl] = useState('');
 
     const router = useRouter()
 
@@ -115,6 +118,22 @@ export default function Checkout() {
         }
     }
 
+    const vnpayCheckoutHandler = async () => {
+        try {
+            // Gọi endpoint để nhận URL thanh toán từ VNPAY
+            const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/payment/vnpay/paymentURL`);
+            console.log('response: ',response)
+            const data = await response.json();
+            console.log(data)
+    
+            // Chuyển hướng người dùng đến URL thanh toán
+            window.location.href = data.paymentUrl;
+        } catch (error) {
+            console.error('Error fetching payment URL:', error);
+        }
+    }
+    
+
 
     return (
         <div>
@@ -209,6 +228,26 @@ export default function Checkout() {
                                             </div>
                                         </div>
                                     </label>
+
+                                    <label
+                                        class="flex p-3 border border-gray-200 rounded-md bg-gray-50 hover:border-blue-400 hover:bg-blue-50 cursor-pointer"
+                                    >
+                                        <span>
+                                            <input
+                                                name="paymentMethod"
+                                                type="radio"
+                                                value="vnpay"
+                                                checked={selectedPaymentMethod === 'vnpay'}
+                                                onChange={handlePaymentMethodChange}
+                                                class="h-4 w-4 mt-1"
+                                            />
+                                        </span>
+                                        <div class="ml-2">
+                                            <span>Thanh toán qua VNPay</span>
+                                            <div class="block text-sm text-gray-400">
+                                            </div>
+                                        </div>
+                                    </label>
                                 </div>
 
 
@@ -221,10 +260,11 @@ export default function Checkout() {
                                     </Link>
                                     <a
                                         className="px-5 py-2 inline-block text-white bg-green-600 border border-transparent rounded-md hover:bg-green-700 cursor-pointer"
-                                        onClick={checkoutHandler}
+                                        onClick={vnpayCheckoutHandler}
                                     >
                                         ĐẶT HÀNG
                                     </a>
+                                    {paymentUrl && <a href={paymentUrl}>Proceed to Payment</a>}
                                 </div>
                             </div>
                         </div>
