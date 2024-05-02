@@ -8,7 +8,9 @@ export const dynamic = "force-dynamic"
 connect()
 
 export async function POST(req) {
-    console.log('🚀 ~ POST ~ req:', req)
+    console.log('🚀 ~ POST ~ req-req:', req)
+
+    console.log('🚀 ~ POST ~ req-re.body:', req.body)
     const session = await auth()
 
     if (!session) {
@@ -24,7 +26,7 @@ export async function POST(req) {
             orderItems,
             shippingAddress,
             paymentMethod,
-            totalPrice } = await req.body
+            totalPrice } = req.body
         console.log('🚀 ~ POST ~ req.json:', req.body)
 
         const newOrder = new Order({

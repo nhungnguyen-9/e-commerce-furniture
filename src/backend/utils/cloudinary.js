@@ -25,4 +25,16 @@ const uploads = (file, folder) => {
     })
 }
 
-export { uploads, cloudinary }
+const removeImage = (public_id) => {
+    return new Promise((resolve, reject) => {
+        cloudinary.uploader.destroy(public_id, (error, result) => {
+            if (error) {
+                reject(error);
+            } else {
+                resolve(result);
+            }
+        });
+    });
+};
+
+export { uploads, cloudinary, removeImage }

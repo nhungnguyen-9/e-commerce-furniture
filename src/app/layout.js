@@ -18,7 +18,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
-        <meta name="keywords" content="noithatnhaxinh, nhaxinh, nội thất nhà xinh, nhà xinh, beautiful-house, xinh nhà, xinhnha, sofa armchair shop, siêu thị nội thất gia đình, cung cấp nội thất cao cấp tại TPHCM, Hà Nội" />
+        <meta name="keywords" content="noithatnhaxinh, nhaxinh, nội thất nhà xinh, nhà xinh, beautiful-house, beautiful house, house, home, xinh nhà, xinhnha, sofa, armchair, shop, siêu thị nội thất gia đình, cung cấp nội thất cao cấp tại TPHCM, Hà Nội" />
         <meta property="og:image" content="https://res.cloudinary.com/dq7vzcw0s/image/upload/v1710919244/nhaxinh/categories/nha-xinh-phong-khach-bride-nau-tram-2_cmnv35.jpg" />
         <meta property="og:image:secure_url" content="https://nhaxinh.com/wp-content/uploads/2023/10/noi-that-cao-cap-nha-xinh.jpg" />
         <meta property="og:image:width" content="1300" />

@@ -18,11 +18,11 @@ const categorySchema = new mongoose.Schema({
         require: true,
         ref: 'Product'
     }],
-    roomId: {
+    room: [{
         type: mongoose.Schema.Types.ObjectId,
         require: true,
         ref: 'Room'
-    },
+    }],
 },
     {
         timestamp: true

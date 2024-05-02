@@ -1,8 +1,16 @@
+'use server'
 import axios from "axios"
+import { cookies } from "next/headers"
 
 export const fetchAllAddress = async () => {
     try {
-        const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/address/get-all-address`)
+        const nextCookies = cookies()
+        const nextAuthSessionToken = nextCookies.get('next-auth.session-token')
+        const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/address/get-all-address`, {
+            headers: {
+                Cookie: `next-auth.session-token=${nextAuthSessionToken?.value}`
+            }
+        })
         // console.log('🚀 ~ fetchAllAddress ~ response.data:', response.data)
         return response.data
     } catch (error) {
