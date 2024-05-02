@@ -88,7 +88,7 @@ export default function Checkout() {
                 toast.error('Vui lòng chọn phương thức thanh toán!');
                 return;
             }
-            console.log('🚀 ~ checkoutHandler ~ cart.cartItems:', cart.cartItems)
+            console.log('🚀 ~ checkoutHandler ~ cart:', cart)
             const orderData = {
                 user: user.id,
                 orderItems: cart.cartItems.map(item => ({

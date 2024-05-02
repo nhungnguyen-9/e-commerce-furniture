@@ -5,7 +5,9 @@ import { signOut } from 'next-auth/react'
 
 export default function Sidebar() {
     const logoutHandler = () => {
-        signOut()
+        signOut({
+            callbackUrl: '/'
+        })
     }
     return (
         <div className="md:w-1/3 lg:w-1/4 px-4 bg-[#F6F7F8]">

@@ -49,25 +49,26 @@ const productSchema = new mongoose.Schema({
         require: true
     },
     review: [reviewSchema],
-    image: [
-        {
-            public_id: {
-                type: String
-            },
-            url: {
-                type: String
-            }
+    image: [{
+        url: {
+            type: String,
+            required: true
         }
-    ],
+    }],
     categoryId: {
         type: mongoose.Schema.Types.ObjectId,
-        require: true,
+        require: false,
         ref: 'Category'
     },
     roomId: {
         type: mongoose.Schema.Types.ObjectId,
         require: true,
         ref: 'Room'
+    },
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        require: false,
+        ref: 'User'
     },
 },
     {

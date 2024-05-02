@@ -1,31 +1,20 @@
-import { Roboto } from 'next/font/google'
-import { ToastContainer } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css'
+import LeftSideBar from '@/app/components/admin/layout/LeftSideBar'
+import TopBar from '@/app/components/admin/layout/TopBar'
+import { Inter } from 'next/font/google'
 
-const roboto = Roboto({ subsets: ['latin'], weight: ['400', '500', '700'] })
-
-export const metadata = {
-    title: 'Quản Lý Nội Thất Nhà Xinh'
-}
-
-export default function Layout({ children }) {
+const inter = Inter({ subsets: ['latin'] })
+const Layout = ({ children }) => {
     return (
-        <div className={roboto.className}>
-            <ToastContainer
-                position='bottom-right'
-                autoClose={2000}
-                hideProgressBar={false}
-                newestOnTop={false}
-                closeOnClick
-                rtl={false}
-                pauseOnFocusLoss
-                draggable
-                pauseOnHover
-                theme="colored"
-            />
-            <div>
-                {children}
-            </div>
-        </div>
+        <html lang="en">
+            <body className={inter.className}>
+                <div className='h-screen flex max-lg:flex-col text-grey-1'>
+                    <LeftSideBar />
+                    <TopBar />
+                    <div className='flex-1'>{children}</div>
+                </div>
+            </body>
+        </html>
     )
 }
+
+export default Layout

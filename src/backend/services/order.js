@@ -1,6 +1,7 @@
 import axios from "axios"
 
 export const createNewOrder = async (formData) => {
+    console.log('🚀 ~ createNewOrder ~ formData:', formData)
     try {
         const res = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/order/create-order`, formData)
 
