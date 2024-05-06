@@ -15,7 +15,7 @@ export default function WishList() {
 
     // const [signedInUser, setSignedInUser] = useState(null)
     const [wishlist, setWishlist] = useState([])
-  
+
     // const getUser = async () => {
     //   try {
     //     const res = await fetch("/api/users")
@@ -26,31 +26,31 @@ export default function WishList() {
     //     console.log("[users_GET", err)
     //   }
     // }
-  
+
     // useEffect(() => {
     //   if (user) {
     //     getUser()
     //   }
     // }, [user])
-  
+
     // const getWishlistProducts = async () => {
-  
+
     //   if (!signedInUser) return
-  
+
     //   const wishlistProducts = await Promise.all(signedInUser.wishlist.map(async (productId) => {
     //     const res = await getProductDetails(productId)
     //     return res
     //   }))
-  
+
     //   setWishlist(wishlistProducts)
     // }
-  
+
     // useEffect(() => {
     //   if (signedInUser) {
     //     getWishlistProducts()
     //   }
     // }, [signedInUser])
-  
+
     // const updateSignedInUser = (updatedUser) => {
     //   setSignedInUser(updatedUser)
     // }
@@ -81,7 +81,7 @@ export default function WishList() {
                         {wishlist.map((product) => (
                             <ProductCard key={product._id} product={product} updateSignedInUser={updateSignedInUser} />
                         ))} */}
-                        <p>No items in your wishlist</p>
+                        <div>No items in your wishlist</div>
                     </div>
                 </div>
             </div>
@@ -91,10 +91,10 @@ export default function WishList() {
                 <div className='relative top-10 left-0 right-0 text-center'>
                     <h1 className='absolute left-0 right-0 top-96 m-auto text-7xl font-extrabold text-white small:w-full small:p-0 small:m-0 small:text-[28px]'>Xem, chạm và cảm nhận</h1>
                     <button className='absolute mt-[33%] ml-[-65px] text-[15px] py-2 px-4 text-white border-2 border-white hover:bg-white hover:text-[#666] small:w-[30%] small:mt-[200px] small:ml-[140px] small:text-[10px]'>
-                        <p className='ml-1 font-bold text-xl'>
+                        <div className='ml-1 font-bold text-xl'>
                             Tìm cửa hàng
                             <ChevronRightIcon />
-                        </p>
+                        </div>
                     </button>
                 </div>
             </div>

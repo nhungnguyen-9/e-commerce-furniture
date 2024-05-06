@@ -9,6 +9,21 @@ const Pagination = ({ currentPage, roomsPerPage, totalRooms, paginate }) => {
         pageNumbers.push(i)
     }
 
+    const maxPagesToShow = 5;
+    let startPage = 1;
+    let endPage = totalPages;
+
+    if (totalPages > maxPagesToShow) {
+        if (currentPage <= maxPagesToShow - Math.floor(maxPagesToShow / 2)) {
+            endPage = maxPagesToShow;
+        } else if (currentPage + Math.floor(maxPagesToShow / 2) >= totalPages) {
+            startPage = totalPages - maxPagesToShow + 1;
+        } else {
+            startPage = currentPage - Math.floor(maxPagesToShow / 2);
+            endPage = currentPage + Math.floor(maxPagesToShow / 2);
+        }
+    }
+
     return (
         <nav className='w-full flex justify-center'>
             <ul className='flex space-x-2 items-center'>
@@ -20,7 +35,7 @@ const Pagination = ({ currentPage, roomsPerPage, totalRooms, paginate }) => {
                         />
                     </li>
                 )}
-                {pageNumbers.map(number => (
+                {pageNumbers.slice(startPage - 1, endPage).map(number => (
                     <li key={number}>
                         <button
                             onClick={() => paginate(number)}

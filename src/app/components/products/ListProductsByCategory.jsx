@@ -4,11 +4,10 @@ import FilterProducts from '@/app/components/products/FilterProducts';
 import ProductCard from './productCard';
 import { useSearchParams } from 'next/navigation'
 
-export default function ListProducts({ data }) {
-    console.log('🚀 ~ ListProducts ~ data:', data)
+export default function ListProductsByCategory({ data }) {
     const searchParams = useSearchParams()
 
-    const [filteredProducts, setFilteredProducts] = useState(data?.products);
+    const [filteredProducts, setFilteredProducts] = useState(data);
 
     useEffect(() => {
         if (searchParams && searchParams.has('search')) {
@@ -16,13 +15,13 @@ export default function ListProducts({ data }) {
             searchProducts(searchValue);
         } else {
             // Nếu không có tham số tìm kiếm, hiển thị tất cả sản phẩm
-            setFilteredProducts(data?.products || []);
+            setFilteredProducts(data || []);
         }
     }, [data, searchParams])
 
     const searchProducts = (search) => {
-        if (data && data.products && data.products.length > 0) {
-            const filtered = data.products.filter(product =>
+        if (data && data && data.length > 0) {
+            const filtered = data.filter(product =>
                 product.name.toLowerCase().includes(search.toLowerCase())
             );
 
@@ -48,7 +47,7 @@ export default function ListProducts({ data }) {
         <div className='max-w-[1320px] mx-auto'>
             <FilterProducts onFilterChange={handleFilterChange} />
 
-            <div className='grid grid-cols-4'>
+            <div className='grid sm:grid-cols-3 sm:gap-3 md:grid-cols-4'>
                 {filteredProducts?.map((product) => {
                     return <ProductCard key={product?.slug} product={product} />;
                 })}

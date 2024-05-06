@@ -2,6 +2,7 @@ import { connect } from '@/backend/config/mongodb'
 import { NextResponse } from 'next/server'
 import slugify from 'slugify'
 import Room from '@/backend/models/Room'
+import Category from '@/backend/models/Category'
 
 connect()
 
@@ -38,7 +39,7 @@ export async function POST(req) {
 
 export async function GET(req) {
     try {
-        const rooms = await Room.find().sort({ timestamp: "desc" })
+        const rooms = await Room.find().sort({ timestamp: "desc" }).populate({ path: 'category', model: Category })
         return NextResponse.json(rooms, { status: 200 })
     } catch (error) {
         console.log('🚀 ~ GET ~ error:', error)

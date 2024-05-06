@@ -16,7 +16,7 @@ export default function ProductDashboard() {
     const [currentPage, setCurrentPage] = useState(1)
     const [roomsPerPage] = useState(4)
     const [searchQuery, setSearchQuery] = useState('')
-    const router = useRouter
+    const router = useRouter()
 
     useEffect(() => {
         fetchProducts();
@@ -61,7 +61,7 @@ export default function ProductDashboard() {
             <div className="">
                 <div className='flex justify-between items-center mx-2'>
                     <h1 className="text-2xl my-5 ml-4 font-bold">
-                        Danh mục sản phẩm {''} ({products?.length})
+                        Sản phẩm {''} ({products?.length})
                     </h1>
                     <TextField
                         id='outlined-basic'

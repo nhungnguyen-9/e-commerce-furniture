@@ -72,7 +72,7 @@ export default function About() {
         acc[groupIndex].push(item);
         return acc;
     }, []);
-    
+
     return (
         <div className=''>
             <div className='relative'>
@@ -83,143 +83,143 @@ export default function About() {
 
             <div className=' w-[80%] ml-[10%] mb-[70px]'>
                 <h1 className='font-semibold text-[30px]'>LỊCH SỬ HÌNH THÀNH</h1>
-                <p className='mt-[10px] text-[20px]'>
+                <div className='mt-[10px] text-[20px]'>
                     Ra đời từ ý tưởng tạo nên sự khác biệt, Nhà Xinh đã giữ vững và phát triển trở thành vị trí hàng đầu trong thị trường nội thất Việt Nam. Đến nay, Nhà Xinh đã có nhiều cửa hàng quy mô và chuyên nghiệp tại các thành phố lớn là Hà Nội và TP.HCM, Bình Dương.
-                </p>
+                </div>
             </div>
 
             <div className='flex flex-col h-fit w-[90%] ml-[5%] mb-[100px] space-y-[60px]'>
                 <div className='w-full h-[8 00px] flex flex-row'>
                     <div className='w-[42%] overflow-hidden'>
                         <img
-                        src='https://nhaxinh.com/wp-content/uploads/2021/11/bo-suu-tap-may-net-viet-duong-dai-3.jpg'
-                        alt='Bộ sưu tập'
+                            src='https://nhaxinh.com/wp-content/uploads/2021/11/bo-suu-tap-may-net-viet-duong-dai-3.jpg'
+                            alt='Bộ sưu tập'
                         />
                     </div>
                     <div className='w-[58%] space-y-[20px] pl-[3%]'>
-                        <p className='text-[18px]'>
+                        <div className='text-[18px]'>
                             <b>2021: </b>
                             <span>
                                 Khẳng định thương hiệu bền vững với những bước phát triển mới dù đối mặt những khó khăn do dịch bệnh Covid. Hệ thống cửa hàng mở rộng, với showroom mới tại Bình Dương.
                             </span>
-                        </p>
-                        <p className='text-[18px]'>
+                        </div>
+                        <div className='text-[18px]'>
                             <b>2020: </b>
                             <span>
                                 Đơn vị chủ quản thương hiệu Nhà Xinh – AKA Furniture Group tái cơ cấu trở thành thành viên của tập đoàn AA Corporation – Tập đoàn sản xuất và thi công nội thất chất lượng cao hàng đầu Châu Á.
                             </span>
-                        </p>
-                        <p className='text-[18px]'>
+                        </div>
+                        <div className='text-[18px]'>
                             <b>2019: </b>
                             <span>
                                 Đây là năm mang dấu ấn đặc biệt của thương hiệu Nhà Xinh – Đánh dấu chặng đường phát triển 20 năm. Với sự xuất hiện của 2 cửa hàng tại Nguyễn Văn Hưởng (Q2, HCM) và Trung tâm nội thất Thụy Khuê (Tây Hồ, Hà Nội).
                             </span>
-                        </p>
-                        <p className='text-[18px]'>
+                        </div>
+                        <div className='text-[18px]'>
                             <b>2016: </b>
                             <span>
                                 Mở rộng hệ thống Nhà Xinh với 2 cửa hàng lớn ở ngay trung tâm thủ đô Hà Nội thuộc quận Hoàn Kiếm và quận Đống Đa.
                             </span>
-                        </p>
-                        <p className='text-[18px]'>
+                        </div>
+                        <div className='text-[18px]'>
                             <b>2011 – 2014: </b>
                             <span>
                                 Khẳng định thương hiệu với sự xuất hiện của 2 cửa hàng mới tại ngã tư trung tâm Q1, TP.HCM (Hai Bà Trưng – Trần Cao Vân) và TTTM Royal City Hà Nội.
                             </span>
-                        </p>
-                        <p className='text-[18px]'>
+                        </div>
+                        <div className='text-[18px]'>
                             <b>2005 – 2010: </b>
                             <span>
                                 Phát triển mạnh mẽ với hệ thống cửa hàng trên các khu đô thị mới là Nhà Xinh Yên Hòa, Nhà Xinh Phú Mỹ Hưng và Nhà Xinh Centre – khu vực trung tâm Q1.
                             </span>
-                        </p>
-                        <p className='text-[18px]'>
+                        </div>
+                        <div className='text-[18px]'>
                             <b>2002 – 2005: </b>
                             <span>
                                 Nhà Xinh Cát Linh tại Hà Nội và Nhà Xinh Citimart tại TP.HCM nhằm hoàn thiện hệ thống và phục vụ tốt hơn cho Khách hàng.
                             </span>
-                        </p>
-                        <p className='text-[18px]'>
+                        </div>
+                        <div className='text-[18px]'>
                             <b>1999: </b>
                             <span>
                                 Ra đời với 2 cửa hàng lớn tại Hà Nội và TP.HCM, mang đậm phong cách riêng về thiết kế và cách bày trí.
                             </span>
-                        </p>
+                        </div>
                     </div>
                 </div>
 
                 <div className='w-full h-[8 00px] flex flex-row'>
                     <div className='w-[42%] overflow-hidden'>
                         <img
-                        src='https://nhaxinh.com/wp-content/uploads/2023/08/ong-nguyen-quoc-khanh.jpg'
-                        alt='Bộ sưu tập'
+                            src='https://nhaxinh.com/wp-content/uploads/2023/08/ong-nguyen-quoc-khanh.jpg'
+                            alt='Bộ sưu tập'
                         />
                     </div>
                     <div className='w-[58%] pl-[3%]'>
                         <h1 className='font-bold text-[20px] mb-[10px]'>Nhà sáng lập</h1>
-                        <p>
+                        <div>
                             Ông Nguyễn Quốc Khanh là người sáng lập tập đoàn AA, thương hiệu nội thất Nhà Xinh và hiện tại Ông đang giữ vị trí chủ tịch hiệp hội chế biến gỗ TP.HCM (Hawa). Là một kiến trúc sư, nhà thiết kế nội thất, Ông đam mê ngành gỗ cũng như tham vọng mang thương hiệu Việt ra toàn thế giới.
-                        </p>
+                        </div>
                     </div>
                 </div>
 
                 <div className='w-full h-[8 00px] flex flex-row'>
                     <div className='w-[42%] overflow-hidden'>
                         <img
-                        src='https://nhaxinh.com/wp-content/uploads/2021/11/bo-suu-tap-maxine-phong-an-600x899.jpg'
-                        alt='Bộ sưu tập'
+                            src='https://nhaxinh.com/wp-content/uploads/2021/11/bo-suu-tap-maxine-phong-an-600x899.jpg'
+                            alt='Bộ sưu tập'
                         />
                     </div>
                     <div className='w-[58%] pl-[3%]'>
                         <h1 className='font-bold text-[20px] mb-[10px]'>Giá trị và sự khác biệt</h1>
-                        <p>
-                        Với mong muốn phát triển thương hiệu Việt bằng nội lực, Nhà Xinh đã chú trọng vào thiết kế và sản xuất nội thất trong nước. Danh mục sản phẩm của Nhà Xinh thường xuyên được đổi mới và cập nhật, liên tục cung cấp cho khách hàng các dòng sản phẩm theo xu hướng mới nhất. Do chính người Việt thiết kế và sản xuất, nội thất thương hiệu Nhà Xinh luôn phù hợp với cuộc sống Á Đông, đem đến sự tiện nghi hoàn hảo trong mọi không gian sống.<br/><br/>
-                        Hơn 70% sản phẩm của Nhà Xinh được thiết kế, sản xuất bởi đội ngũ nhân viên cùng công nhân ưu tú với nhà máy có cơ sở vật chất hiện đại bậc nhất tại Việt Nam.<br/><br/>
-                        Sự khác biệt của Nhà Xinh chính là sáng tạo nội thất thành phong cách riêng, phù hợp với nhu cầu khách hàng. Không chỉ là sản phẩm nội thất đơn thuần, mà còn là không gian sống theo phong cách riêng với cách bày trí hài hòa từ đồ nội thất kết hợp với đồ trang trí. Giúp khách hàng cảm nhận được một không gian sống thực sự, cảm thấy thoải mái để tận hưởng cuộc sống.<br/><br/>
-                        </p>
+                        <div>
+                            Với mong muốn phát triển thương hiệu Việt bằng nội lực, Nhà Xinh đã chú trọng vào thiết kế và sản xuất nội thất trong nước. Danh mục sản phẩm của Nhà Xinh thường xuyên được đổi mới và cập nhật, liên tục cung cấp cho khách hàng các dòng sản phẩm theo xu hướng mới nhất. Do chính người Việt thiết kế và sản xuất, nội thất thương hiệu Nhà Xinh luôn phù hợp với cuộc sống Á Đông, đem đến sự tiện nghi hoàn hảo trong mọi không gian sống.<br /><br />
+                            Hơn 70% sản phẩm của Nhà Xinh được thiết kế, sản xuất bởi đội ngũ nhân viên cùng công nhân ưu tú với nhà máy có cơ sở vật chất hiện đại bậc nhất tại Việt Nam.<br /><br />
+                            Sự khác biệt của Nhà Xinh chính là sáng tạo nội thất thành phong cách riêng, phù hợp với nhu cầu khách hàng. Không chỉ là sản phẩm nội thất đơn thuần, mà còn là không gian sống theo phong cách riêng với cách bày trí hài hòa từ đồ nội thất kết hợp với đồ trang trí. Giúp khách hàng cảm nhận được một không gian sống thực sự, cảm thấy thoải mái để tận hưởng cuộc sống.<br /><br />
+                        </div>
                     </div>
                 </div>
 
                 <div className='w-full h-[8 00px] flex flex-row'>
                     <div className='w-[42%] overflow-hidden'>
                         <img
-                        src='https://nhaxinh.com/wp-content/uploads/2021/11/nha-xinh-gioi-thieu-chat-luong-251121.jpg'
-                        alt='Bộ sưu tập'
+                            src='https://nhaxinh.com/wp-content/uploads/2021/11/nha-xinh-gioi-thieu-chat-luong-251121.jpg'
+                            alt='Bộ sưu tập'
                         />
                     </div>
                     <div className='w-[58%] pl-[3%]'>
                         <h1 className='font-bold text-[20px] mb-[10px]'>Chất lượng và dịch vụ</h1>
-                        <p>
-                            Chất lượng của nguyên vật liệu, phụ kiện và quy trình sản xuất đều được kiểm định và giám sát chặt chẽ bởi hệ thống quản lý chất lượng ISO 9001. Sản phẩm của Nhà Xinh được thiết kế theo định hướng công năng sử dụng, thẩm mỹ và chất lượng. Trong những năm gần đây, thương hiệu luôn hướng đến xu hướng thiết kế xanh nhằm đóng góp không chỉ một không gian sống tiện nghi mà còn là một môi trường sống trong lành cho người sử dụng và cộng đồng. Với nhiều cống hiến như vậy, Nhà Xinh vinh dự nhiều năm liền được trao tặng các danh hiệu “Hàng Việt Nam chất lượng cao”, “Trusted brand” và “Top 100 nhà cung cấp hàng đầu”.<br/><br/>
+                        <div>
+                            Chất lượng của nguyên vật liệu, phụ kiện và quy trình sản xuất đều được kiểm định và giám sát chặt chẽ bởi hệ thống quản lý chất lượng ISO 9001. Sản phẩm của Nhà Xinh được thiết kế theo định hướng công năng sử dụng, thẩm mỹ và chất lượng. Trong những năm gần đây, thương hiệu luôn hướng đến xu hướng thiết kế xanh nhằm đóng góp không chỉ một không gian sống tiện nghi mà còn là một môi trường sống trong lành cho người sử dụng và cộng đồng. Với nhiều cống hiến như vậy, Nhà Xinh vinh dự nhiều năm liền được trao tặng các danh hiệu “Hàng Việt Nam chất lượng cao”, “Trusted brand” và “Top 100 nhà cung cấp hàng đầu”.<br /><br />
                             Bên cạnh đó, Nhà Xinh tự hào sở hữu đội ngũ tư vấn thiết kế và kỹ sư chuyên nghiệp, có kiến thức sâu rộng trong lĩnh vực đồ gỗ nội thất. Tập thể nhân viên tại Nhà Xinh cam kết nỗ lực tư vấn và trợ giúp khách hàng lựa chọn sản phẩm ưng ý nhất. Dịch vụ tư vấn thiết kế của Nhà Xinh sẽ giúp khách hàng kiến tạo một không gian sống như ý thông qua sự phối hợp điêu luyện giữa các sản phẩm nội thất và đồ trang trí.
-                        </p>
+                        </div>
                     </div>
                 </div>
 
                 <div className='w-full h-[8 00px] flex flex-row'>
                     <div className='w-[42%] overflow-hidden'>
                         <img
-                        src='https://nhaxinh.com/wp-content/uploads/2021/11/nha-may-aa-tayninh-1400x786.jpg'
-                        alt='Bộ sưu tập'
+                            src='https://nhaxinh.com/wp-content/uploads/2021/11/nha-may-aa-tayninh-1400x786.jpg'
+                            alt='Bộ sưu tập'
                         />
                     </div>
                     <div className='w-[58%] pl-[3%]'>
                         <h1 className='font-bold text-[20px] mb-[10px]'>Nhà máy</h1>
-                        <p>
+                        <div>
                             Phần lớn sản phẩm của Nhà Xinh được sản xuất tại nhà máy của Tổng công ty AA (AA Đức Hòa, Long An và AA Tây Ninh) có diện tích 80.000m2, với trang thiết bị hiện đại nhất và theo tiêu chuẩn ISO 9001, chuyên sản xuất các sản phẩm nội thất chất lượng cao cho các khách sạn, nhà hàng 5 sao, dự án nội thất cao cấp và xuất khẩu.
-                        </p>
+                        </div>
                         <h1 className='font-bold text-[20px] mb-[10px]'>Nhà Xinh và Cộng Đồng</h1>
-                        <p>
+                        <div>
                             Đóng góp cho cộng đồng nằm trong sứ mệnh của Nhà Xinh. Để trở thành thương hiệu tiên phong và văn minh, Nhà Xinh đã thực hiện nhiều các hoạt động cộng đồng như hỗ trợ trẻ em nghèo, tham gia các hoạt động vì môi trường như thiết kế xanh, đi bộ từ thiện,… Những bước chân, hành động không ngừng nghỉ để góp phần cho cuộc sống tốt hơn.
-                        </p>
+                        </div>
                     </div>
                 </div>
 
                 <div className='w-full h-[8 00px] flex flex-row'>
                     <div className='w-[42%] overflow-hidden'>
                         <img
-                        src='https://nhaxinh.com/wp-content/uploads/2022/08/nha-may-aa-tay-ninh-5-1200x800.jpg'
-                        alt='Bộ sưu tập'
+                            src='https://nhaxinh.com/wp-content/uploads/2022/08/nha-may-aa-tay-ninh-5-1200x800.jpg'
+                            alt='Bộ sưu tập'
                         />
                     </div>
                     <div className='w-[58%] pl-[3%]'>
@@ -229,8 +229,8 @@ export default function About() {
                 <div className='w-full h-[8 00px] flex flex-row'>
                     <div className='w-[42%] overflow-hidden'>
                         <img
-                        src='https://nhaxinh.com/wp-content/uploads/2022/08/nha-may-aa-tay-ninh-12-1200x800.jpg'
-                        alt='Bộ sưu tập'
+                            src='https://nhaxinh.com/wp-content/uploads/2022/08/nha-may-aa-tay-ninh-12-1200x800.jpg'
+                            alt='Bộ sưu tập'
                         />
                     </div>
                     <div className='w-[58%] pl-[3%]'>
@@ -260,24 +260,23 @@ export default function About() {
     )
 }
 
-function Item(props)
-{
+function Item(props) {
     return (
         <div className='flex h-[500px] justify-center items-center w-screen'>
             <a href='' className='flex flex-col justify-center items-center space-y-[16px] w-[50%] group mobile:w-full'>
                 <div className='w-[700px] h-[380px] overflow-hidden relative group-hover:brightness-105'>
-                    <Image 
-                    src={props.item.imageUrl}
-                    width={props.item.width}
-                    height={props.item.height}
-                    style={{objectFit: 'cover'}}
-                    quality={100}
-                    alt="Item 1"
+                    <Image
+                        src={props.item.imageUrl}
+                        width={props.item.width}
+                        height={props.item.height}
+                        style={{ objectFit: 'cover' }}
+                        quality={100}
+                        alt="Item 1"
                     />
                 </div>
                 <div className='h-[100px] transition duration-300 group-hover:-translate-y-2 mobile:h-[300px] mobile:w-full'>
                     <h2 className='text-[20px] font-medium h-[50px] w-[700px] text-center mobile:w-full mobile:h-[80px]'>{props.item.title}</h2>
-                    <p className='h-[50px] w-[700px] text-center mobile:w-full mobile:h-[80px]'>{props.item.description}</p>
+                    <div className='h-[50px] w-[700px] text-center mobile:w-full mobile:h-[80px]'>{props.item.description}</div>
                 </div>
             </a>
         </div>
