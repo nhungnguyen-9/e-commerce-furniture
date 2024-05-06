@@ -8,7 +8,15 @@ import { toast } from 'react-toastify'
 import axios from 'axios'
 import { useRouter } from 'next/navigation'
 import { createNewOrder } from '@/backend/services/order'
+import { VNPay } from 'vnpay'
 
+const vnpay = new VNPay({
+    tmnCode: 'EOR7B8O2',
+    secureSecret: 'QDCABATEWGAMQHJEYZDRMDHDQWFGWWOQ',
+    api_Host: 'https://sandbox.vnpayment.vn/paymentv2/vpcpay.html',
+    testMode: true, // optional
+    hashAlgorithm: 'SHA512', // optional
+});
 
 export default function Checkout() {
     const { cart } = useContext(CartContext)
@@ -17,8 +25,6 @@ export default function Checkout() {
     const [addresses, setAddresses] = useState([])
     const [shippingInfo, setShippingInfo] = useState('')
     const [selectedPaymentMethod, setSelectedPaymentMethod] = useState('')
-
-    const [paymentUrl, setPaymentUrl] = useState('');
 
     const router = useRouter()
 
@@ -118,20 +124,41 @@ export default function Checkout() {
         }
     }
 
-    const vnpayCheckoutHandler = async () => {
+    const checkoutVNPayHandler = async () => {
         try {
-            // Gọi endpoint để nhận URL thanh toán từ VNPAY
-            const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/payment/vnpay/paymentURL`);
-            console.log('response: ',response)
-            const data = await response.json();
-            console.log(data)
+            if (!shippingInfo) {
+                toast.error('Vui lòng chọn địa chỉ giao hàng!');
+                return;
+            }
+            if (!selectedPaymentMethod) {
+                toast.error('Vui lòng chọn phương thức thanh toán!');
+                return;
+            }
     
-            // Chuyển hướng người dùng đến URL thanh toán
-            window.location.href = data.paymentUrl;
+            // Xử lý dữ liệu đơn hàng ở đây
+            // Khởi tạo dữ liệu cho việc thanh toán qua VNPay
+            const urlString = {
+                vnp_Amount: 10000,
+                vnp_IpAddr: '1.1.1.1',
+                vnp_TxnRef: '110',
+                vnp_OrderInfo: '110',
+                vnp_OrderType: 'other',
+                vnp_ReturnUrl: `http://localhost:3000/vnpay-return`,
+            };
+    
+            // Xây dựng đường dẫn thanh toán của VNPay
+            const paymentUrl = vnpay.buildPaymentUrl(urlString);
+    
+            // Chuyển hướng sang trang thanh toán của VNPay
+            window.location.href = paymentUrl;
         } catch (error) {
-            console.error('Error fetching payment URL:', error);
+            console.error('Error processing VNPay payment:', error);
+            toast.error('Đã xảy ra lỗi khi thanh toán. Vui lòng thử lại sau!');
         }
     }
+    
+
+    
     
 
 
@@ -260,11 +287,10 @@ export default function Checkout() {
                                     </Link>
                                     <a
                                         className="px-5 py-2 inline-block text-white bg-green-600 border border-transparent rounded-md hover:bg-green-700 cursor-pointer"
-                                        onClick={vnpayCheckoutHandler}
-                                    >
+                                        onClick={checkoutVNPayHandler}
+                                    >   
                                         ĐẶT HÀNG
                                     </a>
-                                    {paymentUrl && <a href={paymentUrl}>Proceed to Payment</a>}
                                 </div>
                             </div>
                         </div>
