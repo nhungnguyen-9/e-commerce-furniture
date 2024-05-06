@@ -51,7 +51,7 @@ const ImageProductUpload = ({ onChange, onRemove, value }) => {
 
     return (
         <div className="">
-            <div className="mb-4 flex flex-wrap items-center gap-4">
+            <div className="mb-4 flex overflow-x-scroll items-center gap-4">
                 {images.map((url, index) => (
                     <div key={index} className="relative w-[120px] h-[120px]">
                         <div className="absolute top-0 right-4 z-10">

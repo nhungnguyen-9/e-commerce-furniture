@@ -41,7 +41,6 @@ export async function POST(req) {
         })
 
         const savedProduct = await newProduct.save()
-        console.log('🚀 ~ POST ~ savedProduct:', savedProduct)
 
         if (roomId) {
             for (const roomID of roomId) {

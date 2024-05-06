@@ -121,10 +121,10 @@ export default function Login() {
                             TIẾP TỤC VỚI GOOGLE
                         </button>
 
-                        <p className='font-medium my-4 text-center'>
+                        <div className='font-medium my-4 text-center'>
                             Chưa có tài khoản?{" "}
                             <Link href='/signup' className=' text-orange-600 hover:text-orange-300'> Đăng ký ngay </Link>
-                        </p>
+                        </div>
                     </div>
                 </div>
             </form>

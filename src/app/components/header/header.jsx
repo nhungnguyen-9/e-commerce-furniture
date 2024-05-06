@@ -21,7 +21,6 @@ import RoomCategoryList from './RoomCategoryList'
 import ProductCategoryList from './ProductCategoryList'
 import CloseIcon from '@mui/icons-material/Close'
 import { Tooltip } from '@mui/material'
-import { mockData } from "@/app/data/mock-data"
 import CartContext from '@/context/CartContext'
 import { signOut, useSession } from 'next-auth/react'
 import Menu from '@mui/material/Menu'
@@ -38,8 +37,6 @@ export default function Header() {
 
   const { cart } = useContext(CartContext)
   const cartItems = cart?.cartItems
-
-  const livingroom = mockData.categories.rooms.find(room => room._id === 'room-category-1');
 
   const [open, setOpen] = useState(false)
   const [scrollY, setScrollY] = useState(0)
@@ -280,11 +277,7 @@ export default function Header() {
 
             <div className='group w-fit'>
               <Link
-                href={{
-                  pathname: `/rooms/${livingroom.slug}`,
-                  query: { slug: livingroom.slug }
-                }}
-                className='hover:text-amber-500 text-sm group-hover:block'
+                href={`/rooms/phong-khach`}
               >
                 PHÒNG
                 <ExpandMore />
@@ -341,7 +334,7 @@ export default function Header() {
             />
           </div>
 
-          {/* Search at mobile reponsive */}  
+          {/* Search at mobile reponsive */}
           <div className='group'>
             <button className='absolute top-[30px] right-[45px] hidden focus:bg-gray-600 group-hover:block rounded w-[35px] h-[35px] tablet:block mobile:block'>
               <SearchIcon className='focus:fill-white' fontSize='medium' />

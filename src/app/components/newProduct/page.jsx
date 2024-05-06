@@ -1,18 +1,28 @@
 'use client'
-import React, { useState } from 'react'
-
+import React, { useEffect, useState } from 'react'
 import Image from 'next/image';
-
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
-
 import Carousel from 'react-material-ui-carousel'
-
-import { mockData } from '@/app/data/mock-data';
 import Link from 'next/link';
+import { getAllProducts } from '@/backend/services/admin/product';
 
 export default function NewProduct() {
-    // Giới hạn số lượng sản phẩm hiển thị
-    const limitedProducts = mockData.products.slice(0, 12);
+    const [products, setProducts] = useState([])
+
+    const getProducts = async () => {
+        try {
+            const res = await getAllProducts()
+            setProducts(res)
+        } catch (error) {
+            console.log('🚀 ~ getProducts ~ error:', error)
+        }
+    }
+
+    useEffect(() => {
+        getProducts()
+    }, [])
+
+    const limitedProducts = products.slice(0, 12)
 
     return (
         <div className='w-[90%] ml-[5%] h-fit mb-[40px]'>
@@ -55,7 +65,7 @@ function Item({ product }) {
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
     return (
-        <div href={`/products/${product.slug}`}>
+        <Link href={`/products/${product.slug}`}>
             <div className='relative group border-2 hover:border-gray-200 border-white w-[300px] h-[400px] p-[10px] small:w-full'
                 onMouseEnter={() => {
                     const nextIndex = (currentImageIndex + 1) % product.image.length;
@@ -105,6 +115,6 @@ function Item({ product }) {
                     </Link>
                 </div>
             </div>
-        </div>
+        </Link>
     )
 }

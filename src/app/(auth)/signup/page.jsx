@@ -129,12 +129,12 @@ export default function Signup() {
                             ĐĂNG KÝ BẰNG GOOGLE
                         </button>
 
-                        <p className='text-center my-6 '>
+                        <div className='text-center my-6 '>
                             Đã có tài khoản?{' '}
                             <Link href='/login' className='font-bold text-green-500 hover:text-green-400'>
                                 Đăng nhập ở đây
                             </Link>
-                        </p>
+                        </div>
                     </div>
                 </div>
             </form>
