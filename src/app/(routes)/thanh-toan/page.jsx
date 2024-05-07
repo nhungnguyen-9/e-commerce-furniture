@@ -135,8 +135,6 @@ export default function Checkout() {
                 return;
             }
     
-            // Xử lý dữ liệu đơn hàng ở đây
-    
             // Khởi tạo dữ liệu cho việc thanh toán qua VNPay
             const urlString = {
                 vnp_Amount: 10000, // Số tiền thanh toán
@@ -162,6 +160,20 @@ export default function Checkout() {
     
     
 
+    // const vnpayCheckoutHandler = async () => {
+    //     try {
+    //         // Gọi endpoint để nhận URL thanh toán từ VNPAY
+    //         const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/payment/vnpay/paymentURL`);
+    //         console.log('response: ',response)
+    //         const data = await response.json();
+    //         console.log(data)
+
+    //         // Chuyển hướng người dùng đến URL thanh toán
+    //         window.location.href = data.paymentUrl;
+    //     } catch (error) {
+    //         console.error('Error fetching payment URL:', error);
+    //     }
+    // }
 
     return (
         <div>
@@ -288,6 +300,7 @@ export default function Checkout() {
                                     </Link>
                                     <a
                                         className="px-5 py-2 inline-block text-white bg-green-600 border border-transparent rounded-md hover:bg-green-700 cursor-pointer"
+
                                         onClick={checkoutVNPayHandler}
                                     >   
                                         ĐẶT HÀNG

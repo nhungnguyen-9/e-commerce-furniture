@@ -6,10 +6,12 @@ import TextField from '@mui/material/TextField'
 import axios from 'axios'
 import { toast } from 'react-toastify'
 import { fetchAllAddress, updateAddress, deleteAddress } from '@/backend/services/address'
+import { useRouter } from 'next/navigation'
 
 export default function Profile() {
     const { data } = useSession()
     const user = data?.user
+    const router = useRouter()
 
     const [addresses, setAddresses] = useState([])
     const [showAddressForm, setShowAddressForm] = useState(false)
@@ -40,6 +42,12 @@ export default function Profile() {
             if (currentEditedAddressId) {
                 newAddress._id = currentEditedAddressId
                 res = await updateAddress(newAddress)
+                if (res.success) {
+                    toast.success(res.message)
+                    setShowAddressForm(false)
+                    await fetchAddresses()
+                    router.push('/tai-khoan/edit-account')
+                }
             } else {
                 res = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/address/add-new-address`, newAddress)
             }
@@ -65,6 +73,7 @@ export default function Profile() {
     async function fetchAddresses() {
         try {
             const res = await fetchAllAddress()
+            console.log('🚀 ~ fetchAddresses ~ res:', res)
             if (res.success) {
                 setAddresses(res.data)
             }
@@ -98,7 +107,8 @@ export default function Profile() {
 
             if (res.success) {
                 toast.success(res.message)
-                fetchAddresses()
+                await fetchAddresses()
+                router.push('/tai-khoan/edit-account')
             } else {
                 toast.error('Có lỗi trong quá trình xóa!')
             }

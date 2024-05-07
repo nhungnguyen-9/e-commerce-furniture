@@ -23,14 +23,6 @@ const userSchema = new mongoose.Schema({
         type: Array,
         default: []
     },
-    cart: {
-        type: Array,
-        default: []
-    },
-    products: {
-        type: Array,
-        default: []
-    },
     orders: {
         type: Array,
         default: []
