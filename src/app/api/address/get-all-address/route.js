@@ -10,7 +10,6 @@ connect()
 export async function GET(req) {
     try {
         const session = await auth()
-        // console.log('🚀 ~ GET ~ session:', session)
 
         if (!session) {
             return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
