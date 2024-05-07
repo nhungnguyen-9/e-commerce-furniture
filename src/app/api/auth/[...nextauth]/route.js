@@ -51,9 +51,7 @@ export const authOptions = {
                             email: profile.email,
                             name: profile.name,
                             avatar: profile.image,
-                            wishlist: [],
                             cart: [],
-                            orders: [],
                             products: []
                         })
                     }
