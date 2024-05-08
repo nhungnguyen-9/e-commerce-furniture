@@ -12,7 +12,8 @@ const VNPayReturnPage = () => {
         // Gửi yêu cầu HTTP để lấy dữ liệu từ API route
         const fetchData = async () => {
             try {
-                const response = await axios.get('/api/vnpay');
+                const response = await axios.get('/api/vnpay-return');
+                console.log(response)
                 setPaymentData(response.data);
             } catch (error) {
                 setError(error.message);

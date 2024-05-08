@@ -126,10 +126,10 @@ export default function Checkout() {
 
     const checkoutVNPayHandler = async () => {
         try {
-            // if (!shippingInfo) {
-            //     toast.error('Vui lòng chọn địa chỉ giao hàng!');
-            //     return;
-            // }
+            if (!shippingInfo) {
+                toast.error('Vui lòng chọn địa chỉ giao hàng!');
+                return;
+            }
             if (!selectedPaymentMethod) {
                 toast.error('Vui lòng chọn phương thức thanh toán!');
                 return;
@@ -139,10 +139,10 @@ export default function Checkout() {
             const urlString = {
                 vnp_Amount: 10000, // Số tiền thanh toán
                 vnp_IpAddr: '1.1.1.1', // Địa chỉ IP của khách hàng thực hiện giao dịch
-                vnp_TxnRef: '110', // Mã tham chiếu của giao dịch tại hệ thống của merchant. Mã này là duy nhất dùng để phân biệt các đơn hàng gửi sang VNPAY. Không được trùng lặp trong ngày.
-                vnp_OrderInfo: '110', // Thông tin mô tả nội dung thanh toán
+                vnp_TxnRef: '117', // Mã tham chiếu của giao dịch tại hệ thống của merchant. Mã này là duy nhất dùng để phân biệt các đơn hàng gửi sang VNPAY. Không được trùng lặp trong ngày.
+                vnp_OrderInfo: 'Thanh toan don hang 204C2AS', // Thông tin mô tả nội dung thanh toán
                 vnp_OrderType: 'other', // Mã danh mục hàng hóa.
-                vnp_ReturnUrl: `http://localhost:3000/vnpay-return`, // URL thông báo kết quả giao dịch khi Khách hàng kết thúc thanh toán.
+                vnp_ReturnUrl: `https://localhost:3000/vnpay-return`, // URL thông báo kết quả giao dịch khi Khách hàng kết thúc thanh toán.
             };
     
             // Xây dựng đường dẫn thanh toán của VNPay
