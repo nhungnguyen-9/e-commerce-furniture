@@ -8,15 +8,6 @@ import { toast } from 'react-toastify'
 import axios from 'axios'
 import { useRouter } from 'next/navigation'
 import { createNewOrder } from '@/backend/services/order'
-import { VNPay } from 'vnpay'
-
-const vnpay = new VNPay({
-    tmnCode: 'EOR7B8O2',
-    secureSecret: 'QDCABATEWGAMQHJEYZDRMDHDQWFGWWOQ',
-    api_Host: 'https://sandbox.vnpayment.vn/paymentv2/vpcpay.html',
-    testMode: true, // optional
-    hashAlgorithm: 'SHA512', // optional
-});
 
 export default function Checkout() {
     const { cart } = useContext(CartContext)
@@ -25,8 +16,6 @@ export default function Checkout() {
     const [addresses, setAddresses] = useState([])
     const [shippingInfo, setShippingInfo] = useState('')
     const [selectedPaymentMethod, setSelectedPaymentMethod] = useState('')
-
-    const router = useRouter()
 
     console.log('🚀 ~ Checkout ~ user:', user)
     console.log('🚀 ~ Checkout ~ cartItems:', cart?.cartItems)
@@ -123,57 +112,6 @@ export default function Checkout() {
             toast.error('Đã xảy ra lỗi khi đặt hàng. Vui lòng thử lại sau!')
         }
     }
-
-    const checkoutVNPayHandler = async () => {
-        try {
-            if (!shippingInfo) {
-                toast.error('Vui lòng chọn địa chỉ giao hàng!');
-                return;
-            }
-            if (!selectedPaymentMethod) {
-                toast.error('Vui lòng chọn phương thức thanh toán!');
-                return;
-            }
-    
-            // Khởi tạo dữ liệu cho việc thanh toán qua VNPay
-            const urlString = {
-                vnp_Amount: 10000, // Số tiền thanh toán
-                vnp_IpAddr: '1.1.1.1', // Địa chỉ IP của khách hàng thực hiện giao dịch
-                vnp_TxnRef: '117', // Mã tham chiếu của giao dịch tại hệ thống của merchant. Mã này là duy nhất dùng để phân biệt các đơn hàng gửi sang VNPAY. Không được trùng lặp trong ngày.
-                vnp_OrderInfo: 'Thanh toan don hang 204C2AS', // Thông tin mô tả nội dung thanh toán
-                vnp_OrderType: 'other', // Mã danh mục hàng hóa.
-                vnp_ReturnUrl: `https://localhost:3000/vnpay-return`, // URL thông báo kết quả giao dịch khi Khách hàng kết thúc thanh toán.
-            };
-    
-            // Xây dựng đường dẫn thanh toán của VNPay
-            const paymentUrl = vnpay.buildPaymentUrl(urlString);
-    
-            // Chuyển hướng sang trang thanh toán của VNPay
-            window.location.href = paymentUrl;
-        } catch (error) {
-            console.error('Error processing VNPay payment:', error);
-            toast.error('Đã xảy ra lỗi khi thanh toán. Vui lòng thử lại sau!');
-        }
-    }
-    
-
-    
-    
-
-    // const vnpayCheckoutHandler = async () => {
-    //     try {
-    //         // Gọi endpoint để nhận URL thanh toán từ VNPAY
-    //         const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/payment/vnpay/paymentURL`);
-    //         console.log('response: ',response)
-    //         const data = await response.json();
-    //         console.log(data)
-
-    //         // Chuyển hướng người dùng đến URL thanh toán
-    //         window.location.href = data.paymentUrl;
-    //     } catch (error) {
-    //         console.error('Error fetching payment URL:', error);
-    //     }
-    // }
 
     return (
         <div>
