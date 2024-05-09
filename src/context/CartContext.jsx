@@ -23,6 +23,7 @@ export const CartProvider = ({ children }) => {
     };
 
     const addItemToCart = async ({
+        _id,
         product,
         name,
         price,
@@ -33,6 +34,7 @@ export const CartProvider = ({ children }) => {
         quantity = 1,
     }) => {
         const item = {
+            _id,
             product,
             name,
             price,
@@ -80,6 +82,16 @@ export const CartProvider = ({ children }) => {
         router.push('/thanh-toan')
     }
 
+    const clearCart = () => {
+        localStorage.removeItem("cart")
+        setCartToState()
+    }
+
+    const clearCheckoutInfo = () => {
+        localStorage.removeItem('checkoutInfo')
+        setCartToState()
+    }
+
     return (
         <CartContext.Provider
             value={{
@@ -87,7 +99,9 @@ export const CartProvider = ({ children }) => {
                 setCart,
                 addItemToCart,
                 deleteItemFromCart,
-                saveOnCheckout
+                saveOnCheckout,
+                clearCart,
+                clearCheckoutInfo
             }}
         >
             {children}

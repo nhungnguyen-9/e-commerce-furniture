@@ -42,17 +42,31 @@ export default function ProductDashboard() {
         return publicId
     }
 
+    function escapeRegExp(string) {
+        return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    }
+
+    function escapeAccents(string) {
+        return string.normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+    }
+
+    const filterProduct = products?.filter(product => {
+        const regex = new RegExp(escapeRegExp(searchQuery), 'gi')
+        return escapeAccents(product.name).match(regex)
+    })
+
     // Get current rooms
     const indexOfLastRoom = currentPage * roomsPerPage
     const indexOfFirstRoom = indexOfLastRoom - roomsPerPage
-    const currentProducts = products.slice(indexOfFirstRoom, indexOfLastRoom)
+    const currentProducts = filterProduct.slice(indexOfFirstRoom, indexOfLastRoom)
     console.log('🚀 ~ ProductDashboard ~ currentProducts:', currentProducts)
 
     // Change page
     const paginate = pageNumber => setCurrentPage(pageNumber)
 
     const handleSearchChange = (event) => {
-        setSearchQuery(event.target.value)
+        const query = event.target.value
+        setSearchQuery(escapeAccents(query))
         setCurrentPage(1)
     }
 
@@ -61,15 +75,15 @@ export default function ProductDashboard() {
             <div className="">
                 <div className='flex justify-between items-center mx-2'>
                     <h1 className="text-2xl my-5 ml-4 font-bold">
-                        Sản phẩm {''} ({products?.length})
+                        Sản phẩm {''} ({filterProduct?.length})
                     </h1>
                     <TextField
                         id='outlined-basic'
                         label='Tìm sản phẩm'
                         variant='outlined'
                         size='small'
-                        // value={searchQuery}
-                        // onChange={handleSearchChange}
+                        value={searchQuery}
+                        onChange={handleSearchChange}
                         InputProps={{
                             endAdornment: (
                                 <InputAdornment position='end'>

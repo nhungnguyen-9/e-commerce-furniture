@@ -51,8 +51,8 @@ export const authOptions = {
                             email: profile.email,
                             name: profile.name,
                             avatar: profile.image,
-                            cart: [],
-                            products: []
+                            address: [],
+                            orders: []
                         })
                     }
                     return user

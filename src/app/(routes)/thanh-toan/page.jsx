@@ -9,9 +9,8 @@ import axios from 'axios'
 import { useRouter } from 'next/navigation'
 import { createNewOrder } from '@/backend/services/order'
 
-
 export default function Checkout() {
-    const { cart } = useContext(CartContext)
+    const { cart, clearCart, clearCheckoutInfo, saveOnCheckout } = useContext(CartContext)
     const { data } = useSession()
     const user = data?.user
     const [addresses, setAddresses] = useState([])
@@ -20,10 +19,9 @@ export default function Checkout() {
 
     const [paymentUrl, setPaymentUrl] = useState('');
 
-    const router = useRouter()
+    const [orderId, setOrderId] = useState(null);
 
-    console.log('🚀 ~ Checkout ~ user:', user)
-    console.log('🚀 ~ Checkout ~ cartItems:', cart?.cartItems)
+    const router = useRouter()
 
     async function getAllAddress() {
         const res = await fetchAllAddress(user?._id)
@@ -45,42 +43,6 @@ export default function Checkout() {
         setSelectedPaymentMethod(event.target.value)
     }
 
-    // const checkoutHandler = async () => {
-    //     try {
-    //         if (!shippingInfo) {
-    //             toast.error('Vui lòng chọn địa chỉ giao hàng!')
-    //             return
-    //         }
-    //         if (!selectedPaymentMethod) {
-    //             toast.error('Vui lòng chọn phương thức thanh toán!')
-    //             return
-    //         }
-    //         const orderData = {
-    //             user: user.id,
-    //             orderItems: cart.cartItems.map(item => ({
-    //                 qty: item.quantity,
-    //                 product: item.slug
-    //             })),
-    //             shippingAddress: shippingInfo,
-    //             paymentMethod: selectedPaymentMethod,
-    //             totalPrice: cart.checkoutInfo.totalAmount
-    //         };
-    //         console.log('🚀 ~ checkoutHandler ~ orderData:', orderData)
-
-    //         // Gửi yêu cầu POST để tạo đơn hàng thông qua API Route
-    //         const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/order/create-order`, orderData)
-
-    //         // Xử lý dữ liệu trả về từ backend (nếu cần)
-    //         console.log(response.data)
-    //         // router.push('/tai-khoan/order')
-    //         // Xóa thông tin đơn hàng khỏi local storage (nếu bạn đã sử dụng local storage)
-    //         // localStorage.removeItem('orderData')
-    //         toast.success('Đơn hàng đã được đặt thành công!')
-    //     } catch (error) {
-    //         console.error('Error creating order:', error)
-    //         toast.error('Đã xảy ra lỗi khi đặt hàng. Vui lòng thử lại sau!')
-    //     }
-    // }
     const checkoutHandler = async () => {
         try {
             if (!shippingInfo) {
@@ -91,47 +53,45 @@ export default function Checkout() {
                 toast.error('Vui lòng chọn phương thức thanh toán!');
                 return;
             }
-            console.log('🚀 ~ checkoutHandler ~ cart:', cart)
+
+            const orderItems = cart.cartItems.map(item => {
+                console.log('🚀 ~ orderItems ~ item:', item)
+                return {
+                    productId: item._id,
+                    name: item.name,
+                    price: item.price,
+                    discount: item.discount,
+                    image: item.image,
+                    quantity: item.quantity,
+                    size: item.size
+                };
+            });
+
             const orderData = {
-                user: user.id,
-                orderItems: cart.cartItems.map(item => ({
-                    qty: item.quantity,
-                    product: item
-                })),
+                user: user ? [user.id] : [],
+                orderItems: orderItems,
                 shippingAddress: shippingInfo,
                 paymentMethod: selectedPaymentMethod,
                 totalPrice: cart.checkoutInfo.totalAmount
             };
-            console.log('🚀 ~ checkoutHandler ~ orderData:', orderData)
+            // console.log('🚀 ~ checkoutHandler ~ orderData:', orderData)
 
             const res = await createNewOrder(orderData)
-            console.log('🚀 ~ checkoutHandler ~ res:', res)
+            // console.log('🚀 ~ checkoutHandler ~ res:', res)
 
             if (res.success) {
+                setOrderId(res.savedOrder._id)
                 toast.success(res.message)
+                clearCart()
+                clearCheckoutInfo()
+                router.push(`/thank-you/${res.savedOrder._id}`)
             } else {
                 toast.error('Đã xảy ra lỗi khi đặt hàng. Vui lòng thử lại sau!')
             }
         } catch (error) {
             console.error('Error creating order:', error)
-            toast.error('Đã xảy ra lỗi khi đặt hàng. Vui lòng thử lại sau!')
         }
     }
-
-    // const vnpayCheckoutHandler = async () => {
-    //     try {
-    //         // Gọi endpoint để nhận URL thanh toán từ VNPAY
-    //         const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/payment/vnpay/paymentURL`);
-    //         console.log('response: ',response)
-    //         const data = await response.json();
-    //         console.log(data)
-
-    //         // Chuyển hướng người dùng đến URL thanh toán
-    //         window.location.href = data.paymentUrl;
-    //     } catch (error) {
-    //         console.error('Error fetching payment URL:', error);
-    //     }
-    // }
 
     return (
         <div>

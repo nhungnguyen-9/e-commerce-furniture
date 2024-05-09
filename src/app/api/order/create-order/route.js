@@ -2,15 +2,13 @@ import { connect } from '@/backend/config/mongodb'
 import { NextResponse } from "next/server"
 import { auth } from '@/utils/auth'
 import Order from '@/backend/models/Order'
+import User from '@/backend/models/User'
 
 export const dynamic = "force-dynamic"
 
-connect()
+await connect()
 
 export async function POST(req) {
-    console.log('🚀 ~ POST ~ req-req:', req)
-
-    console.log('🚀 ~ POST ~ req-re.body:', req.body)
     const session = await auth()
 
     if (!session) {
@@ -26,37 +24,34 @@ export async function POST(req) {
             orderItems,
             shippingAddress,
             paymentMethod,
-            totalPrice } = req.body
-        console.log('🚀 ~ POST ~ req.json:', req.body)
+            totalPrice } = await req.json()
+        console.log('🚀 ~ POST ~ req.json:', req.json)
 
         const newOrder = new Order({
             user,
-            orderItems,
+            orderItems: orderItems,
             shippingAddress,
             paymentMethod,
             totalPrice
         })
-        console.log('🚀 ~ POST ~ newOrder:', newOrder)
 
         const savedOrder = await newOrder.save()
-        console.log('🚀 ~ POST ~ savedAOrder:', savedOrder)
+
+        if (user) {
+            for (const userId of user) {
+                const foundUser = await User.findById(userId)
+                if (foundUser) {
+                    foundUser.orders.push(savedOrder._id)
+                    await foundUser.save()
+                }
+            }
+        }
 
         return NextResponse.json({
             message: "Tạo đơn hàng thành công!",
             success: true,
             savedOrder
         })
-
-        // const data = await req.body
-        // console.log('🚀 ~ POST ~ data:', data)
-        // const saveNewOrder = await Order.create(data)
-        // console.log('🚀 ~ POST ~ saveNewOrder:', saveNewOrder)
-        // if (saveNewOrder) {
-        //     return NextResponse.json({
-        //         success: true,
-        //         message: "Tạo đơn hàng thành công!",
-        //     })
-        // }
     } catch (error) {
         console.log(error)
         return NextResponse.json({ error: error.message }, { status: 500 })

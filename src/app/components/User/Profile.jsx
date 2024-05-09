@@ -34,7 +34,7 @@ export default function Profile() {
                 province,
                 city,
                 phoneNo,
-                userID: user.id
+                userID: user ? [user.id] : []
             }
 
             let res
@@ -73,13 +73,11 @@ export default function Profile() {
     async function fetchAddresses() {
         try {
             const res = await fetchAllAddress()
-            console.log('🚀 ~ fetchAddresses ~ res:', res)
             if (res.success) {
                 setAddresses(res.data)
             }
         } catch (error) {
             console.error('Error fetching addresses:', error)
-            toast.error('Đã xảy ra lỗi khi lấy địa chỉ. Vui lòng thử lại sau')
         }
     }
 
