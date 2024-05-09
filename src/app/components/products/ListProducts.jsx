@@ -22,10 +22,15 @@ export default function ListProducts({ data }) {
 
     const searchProducts = (search) => {
         if (data && data.products && data.products.length > 0) {
+            // Tạo một biểu thức regex từ chuỗi tìm kiếm
+            // 'i' là cờ không phân biệt chữ hoa chữ thường
+            const regex = new RegExp(search, 'i');
+    
             const filtered = data.products.filter(product =>
-                product.name.toLowerCase().includes(search.toLowerCase())
+                // Sử dụng phương thức test của regex để kiểm tra tên sản phẩm
+                regex.test(product.name)
             );
-
+    
             setFilteredProducts(filtered);
         }
     };

@@ -9,7 +9,6 @@ import axios from 'axios'
 import { useRouter } from 'next/navigation'
 import { createNewOrder } from '@/backend/services/order'
 
-
 export default function Checkout() {
     const { cart } = useContext(CartContext)
     const { data } = useSession()
@@ -17,10 +16,6 @@ export default function Checkout() {
     const [addresses, setAddresses] = useState([])
     const [shippingInfo, setShippingInfo] = useState('')
     const [selectedPaymentMethod, setSelectedPaymentMethod] = useState('')
-
-    const [paymentUrl, setPaymentUrl] = useState('');
-
-    const router = useRouter()
 
     console.log('🚀 ~ Checkout ~ user:', user)
     console.log('🚀 ~ Checkout ~ cartItems:', cart?.cartItems)
@@ -91,7 +86,7 @@ export default function Checkout() {
                 toast.error('Vui lòng chọn phương thức thanh toán!');
                 return;
             }
-            console.log('🚀 ~ checkoutHandler ~ cart:', cart)
+            console.log('🚀 ~ checkoutHandler ~ cart.cartItems:', cart.cartItems)
             const orderData = {
                 user: user.id,
                 orderItems: cart.cartItems.map(item => ({
@@ -117,21 +112,6 @@ export default function Checkout() {
             toast.error('Đã xảy ra lỗi khi đặt hàng. Vui lòng thử lại sau!')
         }
     }
-
-    // const vnpayCheckoutHandler = async () => {
-    //     try {
-    //         // Gọi endpoint để nhận URL thanh toán từ VNPAY
-    //         const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/payment/vnpay/paymentURL`);
-    //         console.log('response: ',response)
-    //         const data = await response.json();
-    //         console.log(data)
-
-    //         // Chuyển hướng người dùng đến URL thanh toán
-    //         window.location.href = data.paymentUrl;
-    //     } catch (error) {
-    //         console.error('Error fetching payment URL:', error);
-    //     }
-    // }
 
     return (
         <div>
@@ -258,11 +238,11 @@ export default function Checkout() {
                                     </Link>
                                     <a
                                         className="px-5 py-2 inline-block text-white bg-green-600 border border-transparent rounded-md hover:bg-green-700 cursor-pointer"
+
                                         onClick={checkoutHandler}
-                                    >
+                                    >   
                                         ĐẶT HÀNG
                                     </a>
-                                    {paymentUrl && <a href={paymentUrl}>Proceed to Payment</a>}
                                 </div>
                             </div>
                         </div>
