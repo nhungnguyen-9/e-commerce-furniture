@@ -301,7 +301,7 @@ export default function Checkout() {
                                     <a
                                         className="px-5 py-2 inline-block text-white bg-green-600 border border-transparent rounded-md hover:bg-green-700 cursor-pointer"
 
-                                        onClick={checkoutVNPayHandler}
+                                        onClick={checkoutHandler}
                                     >   
                                         ĐẶT HÀNG
                                     </a>

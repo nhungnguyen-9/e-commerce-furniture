@@ -24,7 +24,7 @@ export default function GET(req, res) {
     const sortedParams = sortObject(vnp_Params);
 
     // Lấy secretKey từ cấu hình hoặc từ nơi bạn lưu trữ
-    const secretKey = 'YOUR_SECRET_KEY_HERE'; // Thay YOUR_SECRET_KEY_HERE bằng secret key thực tế của bạn
+    const secretKey = 'QDCABATEWGAMQHJEYZDRMDHDQWFGWWOQ'; // Thay YOUR_SECRET_KEY_HERE bằng secret key thực tế của bạn
 
     // Chuyển các tham số thành chuỗi dữ liệu để hash
     const signData = new URLSearchParams(sortedParams).toString();
@@ -35,12 +35,6 @@ export default function GET(req, res) {
 
     // So sánh mã hash từ VNPAY với mã hash mà bạn tạo ra
     if(secureHash === signed){
-        // Xác thực tính toàn vẹn của dữ liệu và thực hiện các thao tác cần thiết tại đây
-
-        // Lấy orderId và rspCode từ tham số
-        const orderId = vnp_Params['vnp_TxnRef'];
-        const rspCode = vnp_Params['vnp_ResponseCode'];
-
         // Trả về mã lỗi và thông điệp phản hồi cho VNPAY dưới dạng JSON
         res.status(200).json({ RspCode: '00', Message: 'success' });
     } else {
@@ -48,6 +42,3 @@ export default function GET(req, res) {
         res.status(200).json({ RspCode: '97', Message: 'Fail checksum' });
     }
 }
-
-export const dynamic = "force-dynamic"
-export const methods = ['GET']

@@ -2,28 +2,37 @@
 'use client'
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { VNPay } from 'vnpay';
 
-const VNPayReturnPage = () => {
+const vnpay = new VNPay({
+    tmnCode: 'EOR7B8O2',
+    secureSecret: 'QDCABATEWGAMQHJEYZDRMDHDQWFGWWOQ',
+    api_Host: 'https://sandbox.vnpayment.vn/paymentv2/vpcpay.html',
+    testMode: true, // optional
+    hashAlgorithm: 'SHA512', // optional
+});
+
+const VNPayReturnPage = (req, res) => {
     const [paymentData, setPaymentData] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
-    useEffect(() => {
-        // Gửi yêu cầu HTTP để lấy dữ liệu từ API route
-        const fetchData = async () => {
-            try {
-                const response = await axios.get('/api/vnpay-return');
-                console.log(response)
-                setPaymentData(response.data);
-            } catch (error) {
-                setError(error.message);
-            } finally {
-                setLoading(false);
-            }
-        };
+    // useEffect(() => {
+    //     // Gửi yêu cầu HTTP để lấy dữ liệu từ API route
+    //     const fetchData = async () => {
+    //         try {
+    //             const query = req.query;
+    //             const result = vnpay.verifyReturnUrl(query);
+    //             //setPaymentData(result);
+    //         } catch (error) {
+    //             setError(error.message);
+    //         } finally {
+    //             setLoading(false);
+    //         }
+    //     };
 
-        fetchData();
-    }, []);
+    //     fetchData();
+    // }, []);
 
     if (loading) {
         return <div>Loading...</div>;
@@ -33,18 +42,12 @@ const VNPayReturnPage = () => {
         return <div>Error: {error}</div>;
     }
 
-    if (!paymentData) {
-        return <div>No payment data available</div>;
-    }
-
-    // Hiển thị dữ liệu trả về từ API route trong giao diện của bạn
+    // Hiển thị dữ liệu thanh toán
     return (
         <div>
-            <h1>Kết quả thanh toán từ VNPay</h1>
-            <p>Amount: {paymentData.vnp_Amount}</p>
-            <p>Bank Code: {paymentData.vnp_BankCode}</p>
-            <p>Bank Transaction No: {paymentData.vnp_BankTranNo}</p>
-            {/* Các thông tin khác */}
+            <h1>Payment Information</h1>
+            <p>Message: {paymentData.message}</p>
+            {/* Thêm các thông tin khác từ paymentData tại đây */}
         </div>
     );
 };

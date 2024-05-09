@@ -13,6 +13,7 @@ function sortObject(obj) {
 export async function GET(req, res) {
     // Lấy các tham số từ query URL
     const vnp_Params = req.query;
+    console.log(vnp_Params)
     const secureHash = vnp_Params['vnp_SecureHash'];
 
     // Xóa các tham số vnp_SecureHash và vnp_SecureHashType để chuẩn bị dữ liệu để hash
@@ -37,8 +38,10 @@ export async function GET(req, res) {
     if(secureHash === signed){
         // Hiển thị thông báo cho khách hàng hoặc thực hiện các thao tác khác tùy theo yêu cầu của bạn
         res.status(200).json({ code: vnp_Params['vnp_ResponseCode'] });
+        console.log('success')
     } else {
         // Nếu mã hash không khớp, hiển thị thông báo lỗi
         res.status(200).json({ code: '97' });
+        console.log('fail')
     }
 }
