@@ -6,7 +6,6 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "dev-https": "next dev --experimental-https"
   },
   "dependencies": {
     "@emotion/cache": "^11.11.0",
