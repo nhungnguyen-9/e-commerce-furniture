@@ -5,10 +5,11 @@ import Room from '@/backend/models/Room'
 import { auth } from '@/utils/auth'
 import { NextResponse } from "next/server"
 
-connect()
 
 export async function DELETE(req, { params }) {
     try {
+        await connect()
+
         const { id } = params
 
         if (!id) {

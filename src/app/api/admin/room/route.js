@@ -4,10 +4,10 @@ import slugify from 'slugify'
 import Room from '@/backend/models/Room'
 import Category from '@/backend/models/Category'
 
-connect()
-
 export async function POST(req) {
     try {
+        await connect()
+
         const { name, image } = await req.json()
 
         const existingRoom = await Room.findOne({ name })
@@ -39,6 +39,7 @@ export async function POST(req) {
 
 export async function GET(req) {
     try {
+        await connect()
         const rooms = await Room.find().sort({ timestamp: "desc" }).populate({ path: 'category', model: Category })
         return NextResponse.json(rooms, { status: 200 })
     } catch (error) {

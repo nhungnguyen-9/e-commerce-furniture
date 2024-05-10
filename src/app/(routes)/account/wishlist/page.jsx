@@ -3,6 +3,9 @@ import React, { useEffect, useState } from 'react'
 import ChevronRightIcon from '@mui/icons-material/ChevronRight'
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder'
 import ProductCard from '@/app/components/products/productCard'
+import { useSession } from 'next-auth/react'
+import { getOneCustomer } from '@/backend/services/admin/customer'
+import axios from 'axios'
 
 // export const getProductDetails = async (productId) => {
 //     const product = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/products/${productId}`)
@@ -11,27 +14,31 @@ import ProductCard from '@/app/components/products/productCard'
 // }
 
 export default function WishList() {
-    // const { user } = User
+    const { data } = useSession()
+    const user = data?.user
+    console.log('🚀 ~ WishList ~ user:', user)
 
-    // const [signedInUser, setSignedInUser] = useState(null)
+    const [signedInUser, setSignedInUser] = useState(null)
     const [wishlist, setWishlist] = useState([])
 
-    // const getUser = async () => {
-    //   try {
-    //     const res = await fetch("/api/users")
-    //     const data = await res.json()
-    //     setSignedInUser(data)
-    //     setLoading(false)
-    //   } catch (err) {
-    //     console.log("[users_GET", err)
-    //   }
-    // }
+    console.log('🚀 ~ WishList ~ signedInUser:', signedInUser)
+    const getUser = async () => {
+        try {
+            const res = await fetch("/api/users")
+            const data = await res.json()
+            console.log('🚀 ~ getUser ~ data:', data)
+            console.log('🚀 ~ getUser ~ res:', res)
+            setSignedInUser(data)
+        } catch (err) {
+            console.log('🚀 ~ getUser ~ err:', err)
+        }
+    }
 
-    // useEffect(() => {
-    //   if (user) {
-    //     getUser()
-    //   }
-    // }, [user])
+    useEffect(() => {
+        if (user) {
+            getUser()
+        }
+    }, [user])
 
     // const getWishlistProducts = async () => {
 

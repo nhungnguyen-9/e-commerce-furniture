@@ -87,6 +87,12 @@ export default function Header() {
     }
   }, [data])
 
+  const logoutHandler = () => {
+    signOut({
+      callbackUrl: '/'
+    })
+  }
+
   return (
     <div className='h-auto z-10'>
       <div className='h-14 py-2.5 border-b border-solid border-[#F6F7F8] relative tablet:hidden mobile:hidden'>
@@ -225,10 +231,13 @@ export default function Header() {
                   <Link href='/tai-khoan/edit-account'>
                     <MenuItem>Thông tin của tôi</MenuItem>
                   </Link>
-                  <MenuItem onClick={null}>Đơn hàng</MenuItem>
-                  <MenuItem onClick={null}>Sản phẩm vừa xem</MenuItem>
-                  <MenuItem onClick={null}>Wishlist</MenuItem>
-                  <MenuItem onClick={() => signOut()}>Đăng xuất</MenuItem>
+                  <Link href='/tai-khoan/order'>
+                    <MenuItem>Đơn hàng</MenuItem>
+                  </Link>
+                  <Link href='#'>
+                    <MenuItem>Wishlist</MenuItem>
+                  </Link>
+                  <MenuItem onClick={logoutHandler}>Đăng xuất</MenuItem>
                 </Menu>
               </div>
             )}

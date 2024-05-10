@@ -1,26 +1,21 @@
 import { connect } from '@/backend/config/mongodb'
 import { NextResponse } from "next/server"
-import Address from '@/backend/models/Address'
-import { auth } from '@/utils/auth'
 import Order from '@/backend/models/Order'
+import Address from '@/backend/models/Address'
 
 export const dynamic = "force-dynamic"
 
 connect()
 
-export async function GET(req) {
+export async function GET(req, params) {
     try {
-        const session = await auth()
+        const { orderId } = params.params
+        const order = await Order.findById(orderId).populate({ path: 'shippingAddress', model: 'Address' })
 
-        if (!session) {
-            return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
-        }
-        const getAllOrders = await Order.find({ user: session.user.id }).populate({ path: 'shippingAddress', model: 'Address' }).populate({ path: 'user', model: 'User' })
-
-        if (getAllOrders) {
+        if (order) {
             return NextResponse.json({
                 success: true,
-                data: getAllOrders,
+                data: order,
             })
         } else {
             return NextResponse.json({

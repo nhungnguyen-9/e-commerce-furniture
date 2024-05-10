@@ -1,20 +1,22 @@
 import { connect } from '@/backend/config/mongodb'
-import Room from '@/backend/models/Room'
+import { auth } from '@/utils/auth'
 import { NextResponse } from "next/server"
+import User from '@/backend/models/User'
+
+connect()
 
 export async function GET(req, { params }) {
     try {
-        await connect()
-        const room = await Room.findOne({ slug: params.slug })
-        if (!room) {
+        const customer = await User.findById(params.id)
+        if (!customer) {
             return NextResponse.json(
-                { error: "Room not found!" },
+                { error: "Customer not found!" },
                 { status: 404 }
             )
         }
         return NextResponse.json({
             success: true,
-            room
+            customer
         })
 
     } catch (e) {
@@ -27,23 +29,26 @@ export async function GET(req, { params }) {
 }
 
 export async function PUT(req, { params }) {
+    console.log('🚀 ~ PUT ~ params:', params)
     try {
-        await connect()
+        const id = params.id
+        console.log('🚀 ~ PUT ~ id:', id)
+        const { userRole, userState } = await req.json()
+        console.log('🚀 ~ PUT ~ userState:', userState)
+        console.log('🚀 ~ PUT ~ userRole:', userRole)
 
-        const { slug } = params
-        const { name, image } = await req.json()
+        const updatedUser = await User.findByIdAndUpdate(id, { role: userRole, status: userState })
+        console.log('🚀 ~ PUT ~ updatedUser:', updatedUser)
 
-        const updatedRoom = await Room.findOneAndUpdate({ slug }, { name, image })
-
-        if (!updatedRoom) {
+        if (!updatedUser) {
             return new NextResponse(
-                { error: 'Room not found' },
+                { error: 'Customer not found' },
                 { status: 404 }
             )
         }
 
         return new NextResponse(
-            { success: true, room: updatedRoom },
+            { success: true, customer: updatedUser },
             { status: 200 }
         )
 

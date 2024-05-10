@@ -2,6 +2,7 @@ import { connect } from '@/backend/config/mongodb'
 import { NextResponse } from "next/server"
 import Address from '@/backend/models/Address'
 import { auth } from '@/utils/auth'
+import User from '@/backend/models/User'
 
 export const dynamic = "force-dynamic"
 
@@ -29,6 +30,16 @@ export async function POST(req) {
         })
 
         const savedAddress = await newAddress.save()
+
+        if (userID) {
+            for (const userId of userID) {
+                const foundUser = await User.findById(userId)
+                if (foundUser) {
+                    foundUser.address.push(savedAddress._id)
+                    await foundUser.save()
+                }
+            }
+        }
 
         return NextResponse.json({
             message: "Thêm địa chỉ thành công!",
