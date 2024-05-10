@@ -26,6 +26,8 @@ import { signOut, useSession } from 'next-auth/react'
 import Menu from '@mui/material/Menu'
 import MenuItem from '@mui/material/MenuItem'
 import { useRouter } from 'next/navigation'
+import { translate } from "google-translate-nodejs";
+import Autocomplete from '@mui/material/Autocomplete';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="right" ref={ref} {...props} />
@@ -33,6 +35,8 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 
 export default function Header() {
   const router = useRouter()
+  const [products, setProducts] = useState([]);
+  const [filteredProducts, setFilteredProducts] = useState([]);
   const [searchParam, setSearchParam] = useState('');
 
   const { cart } = useContext(CartContext)
@@ -40,10 +44,32 @@ export default function Header() {
 
   const [open, setOpen] = useState(false)
   const [scrollY, setScrollY] = useState(0)
+  
+  useEffect(() => {
+    // Fetch products from your API
+    fetch('/api/products')
+        .then(response => response.json())
+        .then(data => {
+            console.log(data.products); // Log the data to check its structure
+            setProducts(data.products);
+        });
+}, []);
 
-  const handleSearch = () => {
-    router.push(`/shop?search=${encodeURIComponent(searchParam)}`);
-  };
+const handleSearch = async () => {
+  const { data } = await translate.batch(searchParam, ["vi"]);
+  const translatedText = data.target[0].text;
+
+  const regexPattern = `${searchParam}|${translatedText}`;
+
+  router.push(`/shop?search=${encodeURIComponent(regexPattern)}`);
+};
+
+const handleInputChange = (event, value) => {
+  setSearchParam(value);
+  const regex = new RegExp(`${value}`, 'i');
+  setFilteredProducts(products.filter(product => regex.test(product.name)));
+};
+  
 
   const handleClose = () => {
     setOpen(false)
@@ -325,21 +351,24 @@ export default function Header() {
 
           {/* Search */}
           <div className='relative md:ml-14 w-[480px] tablet:hidden mobile:hidden'>
-            <TextField
-              id='outlined-basic'
-              label='Tìm sản phẩm'
-              variant='outlined'
-              size='small'
-              value={searchParam}
-              onChange={(e) => setSearchParam(e.target.value)}
-              InputProps={{
-                endAdornment: (
-                  <InputAdornment position='start'>
-                    <SearchIcon onClick={handleSearch} />
-                  </InputAdornment>
-                ),
-                sx: { borderRadius: 20, width: '273px' }
-              }}
+            <Autocomplete
+              options={filteredProducts}
+              getOptionLabel={(option) => option.name}
+              onInputChange={handleInputChange}
+              renderInput={(params) =>(
+                <TextField
+                  {...params}
+                  type='text'
+                  placeholder='Tìm sản phẩm'
+                  className='w-full h-[45px] px-3 border-2 shadow-inner focus:shadow-input_field outline-none text-[20px]'
+                  onKeyDown={(event) => {
+                    if (event.key === 'Enter') {
+                        handleSearch();
+                        event.target.blur();
+                    }
+                  }}
+                />
+            )}
             />
           </div>
 
