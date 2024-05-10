@@ -2,6 +2,7 @@ import { connect } from '@/backend/config/mongodb'
 import { NextResponse } from 'next/server'
 import Address from '@/backend/models/Address'
 import { auth } from '@/utils/auth'
+import User from '@/backend/models/User'
 
 export const dynamic = "force-dynamic"
 
@@ -23,6 +24,11 @@ export async function DELETE(req) {
 
         if (isAuthUser) {
             const deletedAddress = await Address.findByIdAndDelete(id)
+
+            await User.updateMany(
+                { address: id },
+                { $pull: { address: id } }
+            )
 
             if (deletedAddress) {
                 return NextResponse.json({

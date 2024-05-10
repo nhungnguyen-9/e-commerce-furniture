@@ -1,7 +1,10 @@
+import CustomerDashboard from '@/app/components/admin/customers/CustomerDashboard'
 import React from 'react'
 
 export default function CustomerDashBoard() {
     return (
-        <div>CustomerDashBoard</div>
+        <div>
+            <CustomerDashboard />
+        </div>
     )
 }

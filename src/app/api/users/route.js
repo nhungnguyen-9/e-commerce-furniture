@@ -1,30 +1,24 @@
-// import User from '@/backend/models/User';
-// import { connect } from '@/backend/config/mongodb'
-// import { auth } from "@/utils/auth";
+import User from '@/backend/models/User';
+import { connect } from '@/backend/config/mongodb'
+import { auth } from "@/utils/auth";
+import { NextRequest, NextResponse } from "next/server";
 
-// import { NextRequest, NextResponse } from "next/server";
+export const GET = async (req) => {
+    try {
+        const { userId } = auth()
+        console.log('🚀 ~ GET ~ userId:', userId)
 
-// connect()
+        let user = await User.findOneById({ userId })
+        console.log('🚀 ~ GET ~ user:', user)
+        // When the user sign-in for the 1st, immediately we will create a new user for them
+        if (!user) {
+            user = await User.create({ id })
+            await user.save()
+        }
 
-// export const GET = async (req) => {
-//   try {
-//     const { userId } = auth()
-//     console.log(userId)
-//     if (!userId) {
-//       return new NextResponse(JSON.stringify({ message: "Unauthorized" }), { status: 401 })
-//     }
-
-//     let user = await User.findOneById({userId: _id })
-//     console.log(user)
-//     // When the user sign-in for the 1st, immediately we will create a new user for them
-//     if (!user) {
-//       user = await User.create({ id })
-//       await user.save()
-//     }
-
-//     return NextResponse.json(user, { status: 200 })
-//   } catch (err) {
-//     console.log("[users_GET]", err)
-//     return new NextResponse("Internal Server Error", { status: 500 })
-//   }
-// }
+        return NextResponse.json(user, { status: 200 })
+    } catch (err) {
+        console.log("[users_GET]", err)
+        return new NextResponse("Internal Server Error", { status: 500 })
+    }
+}

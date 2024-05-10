@@ -23,6 +23,7 @@ export default function ProductCard({ product, updateSignedInUser }) {
             toast.success('Cập nhập giỏ hàng thành công!')
         } else {
             addItemToCart({
+                _id: product._id,
                 product: product.slug,
                 name: product.name,
                 price: product.price,

@@ -19,14 +19,24 @@ const userSchema = new mongoose.Schema({
         type: String,
         default: 'user'
     },
-    wishlist: {
-        type: Array,
-        default: []
+    status: {
+        type: String,
+        default: 'Active'
     },
-    orders: {
-        type: Array,
-        default: []
-    },
+    address: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            require: true,
+            ref: 'Address'
+        }
+    ],
+    orders: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            require: true,
+            ref: 'Order'
+        }
+    ],
     createdAt: {
         type: Date,
         default: Date.now
