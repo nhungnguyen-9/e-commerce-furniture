@@ -8,10 +8,14 @@ import { toast } from 'react-toastify'
 import axios from 'axios'
 import { useRouter } from 'next/navigation'
 import { createNewOrder } from '@/backend/services/order'
+import { redirect } from 'next/navigation'
 
 export default function Checkout() {
     const { cart, clearCart, clearCheckoutInfo, saveOnCheckout } = useContext(CartContext)
     const { data } = useSession()
+    if (data === null) {
+        redirect('/login')
+    }
     const user = data?.user
     const [addresses, setAddresses] = useState([])
     const [shippingInfo, setShippingInfo] = useState('')

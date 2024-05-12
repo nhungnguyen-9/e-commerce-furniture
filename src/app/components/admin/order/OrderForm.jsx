@@ -50,91 +50,55 @@ export default function OrderForm({ orderData }) {
 
             <form className='border-2 rounded-md p-4' onSubmit={submitHandler}>
                 <div className='grid sm:grid-cols-2 md:grid-cols-3 gap-4 mb-5'>
-                    <TextField
-                        id="outlined-basic"
-                        label="ID Đơn hàng"
-                        variant="outlined"
-                        className='w-full'
-                        value={orderData?._id}
-                        disabled
-                    />
-                    <TextField
-                        id="outlined-basic"
-                        label="Tên người đặt"
-                        variant="outlined"
-                        className='w-full'
-                        value={orderData?.user.name}
-                        disabled
-                    />
-                    <TextField
-                        id="outlined-basic"
-                        label="Email người đặt"
-                        variant="outlined"
-                        className='w-full'
-                        value={orderData?.user.email}
-                        disabled
-                    />
+                    <div className='w-full'>
+                        <label className='font-bold'>ID Đơn hàng</label><br />
+                        <input type="text" value={orderData?._id} disabled className='w-full border-slate-300 border-2 rounded-md py-3 px-2 my-2' />
+                    </div>
+                    <div className='w-full'>
+                        <label className='font-bold'>Tên người đặt</label><br />
+                        <input type="text" value={orderData?.user.name} disabled className='w-full border-slate-300 border-2 rounded-md py-3 px-2 my-2' />
+                    </div>
+                    <div className='w-full'>
+                        <label className='font-bold'>Email người đặt</label><br />
+                        <input type="text" value={orderData?.user.email} disabled className='w-full border-slate-300 border-2 rounded-md py-3 px-2 my-2' />
+                    </div>
                 </div>
 
                 <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mb-5'>
-                    <TextField
-                        id="outlined-basic"
-                        label="Địa chỉ"
-                        variant="outlined"
-                        className='w-full'
-                        value={orderData?.shippingAddress.address}
-                        disabled
-                    />
-                    <TextField
-                        id="outlined-basic"
-                        label="Thành phố"
-                        variant="outlined"
-                        className='w-full'
-                        value={orderData?.shippingAddress.city}
-                        disabled
-                    />
-                    <TextField
-                        id="outlined-basic"
-                        label="Tỉnh"
-                        variant="outlined"
-                        className='w-full'
-                        value={orderData?.shippingAddress.province}
-                        disabled
-                    />
-                    <TextField
-                        id="outlined-basic"
-                        label="Số điện thoại người đặt"
-                        variant="outlined"
-                        className='w-full'
-                        value={orderData?.shippingAddress.phoneNo}
-                        disabled
-                    />
+                    <div className='w-full'>
+                        <label className='font-bold'>Địa chỉ</label><br />
+                        <input type="text" value={orderData?.shippingAddress.address} disabled className='w-full border-slate-300 border-2 rounded-md py-3 px-2 my-2' />
+                    </div>
+                    <div className='w-full'>
+                        <label className='font-bold'>Thành phố</label><br />
+                        <input type="text" value={orderData?.shippingAddress.city} disabled className='w-full border-slate-300 border-2 rounded-md py-3 px-2 my-2' />
+                    </div>
+                    <div className='w-full'>
+                        <label className='font-bold'>Tỉnh</label><br />
+                        <input type="text" value={orderData?.shippingAddress.province} disabled className='w-full border-slate-300 border-2 rounded-md py-3 px-2 my-2' />
+                    </div>
+                    <div className='w-full'>
+                        <label className='font-bold'>Số điện thoại người đặt</label><br />
+                        <input type="text" value={orderData?.shippingAddress.phoneNo} disabled className='w-full border-slate-300 border-2 rounded-md py-3 px-2 my-2' />
+                    </div>
                 </div>
 
                 <div className='grid grid-cols-1 sm:grid-cols-3 gap-4 mb-5'>
-                    <TextField
-                        id="outlined-basic"
-                        label="Ngày tạo"
-                        variant="outlined"
-                        className='w-full'
-                        value={formatDate(orderData?.createdAt)}
-                        disabled
-                    />
-                    <TextField
-                        id="outlined-basic"
-                        label="Tổng tiền"
-                        variant="outlined"
-                        className='w-full'
-                        value={new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(Math.round(orderData?.totalPrice)).replace(/\./g, ',')}
-                        disabled
-                    />
+                    <div className='w-full'>
+                        <label className='font-bold'>Ngày tạo</label><br />
+                        <input type="text" value={formatDate(orderData?.createdAt)} disabled className='w-full border-slate-300 border-2 rounded-md py-3 px-2 my-2' />
+                    </div>
+                    <div className='w-full'>
+                        <label className='font-bold'>Tổng tiền</label><br />
+                        <input type="text" value={new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(Math.round(orderData?.totalPrice)).replace(/\./g, ',')} disabled className='w-full border-slate-300 border-2 rounded-md py-3 px-2 my-2' />
+                    </div>
                     <TextField
                         id="outlined-select-currency"
                         select
                         label="Chọn trạng thái đơn hàng"
                         value={orderStatus}
                         onChange={onChange}
-                        className='w-full'
+                        className='w-full mt-7'
                     >
                         {status.map((option) => (
                             <MenuItem key={option.value} value={option.value}>

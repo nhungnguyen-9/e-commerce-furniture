@@ -67,15 +67,16 @@ export const authOptions = {
             user && (token.user = user)
             return token
         },
-        async session({ session }) {
-            // console.log('🚀 ~ session ~ token:', token)
-            const sessionUser = await User.findOne({ email: session.user.email })
+        async session({ session, token }) {
+            // const sessionUser = await User.findOne({ email: session.user.email })
             // console.log('🚀 ~ session ~ sessionUser:', sessionUser)
-            // session.user = token.user
+            session.user.id = token.user._id
+            session.user.role = token.user.role
+            session.user.status = token.user.status
             // console.log('🚀 ~ session ~ session.user:', session.user)
 
 
-            session.user.id = sessionUser._id.toString()
+            // session.user.id = sessionUser._id.toString()
             // console.log('🚀 ~ session ~ session.user.id:', session.user.id)
 
             // console.log('🚀 ~ session ~ session:', session)
