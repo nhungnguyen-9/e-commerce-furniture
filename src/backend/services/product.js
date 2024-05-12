@@ -17,7 +17,6 @@ export const getProductsByCategory = async (roomSlug, categorySlug) => {
 
         // return category.room[0].product;
         const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/danh-muc/${roomSlug}/${categorySlug}`)
-        console.log('🚀 ~ getProductsByCategory ~ response:', response)
         return response.data
     } catch (error) {
         console.error('Error fetching products by category:', error);

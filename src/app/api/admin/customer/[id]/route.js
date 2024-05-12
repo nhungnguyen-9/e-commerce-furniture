@@ -29,16 +29,11 @@ export async function GET(req, { params }) {
 }
 
 export async function PUT(req, { params }) {
-    console.log('🚀 ~ PUT ~ params:', params)
     try {
         const id = params.id
-        console.log('🚀 ~ PUT ~ id:', id)
         const { userRole, userState } = await req.json()
-        console.log('🚀 ~ PUT ~ userState:', userState)
-        console.log('🚀 ~ PUT ~ userRole:', userRole)
 
         const updatedUser = await User.findByIdAndUpdate(id, { role: userRole, status: userState })
-        console.log('🚀 ~ PUT ~ updatedUser:', updatedUser)
 
         if (!updatedUser) {
             return new NextResponse(

@@ -26,7 +26,6 @@ export default function DeleteOrder({ id, onDeleteSuccess }) {
     const handleDelete = async () => {
         try {
             const response = await deleteOrder(id)
-            console.log('🚀 ~ handleDelete ~ response:', response)
             if (response.success) {
                 toast.success(response.message)
                 onDeleteSuccess()

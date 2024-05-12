@@ -12,7 +12,6 @@ import { toast } from 'react-toastify'
 import SelectTextFieldsRoom from './MultipleSelectRoom'
 
 export default function ProductForm({ productData }) {
-    console.log('🚀 ~ ProductForm ~ productData:', productData)
     const [product, setProduct] = useState({
         name: productData ? productData.name : '',
         description: productData ? productData.description : '',
@@ -41,7 +40,6 @@ export default function ProductForm({ productData }) {
     const getCategories = async () => {
         try {
             const res = await getAllCategories()
-            console.log('🚀 ~ getCategories ~ res:', res)
             setCategoriesId(res)
         } catch (error) {
             console.log('🚀 ~ getCategories ~ error:', error)

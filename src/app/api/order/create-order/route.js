@@ -25,7 +25,6 @@ export async function POST(req) {
             shippingAddress,
             paymentMethod,
             totalPrice } = await req.json()
-        console.log('🚀 ~ POST ~ req.json:', req.json)
 
         const newOrder = new Order({
             user,

@@ -11,7 +11,6 @@ export default function CustomerDetailPage({ params }) {
         const fetchOneCustomer = async () => {
             try {
                 const data = await getOneCustomer(id)
-                console.log('🚀 ~ fetchOneCustomer ~ data:', data)
                 setCustomerData(data.customer)
             } catch (error) {
                 console.log('🚀 ~ fetchOneCustomer ~ error:', error)

@@ -11,7 +11,6 @@ export default function CategoryDetailPage({ params }) {
         const fetchOneCategory = async () => {
             try {
                 const data = await getOneCategory(id)
-                console.log('🚀 ~ fetchOneCategory ~ data:', data.category)
                 setCategoryData(data.category)
             } catch (error) {
                 console.log('🚀 ~ fetchOneCategory ~ error:', error)
