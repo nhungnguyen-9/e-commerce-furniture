@@ -22,7 +22,6 @@ export const getAllCategories = async () => {
 export const getOneCategory = async (id) => {
     try {
         const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/admin/category/${id}`)
-        console.log('🚀 ~ getOneCategory ~ response:', response)
         return response.data
     } catch (error) {
         console.error("Error fetching category:", error)

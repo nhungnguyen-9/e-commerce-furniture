@@ -6,10 +6,8 @@ import { NextRequest, NextResponse } from "next/server";
 export const GET = async (req) => {
     try {
         const { userId } = auth()
-        console.log('🚀 ~ GET ~ userId:', userId)
 
         let user = await User.findById({ userId })
-        console.log('🚀 ~ GET ~ user:', user)
         // When the user sign-in for the 1st, immediately we will create a new user for them
         if (!user) {
             user = await User.create({ id })

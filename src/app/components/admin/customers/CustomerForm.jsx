@@ -7,13 +7,10 @@ import { updateCustomer } from '@/backend/services/admin/customer'
 import { useRouter } from 'next/navigation'
 
 export default function CustomerForm({ customerData }) {
-    console.log('🚀 ~ CustomerForm ~ customerData:', customerData)
     const [userRole, setUserRole] = useState(customerData?.role || '')
     const [userState, setUserState] = useState(customerData?.status || '')
 
     const router = useRouter()
-    console.log('🚀 ~ CustomerForm ~ userState:', userState)
-    console.log('🚀 ~ CustomerForm ~ userRole:', userRole)
 
     useEffect(() => {
         setUserRole(customerData?.role || '');
@@ -35,7 +32,6 @@ export default function CustomerForm({ customerData }) {
 
         try {
             const responseData = await updateCustomer(customerData?._id, { userRole, userState })
-            console.log('🚀 ~ submitHandler ~ responseData:', responseData)
 
             if (responseData) {
                 toast.success('Cập nhật đơn hàng thành công!')

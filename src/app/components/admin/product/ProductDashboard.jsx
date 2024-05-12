@@ -59,7 +59,6 @@ export default function ProductDashboard() {
     const indexOfLastRoom = currentPage * roomsPerPage
     const indexOfFirstRoom = indexOfLastRoom - roomsPerPage
     const currentProducts = filterProduct.slice(indexOfFirstRoom, indexOfLastRoom)
-    console.log('🚀 ~ ProductDashboard ~ currentProducts:', currentProducts)
 
     // Change page
     const paginate = pageNumber => setCurrentPage(pageNumber)

@@ -59,7 +59,6 @@ export default function Checkout() {
             }
 
             const orderItems = cart.cartItems.map(item => {
-                console.log('🚀 ~ orderItems ~ item:', item)
                 return {
                     productId: item._id,
                     name: item.name,
