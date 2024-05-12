@@ -44,40 +44,40 @@ export default function Header() {
 
   const [open, setOpen] = useState(false)
   const [scrollY, setScrollY] = useState(0)
-  
+
   useEffect(() => {
     // Fetch products from your API
     fetch('/api/products')
-        .then(response => response.json())
-        .then(data => {
-            setProducts(data.products);
-        });
-}, []);
+      .then(response => response.json())
+      .then(data => {
+        setProducts(data.products);
+      });
+  }, []);
 
-const handleSearch = async () => {
-  if (searchParam.trim() !== '') {
-    const { data } = await translate.batch(searchParam, ["vi"]);
-    const translatedText = data.target[0].text;
+  const handleSearch = async () => {
+    if (searchParam.trim() !== '') {
+      const { data } = await translate.batch(searchParam, ["vi"]);
+      const translatedText = data.target[0].text;
 
-    const regexPattern = `${searchParam}|${translatedText}`;
+      const regexPattern = `${searchParam}|${translatedText}`;
 
-    router.push(`/shop?search=${encodeURIComponent(regexPattern)}`);
-  } else {
-    router.push('/shop');
-  }
-};
+      router.push(`/shop?search=${encodeURIComponent(regexPattern)}`);
+    } else {
+      router.push('/shop');
+    }
+  };
 
-const handleInputChange = (event, value) => {
-  if (value) {
-    setSearchParam(value);
-    const regex = new RegExp(`^${value}`, 'i');
-    setFilteredProducts(products.filter(product => regex.test(product.name)));
-  } else {
-    setSearchParam('');
-    setFilteredProducts([]);
-  }
-};
-  
+  const handleInputChange = (event, value) => {
+    if (value) {
+      setSearchParam(value);
+      const regex = new RegExp(`^${value}`, 'i');
+      setFilteredProducts(products.filter(product => regex.test(product.name)));
+    } else {
+      setSearchParam('');
+      setFilteredProducts([]);
+    }
+  };
+
 
   const handleClose = () => {
     setOpen(false)
@@ -360,7 +360,7 @@ const handleInputChange = (event, value) => {
           {/* Search */}
           <div className='relative md:ml-14 w-[480px] tablet:hidden mobile:hidden'>
             <Autocomplete
-              sx={{ width: 250}}
+              sx={{ width: 273 }}
               freeSolo
               options={filteredProducts}
               getOptionLabel={(option) => (typeof option === 'object' ? option.name : option)}
@@ -368,13 +368,13 @@ const handleInputChange = (event, value) => {
               renderOption={(props, option) => {
                 return (
                   <Link href={`/products/${option.slug}`} {...props} style={{ display: 'flex', height: 'auto' }}>
-                    <img src={option.image[0].url} alt={option.name} style={{ width: '50px', height: '50px', borderRadius:'25px' }} />
+                    <img src={option.image[0].url} alt={option.name} style={{ width: '50px', height: '50px', borderRadius: '25px' }} />
                     <div style={{ flex: '0 0 34%', overflow: 'hidden', fontSize: '14px' }}>{option.name}</div>
-                    <div style={{ flex: '0 0 35%', marginLeft:'5%', fontSize: '14px' }}>{new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(Math.round(option.price)).replace(/\./g, ',')}</div>
+                    <div style={{ flex: '0 0 35%', marginLeft: '5%', fontSize: '14px' }}>{new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(Math.round(option.price)).replace(/\./g, ',')}</div>
                   </Link>
                 );
               }}
-              renderInput={(params) =>(
+              renderInput={(params) => (
                 <TextField
                   {...params}
                   type='text'
@@ -382,13 +382,13 @@ const handleInputChange = (event, value) => {
                   sx={{
                     "& .MuiOutlinedInput-root": {
                       borderRadius: "50px",
-          
+
                       legend: {
                         marginRight: "30px"
                       }
                     },
                     "& .MuiOutlinedInput-input": {
-                      height: "10px", // Đặt chiều cao tùy chỉnh ở đây
+                      height: "8px", // Đặt chiều cao tùy chỉnh ở đây
                     },
                     "& .MuiAutocomplete-inputRoot": {
                       paddingLeft: "20px !important",
@@ -406,8 +406,8 @@ const handleInputChange = (event, value) => {
                   }}
                   onKeyDown={(event) => {
                     if (event.key === 'Enter') {
-                        handleSearch();
-                        event.target.blur();
+                      handleSearch();
+                      event.target.blur();
                     }
                   }}
                   InputProps={{
@@ -423,7 +423,7 @@ const handleInputChange = (event, value) => {
                     ),
                   }}
                 />
-            )}
+              )}
             />
           </div>
 
