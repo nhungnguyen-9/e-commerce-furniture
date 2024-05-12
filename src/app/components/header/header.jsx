@@ -65,9 +65,14 @@ const handleSearch = async () => {
 };
 
 const handleInputChange = (event, value) => {
-  setSearchParam(value);
-  const regex = new RegExp(`${value}`, 'i');
-  setFilteredProducts(products.filter(product => regex.test(product.name)));
+  if (value) {
+    setSearchParam(value);
+    const regex = new RegExp(`^${value}`, 'i');
+    setFilteredProducts(products.filter(product => regex.test(product.name)));
+  } else {
+    setSearchParam('');
+    setFilteredProducts([]);
+  }
 };
   
 
@@ -352,8 +357,9 @@ const handleInputChange = (event, value) => {
           {/* Search */}
           <div className='relative md:ml-14 w-[480px] tablet:hidden mobile:hidden'>
             <Autocomplete
+              freeSolo
               options={filteredProducts}
-              getOptionLabel={(option) => option.name}
+              getOptionLabel={(option) => (typeof option === 'object' ? option.name : option)}
               onInputChange={handleInputChange}
               renderInput={(params) =>(
                 <TextField
