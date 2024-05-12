@@ -50,7 +50,6 @@ export default function Header() {
     fetch('/api/products')
         .then(response => response.json())
         .then(data => {
-            console.log(data.products); // Log the data to check its structure
             setProducts(data.products);
         });
 }, []);
@@ -357,6 +356,15 @@ const handleInputChange = (event, value) => {
               options={filteredProducts}
               getOptionLabel={(option) => (typeof option === 'object' ? option.name : option)}
               onInputChange={handleInputChange}
+              renderOption={(props, option) => {
+                return (
+                  <Link href={`/products/${option.slug}`} {...props} style={{ display: 'flex', height: 'auto' }}>
+                    <img src={option.image[0].url} alt={option.name} style={{ width: '50px', height: '50px', borderRadius:'25px' }} />
+                    <div style={{ flex: '0 0 34%', overflow: 'hidden', fontSize: '14px' }}>{option.name}</div>
+                    <div style={{ flex: '0 0 35%', marginLeft:'5%', fontSize: '14px' }}>{new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(Math.round(option.price)).replace(/\./g, ',')}</div>
+                  </Link>
+                );
+              }}
               renderInput={(params) =>(
                 <TextField
                   {...params}
