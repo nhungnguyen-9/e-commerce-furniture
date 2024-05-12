@@ -24,23 +24,33 @@ export default function Search() {
     }, []);
 
     const handleSearch = async () => {
-        const { data } = await translate.batch(searchParam, ["vi"]);
-        const translatedText = data.target[0].text;
+        if (searchParam.trim() !== '') {
+          const { data } = await translate.batch(searchParam, ["vi"]);
+          const translatedText = data.target[0].text;
       
-        const regexPattern = `${searchParam}|${translatedText}`;
+          const regexPattern = `${searchParam}|${translatedText}`;
       
-        router.push(`/shop?search=${encodeURIComponent(regexPattern)}`);
-      };
+          router.push(`/shop?search=${encodeURIComponent(regexPattern)}`);
+        } else {
+          router.push('/shop');
+        }
+    };
       
     const handleInputChange = (event, value) => {
-        setSearchParam(value);
-        const regex = new RegExp(`${value}`, 'i');
-        setFilteredProducts(products.filter(product => regex.test(product.name)));
+        if (value) {
+          setSearchParam(value);
+          const regex = new RegExp(`^${value}`, 'i');
+          setFilteredProducts(products.filter(product => regex.test(product.name)));
+        } else {
+          setSearchParam('');
+          setFilteredProducts([]);
+        }
     };
 
     return (
         <div className='w-full h-[80px] mt-5 flex'>
             <Autocomplete
+                freeSolo
                 options={filteredProducts}
                 getOptionLabel={(option) => option.name}
                 onInputChange={handleInputChange}

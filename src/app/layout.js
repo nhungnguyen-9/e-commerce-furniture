@@ -6,7 +6,6 @@ import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import Provider from './SessionProvider'
 import { CartProvider } from '@/context/CartContext'
-import FacebookCustomerChat from './components/FacebookCustomerChat'
 
 const roboto = Roboto({ subsets: ['latin'], weight: ['400', '500', '700'] })
 
@@ -41,12 +40,12 @@ export default function RootLayout({ children }) {
         <meta property="twitter:title" content="Trang chủ" />
         <meta property="twitter:description" content="Trang chủ" />
         <meta property="twitter:url" content="https://nhaxinh.com/" />
-        <meta itemprop="image" content="https://res.cloudinary.com/dq7vzcw0s/image/upload/v1710919244/nhaxinh/categories/nha-xinh-phong-khach-bride-nau-tram-2_cmnv35.jpg" />
-        <meta itemprop="name" content="Trang chủ" />
-        <meta itemprop="headline" content="Trang chủ" />
-        <meta itemprop="description" content="Trang chủ" />
-        <meta itemprop="datePublished" content="2013-08-06" />
-        <meta itemprop="dateModified" content="2024-04-02T01:59:26+00:00" />
+        <meta itemProp="image" content="https://res.cloudinary.com/dq7vzcw0s/image/upload/v1710919244/nhaxinh/categories/nha-xinh-phong-khach-bride-nau-tram-2_cmnv35.jpg" />
+        <meta itemProp="name" content="Trang chủ" />
+        <meta itemProp="headline" content="Trang chủ" />
+        <meta itemProp="description" content="Trang chủ" />
+        <meta itemProp="datePublished" content="2013-08-06" />
+        <meta itemProp="dateModified" content="2024-04-02T01:59:26+00:00" />
         {/* <meta itemprop="author" content="admin" /> */}
         {/* <meta property="profile:first_name" content="Nguyễn" />
         <meta property="profile:last_name" content="Hoàng" />
@@ -71,7 +70,6 @@ export default function RootLayout({ children }) {
                 theme="colored"
               />
                 <main className='flex-grow'>{children}
-                  <FacebookCustomerChat />
                 </main>
               <Footer />
             </CartProvider>

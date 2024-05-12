@@ -56,12 +56,16 @@ export default function Header() {
 }, []);
 
 const handleSearch = async () => {
-  const { data } = await translate.batch(searchParam, ["vi"]);
-  const translatedText = data.target[0].text;
+  if (searchParam.trim() !== '') {
+    const { data } = await translate.batch(searchParam, ["vi"]);
+    const translatedText = data.target[0].text;
 
-  const regexPattern = `${searchParam}|${translatedText}`;
+    const regexPattern = `${searchParam}|${translatedText}`;
 
-  router.push(`/shop?search=${encodeURIComponent(regexPattern)}`);
+    router.push(`/shop?search=${encodeURIComponent(regexPattern)}`);
+  } else {
+    router.push('/shop');
+  }
 };
 
 const handleInputChange = (event, value) => {
@@ -348,6 +352,7 @@ const handleInputChange = (event, value) => {
           {/* Search */}
           <div className='relative md:ml-14 w-[480px] tablet:hidden mobile:hidden'>
             <Autocomplete
+              sx={{ width: 250}}
               freeSolo
               options={filteredProducts}
               getOptionLabel={(option) => (typeof option === 'object' ? option.name : option)}
@@ -357,12 +362,48 @@ const handleInputChange = (event, value) => {
                   {...params}
                   type='text'
                   placeholder='Tìm sản phẩm'
-                  className='w-full h-[45px] px-3 border-2 shadow-inner focus:shadow-input_field outline-none text-[20px]'
+                  sx={{
+                    "& .MuiOutlinedInput-root": {
+                      borderRadius: "50px",
+          
+                      legend: {
+                        marginRight: "30px"
+                      }
+                    },
+                    "& .MuiOutlinedInput-input": {
+                      height: "10px", // Đặt chiều cao tùy chỉnh ở đây
+                    },
+                    "& .MuiAutocomplete-inputRoot": {
+                      paddingLeft: "20px !important",
+                      borderRadius: "50px",
+                    },
+                    "& .MuiInputLabel-outlined": {
+                      paddingLeft: "20px",
+                    },
+                    "& .MuiInputLabel-shrink": {
+                      marginLeft: "20px",
+                      paddingLeft: "10px",
+                      paddingRight: 0,
+                      background: "white"
+                    }
+                  }}
                   onKeyDown={(event) => {
                     if (event.key === 'Enter') {
                         handleSearch();
                         event.target.blur();
                     }
+                  }}
+                  InputProps={{
+                    ...params.InputProps,
+                    endAdornment: (
+                      <InputAdornment position="end">
+                        <div className='absolute right-[15px]'>
+                          <button onClick={handleSearch}>
+                            <SearchIcon />
+                          </button>
+                        </div>
+                      </InputAdornment>
+                    ),
                   }}
                 />
             )}
