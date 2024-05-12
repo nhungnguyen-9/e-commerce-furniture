@@ -37,9 +37,19 @@ export default function Login() {
                     redirect: false,
                     callbackUrl: process.env.NEXT_PUBLIC_API_URL
                 })
+            const user = await fetch('/api/auth/session')
+            const userData = await user.json()
             if (res?.ok) {
-                router.push('/')
-                toast.success('Đăng nhập thành công!')
+                if (userData?.user.role === 'user' && userData?.user.status === 'Active') {
+                    router.push('/')
+                    toast.success('Đăng nhập thành công!')
+                } else if (userData?.user.role === 'admin' && userData?.user.status === 'Active') {
+                    router.push('/admin')
+                    toast.success('Đăng nhập thành công!')
+                } else if (userData?.user.status === 'In Active') {
+                    router.push('/account-ban')
+                    toast.error('Tài khoản của bạn đã bị khóa!')
+                }
             } else {
                 toast.error('Email hoặc mật khẩu không đúng!')
             }

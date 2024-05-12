@@ -16,29 +16,29 @@ import axios from 'axios'
 export default function WishList() {
     const { data } = useSession()
     const user = data?.user
-    console.log('🚀 ~ WishList ~ user:', user)
+    // console.log('🚀 ~ WishList ~ user:', user)
 
-    const [signedInUser, setSignedInUser] = useState(null)
-    const [wishlist, setWishlist] = useState([])
+    // const [signedInUser, setSignedInUser] = useState(null)
+    // const [wishlist, setWishlist] = useState([])
 
-    console.log('🚀 ~ WishList ~ signedInUser:', signedInUser)
-    const getUser = async () => {
-        try {
-            const res = await fetch("/api/users")
-            const data = await res.json()
-            console.log('🚀 ~ getUser ~ data:', data)
-            console.log('🚀 ~ getUser ~ res:', res)
-            setSignedInUser(data)
-        } catch (err) {
-            console.log('🚀 ~ getUser ~ err:', err)
-        }
-    }
+    // console.log('🚀 ~ WishList ~ signedInUser:', signedInUser)
+    // const getUser = async () => {
+    //     try {
+    //         const res = await fetch("/api/users")
+    //         const data = await res.json()
+    //         console.log('🚀 ~ getUser ~ data:', data)
+    //         console.log('🚀 ~ getUser ~ res:', res)
+    //         setSignedInUser(data)
+    //     } catch (err) {
+    //         console.log('🚀 ~ getUser ~ err:', err)
+    //     }
+    // }
 
-    useEffect(() => {
-        if (user) {
-            getUser()
-        }
-    }, [user])
+    // useEffect(() => {
+    //     if (user) {
+    //         getUser()
+    //     }
+    // }, [user])
 
     // const getWishlistProducts = async () => {
 

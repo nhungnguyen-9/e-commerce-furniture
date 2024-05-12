@@ -1,8 +1,16 @@
+'use client'
 import Profile from '@/app/components/User/Profile'
 import Sidebar from '@/app/components/User/Sidebar'
+import { useSession } from 'next-auth/react'
+import { redirect } from 'next/navigation'
 import React from 'react'
 
 export default function ProfilePage() {
+    const { data } = useSession()
+    if (data === null) {
+        redirect('/login')
+    }
+
     return (
         <div>
             <hr className='mx-28' />

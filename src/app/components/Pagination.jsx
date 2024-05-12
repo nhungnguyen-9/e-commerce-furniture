@@ -25,7 +25,7 @@ const Pagination = ({ currentPage, roomsPerPage, totalRooms, paginate }) => {
     }
 
     return (
-        <nav className='w-full flex justify-center'>
+        <nav className='w-full flex justify-center my-5'>
             <ul className='flex space-x-2 items-center'>
                 {currentPage > 1 && (
                     <li>
