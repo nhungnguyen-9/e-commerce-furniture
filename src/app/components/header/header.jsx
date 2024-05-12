@@ -26,7 +26,6 @@ import { signOut, useSession } from 'next-auth/react'
 import Menu from '@mui/material/Menu'
 import MenuItem from '@mui/material/MenuItem'
 import { useRouter } from 'next/navigation'
-import SearchBar from './SearchBar'
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="right" ref={ref} {...props} />
