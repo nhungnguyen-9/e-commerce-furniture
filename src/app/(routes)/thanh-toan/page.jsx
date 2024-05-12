@@ -222,11 +222,11 @@ export default function Checkout() {
                                     </Link>
                                     <a
                                         className="px-5 py-2 inline-block text-white bg-green-600 border border-transparent rounded-md hover:bg-green-700 cursor-pointer"
+
                                         onClick={checkoutHandler}
-                                    >
+                                    >   
                                         ĐẶT HÀNG
                                     </a>
-                                    {paymentUrl && <a href={paymentUrl}>Proceed to Payment</a>}
                                 </div>
                             </div>
                         </div>

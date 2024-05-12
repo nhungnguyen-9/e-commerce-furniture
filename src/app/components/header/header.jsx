@@ -26,7 +26,8 @@ import { signOut, useSession } from 'next-auth/react'
 import Menu from '@mui/material/Menu'
 import MenuItem from '@mui/material/MenuItem'
 import { useRouter } from 'next/navigation'
-import SearchBar from './SearchBar'
+import { translate } from "google-translate-nodejs";
+import Autocomplete from '@mui/material/Autocomplete';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="right" ref={ref} {...props} />
@@ -34,6 +35,8 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 
 export default function Header() {
   const router = useRouter()
+  const [products, setProducts] = useState([]);
+  const [filteredProducts, setFilteredProducts] = useState([]);
   const [searchParam, setSearchParam] = useState('');
 
   const { cart } = useContext(CartContext)
@@ -41,10 +44,40 @@ export default function Header() {
 
   const [open, setOpen] = useState(false)
   const [scrollY, setScrollY] = useState(0)
+  
+  useEffect(() => {
+    // Fetch products from your API
+    fetch('/api/products')
+        .then(response => response.json())
+        .then(data => {
+            setProducts(data.products);
+        });
+}, []);
 
-  const handleSearch = () => {
-    router.push(`/shop?search=${encodeURIComponent(searchParam)}`);
-  };
+const handleSearch = async () => {
+  if (searchParam.trim() !== '') {
+    const { data } = await translate.batch(searchParam, ["vi"]);
+    const translatedText = data.target[0].text;
+
+    const regexPattern = `${searchParam}|${translatedText}`;
+
+    router.push(`/shop?search=${encodeURIComponent(regexPattern)}`);
+  } else {
+    router.push('/shop');
+  }
+};
+
+const handleInputChange = (event, value) => {
+  if (value) {
+    setSearchParam(value);
+    const regex = new RegExp(`^${value}`, 'i');
+    setFilteredProducts(products.filter(product => regex.test(product.name)));
+  } else {
+    setSearchParam('');
+    setFilteredProducts([]);
+  }
+};
+  
 
   const handleClose = () => {
     setOpen(false)
@@ -326,21 +359,71 @@ export default function Header() {
 
           {/* Search */}
           <div className='relative md:ml-14 w-[480px] tablet:hidden mobile:hidden'>
-            <TextField
-              id='outlined-basic'
-              label='Tìm sản phẩm'
-              variant='outlined'
-              size='small'
-              value={searchParam}
-              onChange={(e) => setSearchParam(e.target.value)}
-              InputProps={{
-                endAdornment: (
-                  <InputAdornment position='start'>
-                    <SearchIcon onClick={handleSearch} />
-                  </InputAdornment>
-                ),
-                sx: { borderRadius: 20, width: '273px' }
+            <Autocomplete
+              sx={{ width: 250}}
+              freeSolo
+              options={filteredProducts}
+              getOptionLabel={(option) => (typeof option === 'object' ? option.name : option)}
+              onInputChange={handleInputChange}
+              renderOption={(props, option) => {
+                return (
+                  <Link href={`/products/${option.slug}`} {...props} style={{ display: 'flex', height: 'auto' }}>
+                    <img src={option.image[0].url} alt={option.name} style={{ width: '50px', height: '50px', borderRadius:'25px' }} />
+                    <div style={{ flex: '0 0 34%', overflow: 'hidden', fontSize: '14px' }}>{option.name}</div>
+                    <div style={{ flex: '0 0 35%', marginLeft:'5%', fontSize: '14px' }}>{new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(Math.round(option.price)).replace(/\./g, ',')}</div>
+                  </Link>
+                );
               }}
+              renderInput={(params) =>(
+                <TextField
+                  {...params}
+                  type='text'
+                  placeholder='Tìm sản phẩm'
+                  sx={{
+                    "& .MuiOutlinedInput-root": {
+                      borderRadius: "50px",
+          
+                      legend: {
+                        marginRight: "30px"
+                      }
+                    },
+                    "& .MuiOutlinedInput-input": {
+                      height: "10px", // Đặt chiều cao tùy chỉnh ở đây
+                    },
+                    "& .MuiAutocomplete-inputRoot": {
+                      paddingLeft: "20px !important",
+                      borderRadius: "50px",
+                    },
+                    "& .MuiInputLabel-outlined": {
+                      paddingLeft: "20px",
+                    },
+                    "& .MuiInputLabel-shrink": {
+                      marginLeft: "20px",
+                      paddingLeft: "10px",
+                      paddingRight: 0,
+                      background: "white"
+                    }
+                  }}
+                  onKeyDown={(event) => {
+                    if (event.key === 'Enter') {
+                        handleSearch();
+                        event.target.blur();
+                    }
+                  }}
+                  InputProps={{
+                    ...params.InputProps,
+                    endAdornment: (
+                      <InputAdornment position="end">
+                        <div className='absolute right-[15px]'>
+                          <button onClick={handleSearch}>
+                            <SearchIcon />
+                          </button>
+                        </div>
+                      </InputAdornment>
+                    ),
+                  }}
+                />
+            )}
             />
           </div>
 
