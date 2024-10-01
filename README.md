@@ -2,7 +2,7 @@
 
 ## Confirmation
 
-This website is a simple e-commerce platform based on NoiThatNhaXinh. It is created solely for learning purposes.
+This website is a simple e-commerce platform based on NoiThatNhaXinh.
 
 ## Description
 
